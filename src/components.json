@@ -1,0 +1,18 @@
+[{
+    "name": "Buttons",
+    "url": "buttons",
+    "tags": [
+        "form",
+        "global",
+        "button"
+    ]
+},
+{
+    "name": "Inputs",
+    "url": "inputs",
+    "tags": [
+        "form",
+        "global",
+        "input"
+    ]
+}]
