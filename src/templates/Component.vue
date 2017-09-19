@@ -29,6 +29,7 @@
 <style>
     .component {
         border-top: solid 2px #eee;
+        background-color: #fff;
         border-bottom: solid 2px #eee;
         margin: 5px 0;
     }

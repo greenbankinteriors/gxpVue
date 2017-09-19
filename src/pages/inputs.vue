@@ -3,37 +3,60 @@
         <fieldset>
             <msm-component>
                 <msm-question>
-                    <msm-input elType="text"></msm-input>
+                    <msm-input elType="text" />
                 </msm-question>
             </msm-component>
             <msm-component>
                 <msm-question>
-                    <msm-input elType="tel"></msm-input>
+                    <msm-input elType="tel" />
                 </msm-question>
             </msm-component>
             <msm-component>
                 <msm-question>
-                    <msm-input elType="password"></msm-input>
+                    <msm-input elType="password" />
                 </msm-question>
             </msm-component>
             <msm-component>
                 <msm-question>
-                    <msm-input elType="email"></msm-input>
+                    <msm-input elType="email" />
                 </msm-question>
             </msm-component>
             <msm-component>
                 <msm-question>
-                    <msm-input elType="checkbox"></msm-input>
+                    <msm-input elType="checkbox"
+                               :options='options1' />
                 </msm-question>
             </msm-component>
             <msm-component>
                 <msm-question>
-                    <msm-input elType="radio"></msm-input>
+                    <msm-input elType="checkbox"
+                               :options='options2' />
                 </msm-question>
             </msm-component>
             <msm-component>
                 <msm-question>
-                    <msm-spinner></msm-spinner>
+                    <msm-input elType="radio"
+                               :options='options1' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-input elType="radio"
+                               :options='options2' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-input elType="radio"
+                               :options='options3'
+                               elWrapClass="form-pseudo-radio__logo"
+                               elSpanClass="logo edf" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-input elType="spinner"
+                               elValue="100" />
                 </msm-question>
             </msm-component>
         </fieldset>
@@ -53,7 +76,23 @@
         },
         data() {
             return {
-                elType: 'none'
+                options1: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6'],
+                options2: [
+                    {'value': 'Option 1', 'subtext': 'Sub texts'},
+                    {'value': 'Option 2', 'subtext': 'Sub texts'},
+                    {'value': 'Option 3', 'subtext': 'Sub texts'},
+                    {'value': 'Option 4', 'subtext': 'Sub texts'},
+                    {'value': 'Option 5', 'subtext': 'Sub texts'},
+                    {'value': 'Option 6', 'subtext': 'Sub texts'}
+                ],
+                options3: [
+                    {'value': 'Option 1', 'subclass': 'logo bri'},
+                    {'value': 'Option 2', 'subclass': 'logo edf'},
+                    {'value': 'Option 3', 'subclass': 'logo npo'},
+                    {'value': 'Option 4', 'subclass': 'logo sco'},
+                    {'value': 'Option 5', 'subclass': 'logo eon'},
+                    {'value': 'Option 6', 'subclass': 'logo sse'}
+                ]
             }
         },
         created() {

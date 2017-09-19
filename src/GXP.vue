@@ -40,6 +40,9 @@
         padding: 20px;
         text-align: center;
     }
+    main {
+        background-color: #eee;
+    }
     section {
         padding: 20px;
     }
