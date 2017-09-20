@@ -7,7 +7,6 @@
 
 <script>
 
-    import componentTemplate from '../templates/Component'
     import msmButton from '../components/form/button.vue'
 
     export default {

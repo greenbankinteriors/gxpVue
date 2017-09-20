@@ -23,6 +23,30 @@
             </msm-component>
             <msm-component>
                 <msm-question>
+                    <msm-input elType="date" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-input elType="sort-code" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-input elType="driving-licence" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-input elType="spinner"
+                               elValue="100"
+                               elSpinInc="100"
+                               elSpinMin="0"
+                               elSpinMax="2000" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
                     <msm-input elType="checkbox"
                                :options='options1' />
                 </msm-question>
@@ -53,26 +77,18 @@
                                elSpanClass="logo edf" />
                 </msm-question>
             </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input elType="spinner"
-                               elValue="100" />
-                </msm-question>
-            </msm-component>
         </fieldset>
     </form>
 </template>
 
 <script>
     import msmInput from '../components/form/input.vue'
-    import msmSpinner from '../components/form/number-spinner.vue'
     import { globalCount } from '../main.js'
 
     export default {
 
         components: {
-            'msm-input': msmInput,
-            'msm-spinner': msmSpinner
+            'msm-input': msmInput
         },
         data() {
             return {
@@ -116,5 +132,4 @@
         border: 1px solid #444;
         padding: 10px;
     }
-
 </style>

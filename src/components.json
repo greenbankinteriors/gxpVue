@@ -15,4 +15,13 @@
         "global",
         "input"
     ]
+},
+ {
+    "name": "Notifications",
+    "url": "notifications",
+    "tags": [
+        "form",
+        "global",
+        "notification"
+    ]
 }]

@@ -19,8 +19,8 @@ const router = new VueRouter({
 
 export const bus = new Vue();
 
-require('./assets/msm/form/style.css');
 require('./assets/msm/global/global.css');
+require('./assets/msm/form/style.css');
 
 Vue.config.productionTip = false
 

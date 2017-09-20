@@ -2,7 +2,7 @@
     <div class="form-field">
         <div>
             <p class="label" v-if="elType=='radio'||elType=='checkbox'">Your question goes here. It can run over multiple lines?</p>
-            <label :for="elType+'-'+gCount" v-else>Your question goes here. It can run over multiple lines?</label>
+            <label :for="elType=='date'||elType=='sort-code'||elType=='driving-licence'?elType+'-'+gCount+'-0':elType+'-'+gCount" v-else>Your question goes here. It can run over multiple lines?</label>
 
             <msm-help></msm-help>
 
@@ -13,6 +13,7 @@
         </div>
         <div>
             <slot></slot>
+            <p class="form-input-error">This is an error message that relates directly to the input.</p>
         </div>
     </div>
 </template>
@@ -45,6 +46,4 @@
 
 </script>
 
-<style>
-
-</style>
+<style></style>

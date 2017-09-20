@@ -1,6 +1,9 @@
 <template>
     <div class="component">
 <!--        <h3>Component content goes here:</h3>-->
+        <ul>
+            <li><p>{{ componentTag }} {{ elType | typeQuote }}</p></li>
+        </ul>
         <slot></slot>
     </div>
 </template>
@@ -13,13 +16,24 @@
 
         data() {
             return {
-                elType: 'none'
+                componentTag: '',
+                elType: ''
             }
         },
         created(){
-            bus.$on('typeChanged', (data) => {
+            bus.$once('getInputType', (data) => {
                 this.elType = data;
+            }),
+            bus.$once('sendComponentInfo', (comp) => {
+                this.componentTag = comp._componentTag;
             })
+        },
+        filters: {
+            typeQuote: function(value){
+                if (value!=""){
+                    return value = "type='" + value + "'"
+                }
+            }
         }
 
     }
@@ -28,29 +42,12 @@
 
 <style>
     .component {
-        border-top: solid 2px #eee;
-        background-color: #fff;
-        border-bottom: solid 2px #eee;
         margin: 5px 0;
+        border: solid 2px #eee;
     }
-    @media ( min-width: 420px ){
-        .component {
-            border-radius: 6px;
-            border: solid 2px #eee;
-        }
-    }
-    @media all and ( min-width: 620px ){
-        .component {
-            border: none;
-            border-radius: 0px;
-            border-top: solid 2px #eee;
-            border-bottom: solid 2px #eee;
-        }
-    }
-    @media all and ( min-width: 824px ){
-        .component {
-            border-radius: 6px;
-            border: solid 2px #eee;
-        }
+    .component > ul {
+        padding: 10px;
+        background-color: #444;
+        color: #fff;
     }
 </style>
