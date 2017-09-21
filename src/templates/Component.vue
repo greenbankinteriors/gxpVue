@@ -1,8 +1,8 @@
 <template>
-    <div class="component">
+    <div :class="elClass?'component '+elClass:'component'">
 <!--        <h3>Component content goes here:</h3>-->
         <ul>
-            <li><p>{{ componentTag }} {{ elType | typeQuote }}</p></li>
+            <li><p>&lt;{{ componentTag }}{{ type | typeQuote }}&gt;</p></li>
         </ul>
         <slot></slot>
     </div>
@@ -14,15 +14,18 @@
 
     export default {
 
+        props: {
+            elClass: ''
+        },
         data() {
             return {
                 componentTag: '',
-                elType: ''
+                type: ''
             }
         },
         created(){
             bus.$once('getInputType', (data) => {
-                this.elType = data;
+                this.type = data;
             }),
             bus.$once('sendComponentInfo', (comp) => {
                 this.componentTag = comp._componentTag;
@@ -31,7 +34,7 @@
         filters: {
             typeQuote: function(value){
                 if (value!=""){
-                    return value = "type='" + value + "'"
+                    return value = ' type="' + value + '"'
                 }
             }
         }
@@ -42,11 +45,10 @@
 
 <style>
     .component {
-        margin: 5px 0;
         border: solid 2px #eee;
     }
     .component > ul {
-        padding: 10px;
+        padding: 10px 14px;
         background-color: #444;
         color: #fff;
     }

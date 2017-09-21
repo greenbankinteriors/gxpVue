@@ -16,12 +16,20 @@
         "input"
     ]
 },
- {
+{
     "name": "Notifications",
     "url": "notifications",
     "tags": [
         "form",
         "global",
         "notification"
+    ]
+},
+{
+    "name": "Step indicator",
+    "url": "step-indicator",
+    "tags": [
+        "form",
+        "global"
     ]
 }]

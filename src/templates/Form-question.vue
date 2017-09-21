@@ -1,15 +1,12 @@
 <template>
-    <div class="form-field">
+    <div :class="elClass?'form-field '+elClass:'form-field'" :id="elId" :data-dependant="dependant?dependant:null" :data-dependant-status="dependant?'closed':null">
         <div>
             <p class="label" v-if="elType=='radio'||elType=='checkbox'">Your question goes here. It can run over multiple lines?</p>
             <label :for="elType=='date'||elType=='sort-code'||elType=='driving-licence'?elType+'-'+gCount+'-0':elType+'-'+gCount" v-else>Your question goes here. It can run over multiple lines?</label>
-
             <msm-help></msm-help>
-
             <div class="form-error-wrap">
                 <p>This is an error message due to an unanswered question, please fix it and continue</p>
             </div>
-
         </div>
         <div>
             <slot></slot>
@@ -20,23 +17,29 @@
 
 <script>
 
-    import msmHelp from '../components/form/help.vue'
     import { bus } from '../main.js'
     import { globalCount } from '../main.js'
+    import msmHelp from '../components/form/help.vue'
 
     export default {
 
+        props: {
+            id: '',
+            elClass: '',
+            dependant: ''
+        },
         components: {
             'msm-help': msmHelp
         },
         data() {
             return {
+                elId: this.id,
                 elType: 'password',
                 test: 'something',
                 gCount: globalCount.counter
             }
         },
-        beforeMount(){
+        beforeMount() {
             bus.$once('getInputType', (data) => {
                 this.elType = data;
             })
@@ -46,4 +49,25 @@
 
 </script>
 
-<style></style>
+<style scoped>
+    /*Dependants*/
+    .form [data-dependant] {
+        overflow: hidden;
+        border-left-color: #00AEEF;
+        padding: 0 20px;
+    }
+    .form [data-dependant-status='closed'] {
+        padding: 0 20px;
+        max-height: 0;
+    }
+    .form [data-dependant-status='open'],
+    .form [data-dependant-status='edit'] {
+        padding: 15px 20px;
+        max-height: 1500px;
+    }
+    @media (min-width: 620px) {
+        .form [data-dependant] {
+            margin: 0 20px;
+        }
+    }
+</style>

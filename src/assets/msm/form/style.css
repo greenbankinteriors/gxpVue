@@ -19,7 +19,7 @@
 .form .form-inline-radios,
 .form .form-grid-radios {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 .form .form-grid-radios {
@@ -31,25 +31,23 @@
     width: 50%;
     box-sizing: border-box;
 }
-.form .form-inline-radios.two-col {
-    display: block;
-    column-count: 2;
-    column-gap: 10px;
-}
-.form .form-inline-radios.two-col > li:nth-child(odd),
-.form .form-inline-radios.two-col > li:nth-child(even) {
-    width: auto;
-    padding: 5px 0;
-}
 
 .form .form-inline-radios > li:nth-child(odd),
 .form .form-grid-radios > li:nth-child(odd) {
-    padding-right: 3px;
+    padding: 0 3px 7px 0;
 }
 .form .form-inline-radios > li:nth-child(even),
 .form .form-grid-radios > li:nth-child(even) {
-    padding-left: 3px;
+    padding: 0 0 7px 3px;
 }
+
+.form .form-inline-radios > li:last-child,
+.form .form-grid-radios > li:last-child,
+.form .form-inline-radios > li:nth-last-child(2):nth-child(odd),
+.form .form-grid-radios > li:nth-last-child(2):nth-child(odd) {
+    padding-bottom: 0;
+}
+
 
 /* Form - Text */
 .form .form-title,
@@ -681,7 +679,7 @@
     width: 20px;
     height: 20px;
     display: block;
-    top: 22px;
+    top: 16px;
     right: 20px;
 }
 .form .form-help-trigger:before {
@@ -1155,16 +1153,16 @@
         line-height: 1.56;
     }
     .form .form-error-wrap {
-        order: 2;
+/*        order: 2;*/
     }
     .form .form-hint {
-        order: 3;
+/*        order: 3;*/
     }
     .form .open + .form-help-wrap {
         margin-top: 20px;
     }
     .form .form-help-trigger {
-        order: 4;
+/*        order: 4;*/
         position: static;
         width: inherit;
         height: inherit;
@@ -1256,7 +1254,9 @@
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" viewBox="0 0 15 17"><g fill="#00AEEF" fill-rule="evenodd"><path d="M5.893 1.91h3.053v-.163a.835.835 0 0 0-.83-.837H6.723a.835.835 0 0 0-.83.837v.162zm3.414.727H5.531a.363.363 0 0 1-.361-.364v-.526A1.56 1.56 0 0 1 6.723.182h1.393a1.56 1.56 0 0 1 1.553 1.565v.526a.363.363 0 0 1-.362.364zM3.97 12.935V7.736c0-.251.202-.455.452-.455s.452.204.452.455v5.199a.453.453 0 0 1-.452.455.453.453 0 0 1-.452-.455zM10.057 12.935V7.736c0-.251.202-.455.451-.455.25 0 .452.204.452.455v5.199a.453.453 0 0 1-.452.455.453.453 0 0 1-.451-.455z"/><path d="M13.935 4.151a.52.52 0 0 1-.518.522H1.422a.52.52 0 0 1-.518-.522v-.852a.52.52 0 0 1 .518-.522h11.995a.52.52 0 0 1 .518.522v.852zm-2.141 11.656H3.149a.796.796 0 0 1-.792-.799V5.583h10.229v9.425c0 .44-.356.799-.792.799zm1.623-13.94H1.422C.638 1.866 0 2.508 0 3.298v.852c0 .79.638 1.432 1.422 1.432h.031v9.425c0 .943.761 1.71 1.696 1.71h8.645c.935 0 1.696-.767 1.696-1.71V5.58a1.428 1.428 0 0 0 1.349-1.429v-.852c0-.79-.638-1.433-1.422-1.433z"/><path d="M7.013 12.933V7.734c0-.251.203-.455.452-.455.25 0 .452.204.452.455v5.199a.453.453 0 0 1-.452.455.453.453 0 0 1-.452-.455z"/></g></svg>');
 }
 
+
 /*Dependants*/
+/*
 .form .dependant {
     border-left-color: #00AEEF;
     padding: 0;
@@ -1301,6 +1301,7 @@
     right: 0;
     top: 17px;
 }
+*/
 
 /*Card*/
 .card-wrapper,

@@ -1,47 +1,58 @@
 <template>
-    <!--Radios and checkboxes-->
-    <ul v-if="options" :class="wrapClass">
+    <!--Dependants-->
+    <ul v-if="options && dependant" :class="wrapClass">
         <li v-for="(option, index) in options">
-            <input :type="type" :class="elClass" :id="elType+'-'+gCount+'-'+index" :name="elType+'-'+gCount" placeholder="Enter here" :value="option">
-            <label :for="elType+'-'+gCount+'-'+index" v-if="type=='radio'||type=='checkbox'">{{ option.value || option }}
+            <input v-if="option.dependant" :type="elType" :class="elClass" :id="type+'-'+gCount+'-'+index" :name="type+'-'+gCount" placeholder="Enter here" :value="option" @click="dependantTrigger(dependantId, true)">
+            <input v-else :type="elType" :class="elClass" :id="type+'-'+gCount+'-'+index" :name="type+'-'+gCount" placeholder="Enter here" :value="option" @click="dependantTrigger(dependantId, false)">
+            <label :for="type+'-'+gCount+'-'+index" v-if="elType=='radio'||elType=='checkbox'">{{ option.value || option }}
+                <sub>{{ option.subtext }}</sub>
+                <span :class="option.subclass"></span>
+            </label>
+        </li>
+    </ul>
+    <!--Radios and checkboxes-->
+    <ul v-else-if="options" :class="wrapClass">
+        <li v-for="(option, index) in options">
+            <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-'+index" :name="type+'-'+gCount" placeholder="Enter here" :value="option">
+            <label :for="type+'-'+gCount+'-'+index" v-if="elType=='radio'||elType=='checkbox'">{{ option.value || option }}
                 <sub>{{ option.subtext }}</sub>
                 <span :class="option.subclass"></span>
             </label>
         </li>
     </ul>
     <!--Spinner-->
-    <div v-else-if="elType=='spinner'" :class="wrapClass">
+    <div v-else-if="type=='spinner'" :class="wrapClass">
         <span class="spinner-trigger" v-on:click="spinCount('dec')"></span>
-        <input :type="type" :class="elClass" :id="elType+'-'+gCount" placeholder="Enter here" :value="spinVal" ref="spinInput" @keyup="checkSpinVal" @blur="storeSpinVal">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount" placeholder="Enter here" :value="spinVal" ref="spinInput" @keyup="checkSpinVal" @blur="storeSpinVal">
         <span class="spinner-trigger" v-on:click="spinCount('inc')"></span>
-        <label :for="elType+'-'+gCount" v-if="type=='radio'||type=='checkbox'">{{ elValue }}
+        <label :for="type+'-'+gCount" v-if="elType=='radio'||elType=='checkbox'">{{ elValue }}
             <sub></sub>
             <span :class="elSpanClass"></span>
         </label>
     </div>
     <!--Date and Sortcode-->
-    <div v-else-if="elType=='date' || elType=='sort-code'" :class="wrapClass">
-        <input :type="type" :class="elClass" :id="elType+'-'+gCount+'-0'" :value="elValue" :placeholder="elType=='date'?'DD':'00'" maxlength="2">
-        <span v-if="elType=='sort-code'">-</span>
+    <div v-else-if="type=='date' || type=='sort-code'" :class="wrapClass">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-0'" :value="elValue" :placeholder="type=='date'?'DD':'00'" maxlength="2">
+        <span v-if="type=='sort-code'">-</span>
         <span v-else>/</span>
-        <input :type="type" :class="elClass" :id="elType+'-'+gCount+'-1'" :value="elValue" :placeholder="elType=='date'?'MM':'00'" maxlength="2">
-        <span v-if="elType=='sort-code'">-</span>
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-1'" :value="elValue" :placeholder="type=='date'?'MM':'00'" maxlength="2">
+        <span v-if="type=='sort-code'">-</span>
         <span v-else>/</span>
-        <input :type="type" :class="elClass" :id="elType+'-'+gCount+'-2'" :value="elValue" :placeholder="elType=='date'?'YYYY':'00'" :maxlength="elType=='date'?4:2">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-2'" :value="elValue" :placeholder="type=='date'?'YYYY':'00'" :maxlength="type=='date'?4:2">
     </div>
     <!--Driving licence-->
-    <div v-else-if="elType=='driving-licence'" :class="wrapClass">
-        <input :type="type" :class="elClass" :id="elType+'-'+gCount+'-0'" :value="elValue" placeholder="SMITH" maxlength="5">
+    <div v-else-if="type=='driving-licence'" :class="wrapClass">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-0'" :value="elValue" placeholder="SMITH" maxlength="5">
         <span>/</span>
-        <input :type="type" :class="elClass" :id="elType+'-'+gCount+'-1'" :value="elValue" placeholder="928910" maxlength="6">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-1'" :value="elValue" placeholder="928910" maxlength="6">
         <span>/</span>
-        <input :type="type" :class="elClass" :id="elType+'-'+gCount+'-2'" :value="elValue" placeholder="AS" maxlength="2">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-2'" :value="elValue" placeholder="AS" maxlength="2">
         <span>/</span>
-        <input :type="type" :class="elClass" :id="elType+'-'+gCount+'-3'" :value="elValue" placeholder="2GE" maxlength="3">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-3'" :value="elValue" placeholder="2GE" maxlength="3">
     </div>
-    <!--Standard types-->
+    <!--Standard elTypes-->
     <div v-else :class="wrapClass">
-        <input :type="type" :class="elClass" :id="elType+'-'+gCount" placeholder="Enter here" :value="elValue">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount" placeholder="Enter here" :value="elValue">
     </div>
 </template>
 
@@ -53,13 +64,13 @@
     export default {
 
         props: {
-            elType: {
+            type: {
                 type: String,
                 required: true,
                 default: 'text'
             },
             options: {
-                type: Array
+                elType: Array
             },
             elValue: '',
             elWrapClass: '',
@@ -70,7 +81,7 @@
         },
         data() {
             return {
-                type: this.elType,
+                elType: this.type,
                 elClass: '',
                 spinVal: this.elValue,
                 storedSpinVal: this.elValue,
@@ -78,6 +89,8 @@
                 spinMin: this.elSpinMin,
                 spinMax: this.elSpinMax,
                 wrapClass: this.elWrapClass,
+                dependant: false,
+                dependantId: '',
                 gCount: globalCount.counter
             }
         },
@@ -125,14 +138,37 @@
                 else {
                     this.wrapClass = "form-spinner-wrap";
                 }
+            },
+            dependantTrigger(childId, show) {
+                var children = document.querySelectorAll('[data-dependant='+childId+']');
+                if (childId && show) {
+                    children.forEach(function(c){
+                        c.setAttribute('data-dependant-status', 'open')
+                    });
+                }
+                else {
+                    children.forEach(function(c){
+                        c.setAttribute('data-dependant-status', 'closed')
+                    });
+                }
             }
         },
         created() {
-            bus.$emit('getInputType', this.elType);
+            bus.$emit('getInputType', this.type);
             bus.$emit('sendComponentInfo', this.$options);
             globalCount.counter = globalCount.counter + 1;
 
-            switch (this.elType) {
+            if (this.options) {
+                for (var i=0;i<this.options.length;i++) {
+                    if (this.options[i].dependant) {
+                        this.dependant = true;
+                        this.dependantId = this.options[i].dependant;
+                        break;
+                    }
+                }
+            }
+
+            switch (this.type) {
                 case 'radio':
                     this.elClass = 'form-pseudo-radio'
                     break;
@@ -141,20 +177,20 @@
                     break;
                 case 'date':
                 case 'sort-code':
-                    this.type = 'tel'
+                    this.elType = 'tel'
                     this.elClass = 'form-num-input'
                     this.wrapClass = 'form-num-wrap'
                     break;
                 case 'driving-licence':
-                    this.type = 'tel'
+                    this.elType = 'tel'
                     this.elClass = 'form-num-input'
                     this.wrapClass = 'form-num-wrap form-driving-licence';
                     break;
             }
         },
         mounted(){
-            if (this.elType=='spinner'){
-                this.type = 'tel'
+            if (this.type=='spinner'){
+                this.elType = 'tel'
                 this.wrapClass = 'form-spinner-wrap'
             }
         }

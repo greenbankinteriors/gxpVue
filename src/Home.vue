@@ -1,6 +1,6 @@
 <template>
     <section>
-        <test-component value="another test"></test-component>
+<!--        <test-component value="another test"></test-component>-->
         <ul class="components-list">
             <li v-for="(component, key, index) in components">
                 <router-link :to="'/components/' + component.url" exact>{{ component.name }}</router-link>
