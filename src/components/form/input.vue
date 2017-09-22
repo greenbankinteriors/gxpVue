@@ -125,6 +125,7 @@
                 else {
                     this.spinVal = Math.ceil(this.$refs.spinInput.value/this.spinInc)*100;
                 }
+                console.log(this)
                 this.setSpinState();
                 this.storedSpinVal = this.spinVal;
             },
@@ -147,10 +148,28 @@
                     });
                 }
                 else {
-                    children.forEach(function(c){
-                        c.setAttribute('data-dependant-status', 'closed')
-                    });
+                    for (var i=0;i<children.length;i++) {
+                        var c = children[i];
+                        c.setAttribute('data-dependant-status', 'closed');
+                        this.clearValues(c.querySelectorAll('input'))
+                    }
                 }
+            },
+            clearValues(inputs) {
+                inputs.forEach(function (i) {
+                    switch (i.type) {
+                        case 'radio':
+                        case 'checkbox':
+                            i.checked = false;
+                            break;
+                        case 'text':
+                        case 'tel':
+                        case 'email':
+                        case 'password':
+                            i.value = '';
+                            break;
+                    }
+                });
             }
         },
         created() {

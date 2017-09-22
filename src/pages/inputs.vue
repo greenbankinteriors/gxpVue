@@ -7,20 +7,22 @@
                                elWrapClass="form-inline-radios"
                                :options='options4' />
                 </msm-question>
-                <msm-question dependant="addDriver">
+                <msm-question dependant="addDriver"
+                              title="Let us know their details"
+                              question="What's their name?">
+                    <msm-input type="text" />
+                </msm-question>
+                <msm-question dependant="addDriver"
+                              question="What is their gender?">
                     <msm-input type="radio"
                                elWrapClass="form-inline-radios"
-                               :options='options1' />
+                               :options='options5' />
                 </msm-question>
-                <msm-question dependant="addDriver">
-                    <msm-input type="spinner"
-                               elValue="100"
-                               elSpinInc="100"
-                               elSpinMin="0"
-                               elSpinMax="2000" />
+                <msm-question dependant="addDriver"
+                              question="When were they born?">
+                    <msm-input type="date" />
                 </msm-question>
             </msm-component>
-
             <msm-component>
                 <msm-question>
                     <msm-input type="text" />
@@ -63,6 +65,11 @@
                                elSpinInc="100"
                                elSpinMin="0"
                                elSpinMax="2000" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-select :options="options6" />
                 </msm-question>
             </msm-component>
             <msm-component>
@@ -110,12 +117,14 @@
 
 <script>
     import msmInput from '../components/form/input.vue'
+    import msmSelect from '../components/form/dropdown.vue'
     import { globalCount } from '../main.js'
 
     export default {
 
         components: {
-            'msm-input': msmInput
+            'msm-input': msmInput,
+            'msm-select': msmSelect
         },
         data() {
             return {
@@ -139,6 +148,15 @@
                 options4: [
                     {'value': 'Yes', 'dependant': 'addDriver'},
                     {'value': 'No'}
+                ],
+                options5: ['Male', 'Female'],
+                options6: [
+                    {'text': 'Option 1', 'value': 'opt1'},
+                    {'text': 'Option 2', 'value': 'opt2'},
+                    {'text': 'Option 3', 'value': 'opt3'},
+                    {'text': 'Option 4', 'value': 'opt4'},
+                    {'text': 'Option 5', 'value': 'opt5'},
+                    {'text': 'Option 6', 'value': 'opt6'}
                 ]
             }
         },

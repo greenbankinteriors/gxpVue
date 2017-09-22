@@ -13,6 +13,9 @@
     position: relative;
     box-sizing: border-box;
 }
+.form fieldset .form-field > div {
+    position: relative;
+}
 .form fieldset .form-field .form-field {
     padding: 20px 0;
 }
@@ -679,8 +682,8 @@
     width: 20px;
     height: 20px;
     display: block;
-    top: 16px;
-    right: 20px;
+    top: 0px;
+    right: 0px;
 }
 .form .form-help-trigger:before {
     content: '';
