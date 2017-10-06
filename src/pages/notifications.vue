@@ -4,6 +4,15 @@
             <msm-component>
                 <msm-notification />
             </msm-component>
+            <msm-component>
+                <msm-notification elClass="notification tick-list" />
+            </msm-component>
+            <msm-component>
+                <msm-notification elClass="notification warning" />
+            </msm-component>
+            <msm-component>
+                <msm-notification elClass="notification success" />
+            </msm-component>
         </fieldset>
     </form>
 </template>

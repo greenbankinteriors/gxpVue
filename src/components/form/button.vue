@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <button v-bind:class="testClass" v-on:click="changeText">{{ testText }}</button>
-    </div>
+    <button type="button" v-bind:class="testClass">{{ testText }}</button>
 </template>
 
 <script>
@@ -22,11 +20,8 @@
                 url: '/button'
             }
         },
-            methods: {
-            changeText: function() {
-                this.testText = 'New button text'
-                this.testClass = 'btn btn__test'
-            }
+        methods: {
+
         }
     }
 

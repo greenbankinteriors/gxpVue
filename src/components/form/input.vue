@@ -10,7 +10,7 @@
             </label>
         </li>
     </ul>
-    <!--Radios and checkboxes-->
+    <!--Radios and Checkboxes-->
     <ul v-else-if="options" :class="wrapClass">
         <li v-for="(option, index) in options">
             <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-'+index" :name="type+'-'+gCount" placeholder="Enter here" :value="option">
@@ -32,25 +32,25 @@
     </div>
     <!--Date and Sortcode-->
     <div v-else-if="type=='date' || type=='sort-code'" :class="wrapClass">
-        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-0'" :value="elValue" :placeholder="type=='date'?'DD':'00'" maxlength="2">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-0'" :value="elValue" :placeholder="type=='date'?'DD':'00'" maxlength="2" @keyup="numSnap" @blur="numBlur">
         <span v-if="type=='sort-code'">-</span>
         <span v-else>/</span>
-        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-1'" :value="elValue" :placeholder="type=='date'?'MM':'00'" maxlength="2">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-1'" :value="elValue" :placeholder="type=='date'?'MM':'00'" maxlength="2" @keyup="numSnap" @blur="numBlur">
         <span v-if="type=='sort-code'">-</span>
         <span v-else>/</span>
-        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-2'" :value="elValue" :placeholder="type=='date'?'YYYY':'00'" :maxlength="type=='date'?4:2">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-2'" :value="elValue" :placeholder="type=='date'?'YYYY':'00'" :maxlength="type=='date'?4:2" @keyup="numSnap" @blur="numBlur">
     </div>
     <!--Driving licence-->
     <div v-else-if="type=='driving-licence'" :class="wrapClass">
-        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-0'" :value="elValue" placeholder="SMITH" maxlength="5">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-0'" :value="elValue" placeholder="SMITH" maxlength="5" @keyup="numSnap">
         <span>/</span>
-        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-1'" :value="elValue" placeholder="928910" maxlength="6">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-1'" :value="elValue" placeholder="928910" maxlength="6" @keyup="numSnap">
         <span>/</span>
-        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-2'" :value="elValue" placeholder="AS" maxlength="2">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-2'" :value="elValue" placeholder="AS" maxlength="2" @keyup="numSnap">
         <span>/</span>
-        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-3'" :value="elValue" placeholder="2GE" maxlength="3">
+        <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-3'" :value="elValue" placeholder="2GE" maxlength="3" @keyup="numSnap">
     </div>
-    <!--Standard elTypes-->
+    <!--Default-->
     <div v-else :class="wrapClass">
         <input :type="elType" :class="elClass" :id="type+'-'+gCount" placeholder="Enter here" :value="elValue">
     </div>
@@ -58,6 +58,7 @@
 
 <script>
 
+    import globalFuncs from '../../mixins/global'
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
 
@@ -95,6 +96,61 @@
             }
         },
         methods: {
+            numSnap(evt) {
+                var el = evt.currentTarget,
+                    valLength = el.value.length,
+                    max = parseInt(el.getAttribute('maxlength')),
+                    wrap = this.$el;
+
+                if (evt.keyCode == 8 || evt.keyCode == 46) {
+                    if (valLength === 0) {
+                        var previous = el;
+                        while (previous = previous.previousElementSibling) {
+                            if (previous == null)
+                                break;
+                            if (previous.tagName.toLowerCase() === "input") {
+                                previous.focus();
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (evt.keyCode < 37 || evt.keyCode > 40) {
+                    if (valLength >= max) {
+                        var next = el;
+                        while (next = next.nextElementSibling) {
+                            if (next == null)
+                                break;
+                            if (next.tagName.toLowerCase() === "input") {
+                                next.focus();
+                                break;
+                            }
+                        }
+                    }
+
+                }
+            },
+            numBlur(evt) {
+                var el = evt.currentTarget,
+                    max = parseInt(el.getAttribute('maxlength'));
+
+                if (max == 2) {
+                    if (el.value.length == 1) {
+                        var val = el.value;
+                        el.value = '0' + val;
+                    }
+                }
+                else if (max == 4) {
+                    if (el.value.length == 2) {
+                        var year = el.value;
+                        if (year >= 0 && year <= 18) {
+                            el.value = '20' + year;
+                        } else {
+                            el.value = '19' + year;
+                        }
+                    }
+                }
+            },
             spinCount(move) {
                 this.spinVal = this.$refs.spinInput.value;
                 this.spinVal = parseInt(this.spinVal);
@@ -125,7 +181,6 @@
                 else {
                     this.spinVal = Math.ceil(this.$refs.spinInput.value/this.spinInc)*100;
                 }
-                console.log(this)
                 this.setSpinState();
                 this.storedSpinVal = this.spinVal;
             },
@@ -143,14 +198,17 @@
             dependantTrigger(childId, show) {
                 var children = document.querySelectorAll('[data-dependant='+childId+']');
                 if (childId && show) {
-                    children.forEach(function(c){
-                        c.setAttribute('data-dependant-status', 'open')
-                    });
+                    for (var i=0;i<children.length;i++) {
+                        var c = children[i],
+                            wrap = this.getParent(c, 'dependant__answers');
+                        wrap.setAttribute('data-dependant-status', 'open')
+                    }
                 }
                 else {
                     for (var i=0;i<children.length;i++) {
-                        var c = children[i];
-                        c.setAttribute('data-dependant-status', 'closed');
+                        var c = children[i],
+                            wrap = this.getParent(c, 'dependant__answers');
+                        wrap.setAttribute('data-dependant-status', 'closed');
                         this.clearValues(c.querySelectorAll('input'))
                     }
                 }
@@ -212,7 +270,8 @@
                 this.elType = 'tel'
                 this.wrapClass = 'form-spinner-wrap'
             }
-        }
+        },
+        mixins: [ globalFuncs ]
 
     }
 

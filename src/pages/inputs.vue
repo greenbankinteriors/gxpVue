@@ -7,21 +7,25 @@
                                elWrapClass="form-inline-radios"
                                :options='options4' />
                 </msm-question>
-                <msm-question dependant="addDriver"
-                              title="Let us know their details"
-                              question="What's their name?">
-                    <msm-input type="text" />
-                </msm-question>
-                <msm-question dependant="addDriver"
-                              question="What is their gender?">
-                    <msm-input type="radio"
-                               elWrapClass="form-inline-radios"
-                               :options='options5' />
-                </msm-question>
-                <msm-question dependant="addDriver"
-                              question="When were they born?">
-                    <msm-input type="date" />
-                </msm-question>
+                <msm-dependant title="Let us know their details">
+                    <msm-question dependant="addDriver"
+                                  title="Let us know their details"
+                                  question="What's their name?">
+                        <msm-input type="text" />
+                    </msm-question>
+                    <msm-question dependant="addDriver"
+                                  question="What is their gender?">
+                        <msm-input type="radio"
+                                   elWrapClass="form-inline-radios"
+                                   :options='options5' />
+                    </msm-question>
+                    <msm-question dependant="addDriver"
+                                  question="When were they born?">
+                        <msm-input type="date" />
+                        <msm-button btnClass="btn btn__primary"
+                                    btnText="Add this driver" @click.native="saveDependant" />
+                    </msm-question>
+                </msm-dependant>
             </msm-component>
             <msm-component>
                 <msm-question>
@@ -116,6 +120,11 @@
 </template>
 
 <script>
+
+    import globalFuncs from '../mixins/global'
+    import dependantFuncs from '../mixins/dependants'
+    import msmButton from '../components/form/button.vue'
+    import msmDependant from '../components/form/dependant.vue'
     import msmInput from '../components/form/input.vue'
     import msmSelect from '../components/form/dropdown.vue'
     import { globalCount } from '../main.js'
@@ -123,6 +132,8 @@
     export default {
 
         components: {
+            'msm-button': msmButton,
+            'msm-dependant': msmDependant,
             'msm-input': msmInput,
             'msm-select': msmSelect
         },
@@ -162,7 +173,8 @@
         },
         created() {
             globalCount.counter = 0
-        }
+        },
+        mixins: [ globalFuncs, dependantFuncs ]
 
     }
 

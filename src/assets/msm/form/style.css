@@ -405,6 +405,7 @@
 }
 
 .form .notification {
+    position: relative;
     font: 400 14px 'Open Sans';
     box-sizing: content-box;
     padding: 20px 20px 20px 15px;
@@ -482,7 +483,7 @@
 .form .notification.success:before {
     content: '';
     position: absolute;
-    left: 17px;
+    left: 8px;
     width: 35px;
     height: 30px;
     display: block;
@@ -490,10 +491,30 @@
     background-size: 35px;
 }
 .form .notification.success:before {
-    left: 20px;
+    left: 12px;
     width: 30px;
     border-radius: 30px;
     background: #48a415 url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 100 100"><polyline stroke="#ecf6e7" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" points="70.5,35.5 41.5,64.5 29.5,52.5"/></svg>') center center no-repeat;
+}
+@media (min-width: 620px) {
+    .form .notification label {
+        padding-top: 0;
+    }
+    .form .notification {
+        border-left-width: 10px;
+    }
+    .form .notification.warning,
+    .form .notification.success {
+        padding-left: 75px;
+    }
+    .form .notification.warning:before,
+    .form .notification.success:before {
+        top: 20px;
+        left: 18px;
+    }
+    .form .notification.success:before {
+        left: 22px;
+    }
 }
 
 .form .form-autocomplete {
@@ -641,6 +662,9 @@
 }
 .form .dependant {
     border-left-color: #00AEEF;
+}
+.form .form-answer__wrap .btn {
+    margin-top: 20px;
 }
 .form .form-error-wrap {
     position: relative;
