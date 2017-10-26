@@ -1,12 +1,14 @@
 export default {
-    methods: { // SUPER HELPFUL FUNCTIONS: LET ME TAKE YOU TO FUNC-Y TOWN
+    methods: {
+        // SUPER HELPFUL FUNCTIONS: LET ME TAKE YOU TO FUNC-Y TOWN
         removeDup(arr) { // REMOVES DUPS IN ARRAY
             var unique = arr.filter(function (elem, index, self) {
                 return index == self.indexOf(elem);
             });
             return unique;
         },
-        getParent(el, cls) { //TRAVERSES DOM TO GET PARENT FROM ORIG EL AND CLASS
+        //TRAVERSES DOM TO GET PARENT FROM ORIG EL AND CLASS
+        getParent(el, cls) {
             while (el.parentNode) {
                 el = el.parentNode;
                 if (el.classList) {
@@ -16,12 +18,14 @@ export default {
             }
             return null;
         },
-        getAge(birthday) { // GETS AGE IN mmddyyyy FORMAT
+        // GETS AGE IN mmddyyyy FORMAT
+        getAge(birthday) {
             var ageDifMs = Date.now() - birthday.getTime();
             var ageDate = new Date(ageDifMs);
             return Math.abs(ageDate.getUTCFullYear() - 1970);
         },
-        isValidDate(dateString) { // CHECKS DATE VALIDATION
+        // CHECKS DATE VALIDATION
+        isValidDate(dateString) {
             if (!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
                 return false;
 
@@ -40,7 +44,8 @@ export default {
 
             return day > 0 && day <= monthLength[month - 1];
         },
-        clearValues(inputs) { // CLEARS INPUTS
+        // CLEARS INPUTS
+        clearValues(inputs) {
             inputs.forEach(function (i) {
                 switch (i.type) {
                     case 'radio':

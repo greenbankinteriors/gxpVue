@@ -231,8 +231,8 @@
             }
         },
         created() {
-            bus.$emit('getInputType', this.type);
-            bus.$emit('sendComponentInfo', this.$options);
+//            bus.$emit('getInputType', this.type);
+//            bus.$emit('sendComponentInfo', this.$options);
             globalCount.counter = globalCount.counter + 1;
 
             if (this.options) {

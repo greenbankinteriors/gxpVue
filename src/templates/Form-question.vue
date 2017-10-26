@@ -17,6 +17,7 @@
 
 <script>
 
+    import globalFuncs from '../mixins/global'
     import { bus } from '../main.js'
     import { globalCount } from '../main.js'
     import msmHelp from '../components/form/help.vue'
@@ -47,7 +48,8 @@
             bus.$once('getInputType', (data) => {
                 this.elType = data;
             })
-        }
+        },
+        mixins: [ globalFuncs ]
 
     }
 

@@ -24,11 +24,10 @@
             }
         },
         created(){
-            bus.$once('getInputType', (data) => {
-                this.type = data;
-            }),
-            bus.$once('sendComponentInfo', (comp) => {
-                this.componentTag = comp._componentTag;
+            bus.$once('compInfo', (data) => {
+                this.componentTag = data.tag;
+                this.type = data.type;
+                console.log(data.type)
             })
         },
         filters: {

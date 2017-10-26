@@ -20,34 +20,47 @@
     padding: 20px 0;
 }
 .form .form-inline-radios,
-.form .form-grid-radios {
+.form .form-grid-radios,
+.form .form-inline-checkbox,
+.form .form-grid-checkbox {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.form .form-grid-radios {
+.form .form-grid-radios,
+.form .form-grid-checkbox {
     flex-wrap: wrap;
     align-items: stretch;
 }
 .form .form-inline-radios > li,
-.form .form-grid-radios > li {
+.form .form-grid-radios > li,
+.form .form-inline-checkbox > li,
+.form .form-grid-checkbox > li {
     width: 50%;
     box-sizing: border-box;
 }
 
 .form .form-inline-radios > li:nth-child(odd),
-.form .form-grid-radios > li:nth-child(odd) {
+.form .form-grid-radios > li:nth-child(odd),
+.form .form-inline-checkbox > li:nth-child(odd),
+.form .form-grid-checkbox > li:nth-child(odd) {
     padding: 0 3px 7px 0;
 }
 .form .form-inline-radios > li:nth-child(even),
-.form .form-grid-radios > li:nth-child(even) {
+.form .form-grid-radios > li:nth-child(even),
+.form .form-inline-checkbox > li:nth-child(even),
+.form .form-grid-checkbox > li:nth-child(even) {
     padding: 0 0 7px 3px;
 }
 
 .form .form-inline-radios > li:last-child,
 .form .form-grid-radios > li:last-child,
 .form .form-inline-radios > li:nth-last-child(2):nth-child(odd),
-.form .form-grid-radios > li:nth-last-child(2):nth-child(odd) {
+.form .form-grid-radios > li:nth-last-child(2):nth-child(odd),
+.form .form-inline-checkbox > li:last-child,
+.form .form-grid-checkbox > li:last-child,
+.form .form-inline-checkbox > li:nth-last-child(2):nth-child(odd),
+.form .form-grid-checkbox > li:nth-last-child(2):nth-child(odd) {
     padding-bottom: 0;
 }
 
@@ -135,7 +148,8 @@
 }
 .form ul li:last-of-type input[type=radio] + label,
 .form ul li:last-of-type input[type=checkbox] + label,
-.form .form-inline-radios input[type="radio"] + label {
+.form .form-inline-radios input[type="radio"] + label,
+.form .form-inline-checkbox input[type="checkbox"] + label {
     margin: 0;
 }
 .form input[type=radio] + label strong {
@@ -768,6 +782,7 @@
     font-size: 14px;
     transition: all 0.4s ease-in-out;
     max-height: 0;
+    opacity: 0;
     overflow: hidden;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -777,6 +792,7 @@
     padding: 15px 15px 0;
     max-height: 1000px;
     margin-bottom: 10px;
+    opacity: 1;
 }
 .form .form-help-wrap h1,
 .form .form-help-wrap h2 {
@@ -1504,4 +1520,38 @@
     position: absolute;
     top: 7px;
     right: 0;
+}
+
+.form-pseudo-radio__logo .logo {
+    display: block;
+    height: 28px;
+    width: 73px;
+    z-index: 1;
+    position: absolute;
+    background: transparent url('/static/big-six-sprite.png') 0 0 no-repeat;
+    background-size: 147px 168px;
+    top: 12px;
+    right: 12px;
+}
+.form-pseudo-radio__logo input:hover + label .logo,
+.form-pseudo-radio__logo input:checked + label .logo {
+    background-position-x: right;
+}
+.logo.bri {
+    background-position-y: 0px;
+}
+.logo.edf {
+    background-position-y: -28px;
+}
+.logo.npo {
+    background-position-y: -56px;
+}
+.logo.sco {
+    background-position-y: -84px;
+}
+.logo.eon {
+    background-position-y: -112px;
+}
+.logo.sse {
+    background-position-y: -140px;
 }

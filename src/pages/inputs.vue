@@ -3,8 +3,110 @@
         <fieldset>
             <msm-component>
                 <msm-question>
-                    <msm-input type="radio"
-                               elWrapClass="form-inline-radios"
+                    <msm-input type="text"
+                               elPlaceholder="Enter text here" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-input type="tel"
+                               elPlaceholder="Enter number here" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-input type="email"
+                               elPlaceholder="Enter email here" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-input type="password"
+                               elPlaceholder="Enter password here" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-date />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-sort-code />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-driving-licence />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-spinner elValue="100"
+                                 elSpinInc="100"
+                                 elSpinMin="0"
+                                 elSpinMax="2000" />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-radio elWrapClass="form-inline-radios"
+                               :options='options4' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-radio :options='options1' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-checkbox :options='options1' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-radio :options='options2' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-checkbox :options='options2' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-radio elWrapClass="form-inline-radios"
+                               :options='options1' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-checkbox elWrapClass="form-inline-checkbox"
+                               :options='options1' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-radio elWrapClass="form-inline-radios"
+                               :options='options2' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-checkbox elWrapClass="form-inline-checkbox"
+                               :options='options2' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-radio elWrapClass="form-pseudo-radio__logo"
+                               :options='options3' />
+                </msm-question>
+            </msm-component>
+            <msm-component>
+                <msm-question>
+                    <msm-radio elWrapClass="form-inline-radios"
                                :options='options4' />
                 </msm-question>
                 <msm-dependant title="Let us know their details">
@@ -15,105 +117,17 @@
                     </msm-question>
                     <msm-question dependant="addDriver"
                                   question="What is their gender?">
-                        <msm-input type="radio"
-                                   elWrapClass="form-inline-radios"
+                        <msm-radio elWrapClass="form-inline-radios"
                                    :options='options5' />
                     </msm-question>
                     <msm-question dependant="addDriver"
                                   question="When were they born?">
-                        <msm-input type="date" />
+                        <msm-date />
                         <msm-button btnClass="btn btn__primary"
-                                    btnText="Add this driver" @click.native="saveDependant" />
+                                    btnText="Add this driver"
+                                    @click.native="saveDependant" />
                     </msm-question>
                 </msm-dependant>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="text" />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="tel" />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="password" />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="email" />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="date" />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="sort-code" />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="driving-licence" />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="spinner"
-                               elValue="100"
-                               elSpinInc="100"
-                               elSpinMin="0"
-                               elSpinMax="2000" />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-select :options="options6" />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="checkbox"
-                               :options='options1' />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="checkbox"
-                               :options='options2' />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="radio"
-                               elWrapClass="form-inline-radios"
-                               :options='options1' />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="radio"
-                               :options='options1' />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="radio"
-                               :options='options2' />
-                </msm-question>
-            </msm-component>
-            <msm-component>
-                <msm-question>
-                    <msm-input type="radio"
-                               :options='options3'
-                               elWrapClass="form-pseudo-radio__logo"
-                               elSpanClass="logo edf" />
-                </msm-question>
             </msm-component>
         </fieldset>
     </form>
@@ -125,7 +139,13 @@
     import dependantFuncs from '../mixins/dependants'
     import msmButton from '../components/form/button.vue'
     import msmDependant from '../components/form/dependant.vue'
-    import msmInput from '../components/form/input.vue'
+    import msmInput from '../components/form/input/default.vue'
+    import msmDate from '../components/form/input/date.vue'
+    import msmSortCode from '../components/form/input/sort-code.vue'
+    import msmDriving from '../components/form/input/driving-licence.vue'
+    import msmSpinner from '../components/form/input/spinner.vue'
+    import msmRadio from '../components/form/input/radio.vue'
+    import msmCheckbox from '../components/form/input/checkbox.vue'
     import msmSelect from '../components/form/dropdown.vue'
     import { globalCount } from '../main.js'
 
@@ -135,6 +155,12 @@
             'msm-button': msmButton,
             'msm-dependant': msmDependant,
             'msm-input': msmInput,
+            'msm-date': msmDate,
+            'msm-sort-code': msmSortCode,
+            'msm-driving-licence': msmDriving,
+            'msm-spinner': msmSpinner,
+            'msm-radio': msmRadio,
+            'msm-checkbox': msmCheckbox,
             'msm-select': msmSelect
         },
         data() {
