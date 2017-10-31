@@ -1,7 +1,7 @@
 <template>
-    <div class="form-pseudo-select ">
-        <select>
-            <option selected disabled>Please select</option>
+    <div class="form-pseudo-select">
+        <select v-model="selected">
+            <option selected disabled value=''>Please select</option>
             <option v-for="(option, index) in options" :value="option.value">{{ option.text }}</option>
         </select>
     </div>
@@ -20,7 +20,7 @@
         },
         data() {
             return {
-
+                selected: ''
             }
         },
         created() {
@@ -32,4 +32,8 @@
 
 </script>
 
-<style></style>
+<style>
+  .form-pseudo-select {
+    display: inline-block;
+  }
+</style>

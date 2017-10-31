@@ -1,10 +1,10 @@
 <template>
     <ul :class="wrapClass">
         <li v-for="(option, index) in options">
-            <input :type="elType" :class="elClass" :id="type+'-'+gCount+'-'+index" :name="type+'-'+gCount" :value="option">
+            <input :type="elType" :class="elClass+'input-'+index" :id="type+'-'+gCount+'-'+index" :name="type+'-'+gCount" :value="option.value || option">
             <label :for="type+'-'+gCount+'-'+index">{{ option.value || option }}
-                <sub>{{ option.subtext }}</sub>
-                <span :class="option.subclass"></span>
+                <sub v-if="option.isSubtext">{{ option.subtext }}</sub>
+                <span v-if="option.isSubclass" :class="option.subclass"></span>
             </label>
         </li>
     </ul>
@@ -19,25 +19,42 @@
     export default {
 
         props: {
-            tag: {
+            elWrapClass: {
                 type: String,
-                default: 'input'
+                default: ''
+            },
+            options: {
+                elType: Array
             },
             type: {
                 type: String,
                 default: 'checkbox'
             },
-            options: {
-                elType: Array
+            elInputClass: {
+                type: String,
+                default: ''
             },
-            elValue: '',
-            elWrapClass: '',
-            elSpanClass: ''
+            tag: {
+                type: String,
+                default: 'input'
+            },
+            isSubtext: {
+                type: Boolean,
+                default: false
+            },
+            isSubclass: {
+                type: Boolean,
+                default: false
+            },
+            elSpanClass: {
+                type: String,
+                default: ''
+            }
         },
         data() {
             return {
                 elType: this.type,
-                elClass: '',
+                elClass: this.elInputClass,
                 wrapClass: this.elWrapClass,
                 gCount: globalCount.counter
             }
