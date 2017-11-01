@@ -4,9 +4,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import vueResource from 'vue-resource'
 import GXP from './GXP'
-import Routes from './routes.js'
-import componentTemplate from './templates/Component'
-import questionTemplate from './templates/Form-question'
+import Routes from './routes'
+import GlobalFuncs from './mixins/global'
+import gxpPageTemplate from './templates/gxp/Page'
+import gxpCompTemplate from './templates/gxp/Component'
+import questionTemplate from './templates/msm/Form-question'
 
 Vue.use(vueResource)
 Vue.use(VueRouter)
@@ -17,10 +19,14 @@ const router = new VueRouter({
     routes: Routes
 });
 
+Vue.mixin(GlobalFuncs)
+
 export const bus = new Vue();
 
 require('./assets/msm/global/global.css');
-require('./assets/msm/form/style.css');
+require('./assets/gxp/css/prism.css');
+require('./assets/gxp/js/prism.js');
+//require('./assets/msm/form/style.css');
 
 Vue.config.productionTip = false
 
@@ -38,7 +44,8 @@ Vue.component('test-component', {
         }
     }
 })
-Vue.component('msm-component', componentTemplate);
+Vue.component('gxp-page', gxpPageTemplate);
+Vue.component('gxp-component', gxpCompTemplate);
 Vue.component('msm-question', questionTemplate);
 
 //Global variables

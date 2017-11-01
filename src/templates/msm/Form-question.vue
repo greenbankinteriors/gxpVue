@@ -17,10 +17,10 @@
 
 <script>
 
-    import globalFuncs from '../mixins/global'
-    import { bus } from '../main.js'
-    import { globalCount } from '../main.js'
-    import msmHelp from '../components/form/help.vue'
+    import globalFuncs from '../../mixins/global'
+    import { bus } from '../../main.js'
+    import { globalCount } from '../../main.js'
+    import msmHelp from '../../components/form/help.vue'
 
     export default {
 

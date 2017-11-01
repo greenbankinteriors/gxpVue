@@ -8,6 +8,15 @@
     ]
 },
 {
+    "name": "Radio button",
+    "url": "radio-buttons",
+    "tags": [
+        "form",
+        "global",
+        "radio"
+    ]
+},
+{
     "name": "Inputs",
     "url": "inputs",
     "tags": [
