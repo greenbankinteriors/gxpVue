@@ -1,26 +1,27 @@
 <template>
     <div class="natural-language">
-      <div class="natural-language-content">
-        <p class="natural-language-results">Great news Steven, we've found 31 quotes for
-          <msm-select :options="policies" /> on
-          <msm-select :options="discounts" /> a no claims discount protection <span @click="isShowingClaim ^= true" class="icon icon-info"></span>, voluntary excess of
-          <msm-select :options="prices" /> and
-          <msm-select :options="payments" /> for you to choose from.
-        </p>
-        <p class="natural-language-policy">You can <a class="natural-language-policy-link" href="#" target="_self">check your policy details</a> to make sure we've got all the right details.</p>
-        <div v-show="isShowingUpdate" class="natural-language-update">
-          <msm-button btnClass="btn btn__primary" btnText="Update your results" />
-          <a @click="isShowingUpdate = !true" class="natural-language-update-close">Cancel</a>
+        <div class="natural-language-content">
+            <p class="natural-language-results">Great news Steven, we've found 31 quotes for
+                <msm-select :options="policies" :model="isShowingUpdate" /> on
+                <msm-select :options="discounts" /> a no claims discount protection <span @click="isShowingClaim ^= true" class="icon icon-info"></span>, voluntary excess of
+                <msm-select :options="prices" /> and
+                <msm-select :options="payments" /> for you to choose from.
+            </p>
+            <p class="natural-language-policy">You can <a class="natural-language-policy-link" href="#" target="_self">check your policy details</a> to make sure we've got all the right details.</p>
+            <div v-show="isShowingUpdate" class="natural-language-update">
+                <msm-button btnClass="btn btn__primary" btnText="Update your results" />
+                <a @click="isShowingUpdate = false" class="natural-language-update-close">Cancel</a>
+            </div>
+            <msm-checkbox elWrapClass="natural-language-form" :options="quotes" elInputClass="natural-language-form-"></msm-checkbox>
+            <a @click="isShowingTelematics ^= true" class="natural-language-telematics">What is telematics?</a>
         </div>
-        <msm-checkbox elWrapClass="natural-language-form" :options="quotes" elInputClass="natural-language-form-"></msm-checkbox>
-        <a @click="isShowingTelematics ^= true" class="natural-language-telematics">What is telematics?</a>
-      </div>
-      <div v-show="isShowingTelematics" class="popup">Hello World Telematics</div>
-      <div v-show="isShowingClaim" class="popup">Hello World Claim</div>
+        <div v-show="isShowingTelematics" class="popup">Hello World Telematics</div>
+        <div v-show="isShowingClaim" class="popup">Hello World Claim</div>
     </div>
 </template>
 
 <script>
+    import { bus } from '../../main.js'
     import msmButton from '../form/button.vue'
     import msmCheckbox from '../form/input/checkbox.vue'
     import msmSelect from '../form/dropdown.vue'
@@ -31,6 +32,7 @@
             'msm-checkbox': msmCheckbox,
             'msm-select': msmSelect
         },
+        props: ['flagValue'],
         data() {
             return {
                 isShowingClaim: false,
@@ -67,81 +69,80 @@
                 quotes: ['Show all telematics quotes']
             }
         },
-        methods: {
-            getCurrentValue() {
-                console.log(this.policies[0].text);
+        watch: {
+            'isShowingUpdate': function() {
+                console.log(this.flagValue);
+                this.$emit('select', this.isShowingUpdate);
             }
         },
         created() {
-            console.log('hey');
-            this.getCurrentValue();
-        },
-        mounted() {
-
+            this.isShowingUpdate = this.flagValue;
+            console.log(this.isShowingUpdate);
         }
     }
 </script>
 
 <style>
-  .natural-language {
-      position: relative;
-      padding: 22px 22px 50px;
-  }
+    .natural-language {
+        position: relative;
+        padding: 22px 22px 50px;
+    }
 
-  .natural-language-results {
-      padding-bottom: 30px;
-  }
+    .natural-language-results {
+        line-height: 2.5;
+        padding-bottom: 30px;
+    }
 
-  .natural-language-policy {
-      border-bottom: 1px solid #c6cacc;
-      padding-bottom: 20px;
-  }
+    .natural-language-policy {
+        border-bottom: 1px solid #c6cacc;
+        padding-bottom: 20px;
+    }
 
-  .natural-language-policy-link {
-      display: inline-block;
-      text-decoration: underline;
-  }
+    .natural-language-policy-link {
+        display: inline-block;
+        text-decoration: underline;
+    }
 
-  .natural-language-update {
-      padding: 20px 0 10px;
-  }
+    .natural-language-update {
+        padding: 20px 0 10px;
+    }
 
-  .natural-language .btn__primary {
-      width: auto;
-      margin-right: 30px;
-  }
+    .natural-language .btn__primary {
+        width: auto;
+        margin-right: 30px;
+    }
 
-  .natural-language .natural-language-update-close {
-      display: inline-block;
-      text-decoration: underline;
-      cursor: pointer;
-  }
+    .natural-language .natural-language-update-close {
+        display: inline-block;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 
-  .natural-language-form {
-      display: inline-block;
-      padding-top: 20px;
-  }
+    .natural-language-form {
+        display: inline-block;
+        padding-top: 20px;
+    }
 
-  .natural-language-telematics {
-      display: inline-block;
-      text-decoration: underline;
-      cursor: pointer;
-  }
+    .natural-language-telematics {
+        display: inline-block;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 
-  .popup {
-      position: absolute;
-      background-color: green;
-      width: 20%;
-      height: 100%;
-      top: 0;
-      right: 0;
-  }
+    .popup {
+        position: absolute;
+        background-color: green;
+        width: 20%;
+        height: 100%;
+        top: 0;
+        right: 0;
+    }
 
-  .icon {
-      cursor: pointer;
-  }
+    .icon {
+        cursor: pointer;
+    }
 
-  .icon-info::before {
-      content: '\40';
-  }
+    .icon-info::before {
+        content: '\40';
+    }
 </style>
