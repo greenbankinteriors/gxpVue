@@ -4,7 +4,11 @@ import { globalCount } from '../main.js'
 export default {
     methods: {
         getStyle() {
+            console.log(this)
             var styles = document.getElementsByTagName("STYLE");
+
+            console.log(styles)
+
             var string = styles[styles.length-1].innerHTML;
 
             string = this.cleanCode(string);
@@ -96,15 +100,5 @@ export default {
             }
             return blanks;
         }
-    },
-    mounted() {
-        var styleCode = this.getStyle();
-//        var htmlCode = this.$options.parent.$el.children[0].innerHTML;
-        var htmlCode = this.$refs.comp.outerHTML;
-        htmlCode = this.cleanCode(htmlCode);
-        this.formatHTML(htmlCode);
-        htmlCode = this.formatHTML(htmlCode);
-
-        bus.$emit('compInfo', {"tag":this.tag, "type":this.type, "styleCode":styleCode, "htmlCode":htmlCode});
     }
 }

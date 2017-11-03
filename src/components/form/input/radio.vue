@@ -1,5 +1,5 @@
 <template>
-    <ul :class="wrapClass" ref="comp">
+    <ul :class="elWrapClass" ref="comp">
         <li v-for="(option, index) in options">
             <input v-if="option.dependant" type="radio" :class="elClass" :id="type+'-'+gCount+'-'+index" :name="type+'-'+gCount" :value="option" @click="dependantTrigger(dependantId, true)" />
             <input v-else-if="dependant" type="radio" :class="elClass" :id="type+'-'+gCount+'-'+index" :name="type+'-'+gCount" :value="option" @click="dependantTrigger(dependantId, false)" />
@@ -14,8 +14,9 @@
 
 <script>
 
-    import pageData from '../../../mixins/pageData'
+    import compData from '../../../mixins/compData'
     import { globalCount } from '../../../main.js'
+    import { bus } from '../../../main.js'
 
     export default {
 
@@ -32,14 +33,13 @@
                 elType: Array
             },
             elValue: '',
+            elClass: '',
             elWrapClass: '',
             elSpanClass: ''
         },
         data() {
             return {
                 elType: this.type,
-                elClass: '',
-                wrapClass: this.elWrapClass,
                 dependant: false,
                 dependantId: '',
                 dependantId: '',
@@ -82,8 +82,12 @@
                 });
             }
         },
-        mounted() {
+        created() {
             globalCount.counter = globalCount.counter + 1;
+        },
+        mounted() {
+            var styleCode = this.getStyle();
+            bus.$emit('compInfo', {"styleCode":styleCode});
 
             if (this.options) {
                 for (var i=0;i<this.options.length;i++) {
@@ -95,7 +99,7 @@
                 }
             }
         },
-        mixins: [pageData]
+        mixins: [compData]
 
     }
 

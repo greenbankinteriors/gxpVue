@@ -1,110 +1,110 @@
 <template>
     <form class="form">
         <fieldset>
-            <msm-component>
+            <gxp-component>
                 <msm-question>
                     <msm-input type="text"
                                elPlaceholder="Enter text here" />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-input type="tel"
                                elPlaceholder="Enter number here" />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-input type="email"
                                elPlaceholder="Enter email here" />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-input type="password"
                                elPlaceholder="Enter password here" />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-date />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-sort-code />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-driving-licence />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-spinner elValue="100"
                                  elSpinInc="100"
                                  elSpinMin="0"
                                  elSpinMax="2000" />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-radio elWrapClass="form-inline-radios"
                                :options='options4' />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-radio :options='options1' />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-checkbox :options='options1' />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-radio :options='options2' />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-checkbox :options='options2' />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-radio elWrapClass="form-inline-radios"
                                :options='options1' />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-checkbox elWrapClass="form-inline-checkbox"
                                :options='options1' />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-radio elWrapClass="form-inline-radios"
                                :options='options2' />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-checkbox elWrapClass="form-inline-checkbox"
                                :options='options2' />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-radio elWrapClass="form-pseudo-radio__logo"
                                :options='options3' />
                 </msm-question>
-            </msm-component>
-            <msm-component>
+            </gxp-component>
+            <gxp-component>
                 <msm-question>
                     <msm-radio elWrapClass="form-inline-radios"
                                :options='options4' />
@@ -128,7 +128,7 @@
                                     @click.native="saveDependant" />
                     </msm-question>
                 </msm-dependant>
-            </msm-component>
+            </gxp-component>
         </fieldset>
     </form>
 </template>

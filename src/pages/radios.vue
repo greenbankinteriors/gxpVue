@@ -1,12 +1,21 @@
 <template>
     <gxp-page>
-        <gxp-component elClass="form">
-            <msm-radio :options='options1' />
-        </gxp-component>
-        <gxp-component elClass="form">
-            <msm-radio elClass="form-inline-radios"
-                       :options='options2' />
-        </gxp-component>
+        <ul>
+            <gxp-component elWrapClass="active"
+                           elClass="form">
+                <msm-radio :options='options1' />
+            </gxp-component>
+            <gxp-component elClass="form">
+                <msm-radio :options='options1' />
+            </gxp-component>
+            <gxp-component elClass="form">
+                <msm-radio :options='options2' />
+            </gxp-component>
+            <gxp-component elClass="form">
+                <msm-radio elWrapClass="form-pseudo-radio__logo"
+                           :options='options3' />
+            </gxp-component>
+        </ul>
     </gxp-page>
 </template>
 
@@ -25,24 +34,19 @@
             return {
                 name: 'Radio button',
                 molecule: 'atom',
+                variants: ['Default', 'Default', 'Subtext', 'Logo'],
                 options1: ['Radio default'],
-                options2: [{'label': 'Radio default', 'value': 'default', 'subtext': 'Sub texts'}]
+                options2: [{'label': 'Radio default', 'value': 'default', 'subtext': 'Sub texts'}],
+                options3: [{'label': 'Radio logo', 'value': 'default', 'subclass': 'logo bri'}]
             }
         },
         created() {
-            bus.$on('compInfo', (data) => {
-                this.componentTag = data.tag;
-                this.type = data.type;
-                console.log(data.type)
-            })
-            globalCount.counter = 0
+//            globalCount.counter = 0
         },
         mounted() {
-            bus.$emit('pageInfo', {"name":this.name, "molecule":this.molecule});
+            bus.$emit('pageInfo', {"name":this.name, "molecule":this.molecule, "variants": this.variants});
         }
 
     }
 
 </script>
-
-<style></style>
