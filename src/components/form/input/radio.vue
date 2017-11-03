@@ -86,9 +86,6 @@
             globalCount.counter = globalCount.counter + 1;
         },
         mounted() {
-            var styleCode = this.getStyle();
-            bus.$emit('compInfo', {"styleCode":styleCode});
-
             if (this.options) {
                 for (var i=0;i<this.options.length;i++) {
                     if (this.options[i].dependant) {
@@ -229,5 +226,38 @@
     }
     input[type=radio]:checked:focus + label {
         box-shadow: inset 0 0 0 2px #99dff9;
+    }
+    .form-pseudo-radio__logo .logo {
+        display: block;
+        height: 28px;
+        width: 73px;
+        z-index: 1;
+        position: absolute;
+        background: transparent url('/static/big-six-sprite.png') 0 0 no-repeat;
+        background-size: 147px 168px;
+        top: 12px;
+        right: 12px;
+    }
+    .form-pseudo-radio__logo input:hover + label .logo,
+    .form-pseudo-radio__logo input:checked + label .logo {
+        background-position-x: right;
+    }
+    .logo.bri {
+        background-position-y: 0px;
+    }
+    .logo.edf {
+        background-position-y: -28px;
+    }
+    .logo.npo {
+        background-position-y: -56px;
+    }
+    .logo.sco {
+        background-position-y: -84px;
+    }
+    .logo.eon {
+        background-position-y: -112px;
+    }
+    .logo.sse {
+        background-position-y: -140px;
     }
 </style>

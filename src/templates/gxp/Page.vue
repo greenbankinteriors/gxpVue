@@ -27,7 +27,9 @@
             </div>
         </header>
         <article>
-            <slot></slot>
+            <ul class="components">
+                <slot></slot>
+            </ul>
         </article>
     </section>
 </template>
@@ -47,6 +49,7 @@
                 pageName: 'GXP',
                 molecule: 'component',
                 variants: '',
+                activeVar: '',
                 htmlCode: '',
                 styleCode: '',
                 route: this.$route.path
@@ -54,10 +57,35 @@
         },
         methods: {
             test(event) {
-                //get variants
+                var parent = event.currentTarget.parentElement,
+                    variants = parent.children;
 
-                //get comps
-                event.currentTarget.classList.add('active');
+                for(var i=0; i<variants.length; i++) {
+                    var variant = variants[i];
+                    if (variant === event.currentTarget) {
+                        this.activeVar = i;
+                    }
+                }
+                this.setVariant()
+            },
+            setVariant() {
+                var variants = document.querySelectorAll('.variants li');
+                for(var i=0; i < variants.length; i++) {
+                    var variant = variants[i],
+                        components = document.querySelector('.components');
+
+//                    console.log(component)
+
+                    if (i==this.activeVar) {
+                        variant.classList.add('active');
+                        components.style.transform = 'translate3d(-' + i + '00%, 0, 0)';
+//                        component.classList.add('active');
+                    }
+                    else {
+                        variant.classList.remove('active');
+//                        component.classList.remove('active');
+                    }
+                }
             }
         },
         beforeCreate() {
@@ -65,12 +93,14 @@
         },
         beforeMount() {
             bus.$on('pageInfo', (data) => {
-//                console.log(data.name)
-//                console.log(data.molecule)
                 this.pageName = data.name;
                 this.molecule = data.molecule;
                 this.variants = data.variants;
+                this.activeVar = data.activeVar;
             })
+        },
+        updated() {
+            this.setVariant()
         }
 
     }
@@ -144,7 +174,7 @@
         padding: 3px 20px;
         border-right: solid 1px rgba(187, 169, 199, 0.5);
         position: relative;
-        font-weight: 400;
+        font-weight: 700;
         cursor: pointer;
         text-decoration: underline;
         transition: all 0.1s ease-in;
@@ -201,16 +231,22 @@
         max-width: 1180px;
         margin: 0 auto;
         padding: 60px 0;
+        overflow: hidden;
     }
     ul {
         list-style: none;
         padding: 0;
     }
-    .component {
-        display: none;
+    .components {
+        display: flex;
+        flex-grow: 1;
+        width: 100%;
+        position: relative;
+        transition: all 0.3s ease-in-out;
     }
-    .component.active {
-        display: block;
+    .component {
+        display: inline-table;
+        width: 100%;
     }
     .syntax {
         display: flex;

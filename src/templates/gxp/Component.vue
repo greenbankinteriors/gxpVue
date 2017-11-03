@@ -41,7 +41,6 @@
         },
         beforeMount(){
             bus.$once('compInfo', (data) => {
-//                this.htmlCode = data.htmlCode;
                 this.styleCode = data.styleCode;
 
             })
@@ -70,9 +69,6 @@
 </script>
 
 <style>
-    .component {
-
-    }
     .component > .component-header {
         padding: 10px 14px;
         background-color: #444;

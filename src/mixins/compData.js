@@ -4,7 +4,7 @@ import { globalCount } from '../main.js'
 export default {
     methods: {
         getStyle() {
-            console.log(this)
+//            console.log(this)
             var styles = document.getElementsByTagName("STYLE");
 
             console.log(styles)
@@ -100,5 +100,9 @@ export default {
             }
             return blanks;
         }
+    },
+    mounted() {
+        var styleCode = this.getStyle();
+        bus.$emit('compInfo', {"styleCode":styleCode});
     }
 }
