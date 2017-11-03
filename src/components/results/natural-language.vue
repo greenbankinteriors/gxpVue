@@ -2,21 +2,21 @@
     <div class="natural-language">
         <div class="natural-language-content">
             <p class="natural-language-results">Great news Steven, we've found 31 quotes for
-                <msm-select :options="policies" :model="isShowingUpdate" /> on
-                <msm-select :options="discounts" /> a no claims discount protection <span @click="isShowingClaim ^= true" class="icon icon-info"></span>, voluntary excess of
-                <msm-select :options="prices" /> and
-                <msm-select :options="payments" /> for you to choose from.
+                <msm-select :options="policies" @change.native="flagChanged(isShowingUpdateFlag)" :selected="isSelectedFlag" /> on
+                <msm-select :options="discounts" @change.native="flagChanged(isShowingUpdateFlag)" /> a no claims discount protection <span @click="isShowingClaimFlag ^= true" class="icon icon-info"></span>, voluntary excess of
+                <msm-select :options="prices" @change.native="flagChanged(isShowingUpdateFlag)" /> and
+                <msm-select :options="payments" @change.native="flagChanged(isShowingUpdateFlag)" /> for you to choose from.
             </p>
             <p class="natural-language-policy">You can <a class="natural-language-policy-link" href="#" target="_self">check your policy details</a> to make sure we've got all the right details.</p>
-            <div v-show="isShowingUpdate" class="natural-language-update">
-                <msm-button btnClass="btn btn__primary" btnText="Update your results" />
-                <a @click="isShowingUpdate = false" class="natural-language-update-close">Cancel</a>
+            <div v-show="isShowingUpdateFlag" class="natural-language-update">
+                <msm-button btnClass="btn btn__primary" btnText="Update your results" @click.native="updateResults()" />
+                <a @click="revertResults()" class="natural-language-update-close">Cancel</a>
             </div>
             <msm-checkbox elWrapClass="natural-language-form" :options="quotes" elInputClass="natural-language-form-"></msm-checkbox>
-            <a @click="isShowingTelematics ^= true" class="natural-language-telematics">What is telematics?</a>
+            <a @click="isShowingTelematicsFlag ^= true" class="natural-language-telematics">What is telematics?</a>
         </div>
-        <div v-show="isShowingTelematics" class="popup">Hello World Telematics</div>
-        <div v-show="isShowingClaim" class="popup">Hello World Claim</div>
+        <div v-show="isShowingTelematicsFlag" class="popup">Hello World Telematics</div>
+        <div v-show="isShowingClaimFlag" class="popup">Hello World Claim</div>
     </div>
 </template>
 
@@ -34,9 +34,10 @@
         },
         data() {
             return {
-                isShowingClaim: false,
-                isShowingUpdate: true,
-                isShowingTelematics: false,
+                isSelectedFlag: false,
+                isShowingClaimFlag: false,
+                isShowingUpdateFlag: false,
+                isShowingTelematicsFlag: false,
                 policies: [
                     {'value': 'comprehensive cover', 'text': 'comprehensive cover'},
                     {'value': 'third party, fire & theft cover', 'text': 'third party, fire & theft cover'},
@@ -67,6 +68,31 @@
                 ],
                 quotes: ['Show all telematics quotes']
             }
+        },
+        methods: {
+            flagChanged(value) {
+                if (this.isShowingUpdateFlag)
+                    return;
+
+                if (this.selected !== value)
+                    this.isShowingUpdateFlag = true;
+            },
+            updateResults() {
+                // to do
+            },
+            revertResults() {
+                this.isShowingUpdateFlag = false;
+                // to do
+            },
+            toggleQuotes() {
+                // to do
+            }
+        },
+        created() {
+            bus.$on('toggleQuotes', this.toggleQuotes);
+        },
+        mounted() {
+            console.log(this.$el);
         }
     }
 </script>

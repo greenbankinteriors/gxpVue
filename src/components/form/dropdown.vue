@@ -1,8 +1,8 @@
 <template>
     <div class="form-pseudo-select">
-        <select :model="flagValue" @change="onChange($event.target.value)">
-            <option disabled value='Please select'>Please select</option>
-            <option v-for="(option, index) in options" :value="option.value">{{ option.text }}</option>
+        <select :required="true">
+            <option disabled value=''>Please select</option>
+            <option v-for="(option, index) in options" :selected="isSelectedFlag" :value="option.value">{{ option.text }}</option>
         </select>
     </div>
 </template>
@@ -16,37 +16,17 @@
             options: {
                 elType: Array
             },
-            isShowingUpdate: {
-                type: Boolean
+            isSelectedFlag: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
             return {
-                selected: '',
-                flagValue: false
-            }
-        },
-        methods: {
-            onChange(value) {
-                //console.log(this.flagValue);
-                if (this.selected !== value) {
-                    this.flagValue = true;
-                } else {
-                    this.flagValue = false;
-                }
-            }
-        },
-        watch: {
-            'flagValue': function() {
-                console.log('it changed');
-                this.$emit('select', this.flagValue);
+
             }
         },
         created() {
-            console.log(this.flagValue);
-            console.log(this.isShowingUpdate);
-            this.flagValue = this.isShowingUpdate;
-            //console.log(this.isShowingUpdate);
             bus.$emit('getInputType', 'select');
             bus.$emit('sendComponentInfo', this.$options);
             globalCount.counter = globalCount.counter + 1;

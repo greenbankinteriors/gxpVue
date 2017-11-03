@@ -1,7 +1,7 @@
 <template>
     <ul :class="wrapClass">
         <li v-for="(option, index) in options">
-            <input :type="elType" :class="elClass+'input-'+index" :id="type+'-'+gCount+'-'+index" :name="type+'-'+gCount" :value="option.value || option">
+            <input :type="elType" :class="elClass+'input-'+index" :id="type+'-'+gCount+'-'+index" :name="type+'-'+gCount" @change="toggleFlag()" :value="option.value || option">
             <label :for="type+'-'+gCount+'-'+index">{{ option.value || option }}
                 <sub v-if="option.isSubtext">{{ option.subtext }}</sub>
                 <span v-if="option.isSubclass" :class="option.subclass"></span>
@@ -34,6 +34,10 @@
                 type: String,
                 default: ''
             },
+            elIsChecked: {
+                type: Boolean,
+                default: false
+            },
             tag: {
                 type: String,
                 default: 'input'
@@ -55,11 +59,17 @@
             return {
                 elType: this.type,
                 elClass: this.elInputClass,
+                isChecked: this.elIsChecked,
                 wrapClass: this.elWrapClass,
                 gCount: globalCount.counter
             }
         },
-        methods: {},
+        methods: {
+            toggleFlag() {
+                this.isChecked = !this.isChecked;
+                bus.$emit('toggleQuotes', this.isChecked);
+            }
+        },
         created() {
             bus.$emit('compInfo', {"tag":this.tag, "type":this.type});
             globalCount.counter = globalCount.counter + 1;
