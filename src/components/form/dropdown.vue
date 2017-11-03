@@ -15,6 +15,9 @@
         props: {
             options: {
                 elType: Array
+            },
+            isShowingUpdate: {
+                type: Boolean
             }
         },
         data() {
@@ -25,7 +28,7 @@
         },
         methods: {
             onChange(value) {
-                console.log(this.flagValue);
+                //console.log(this.flagValue);
                 if (this.selected !== value) {
                     this.flagValue = true;
                 } else {
@@ -33,7 +36,17 @@
                 }
             }
         },
+        watch: {
+            'flagValue': function() {
+                console.log('it changed');
+                this.$emit('select', this.flagValue);
+            }
+        },
         created() {
+            console.log(this.flagValue);
+            console.log(this.isShowingUpdate);
+            this.flagValue = this.isShowingUpdate;
+            //console.log(this.isShowingUpdate);
             bus.$emit('getInputType', 'select');
             bus.$emit('sendComponentInfo', this.$options);
             globalCount.counter = globalCount.counter + 1;
@@ -48,7 +61,7 @@
     }
 
     .form-pseudo-select:after {
-        content: '\f078';
+        content: url('../../assets/msm/images/icons/cyan.svg');
         position: absolute;
         color: #0ebeff;
         top: 1px;
@@ -62,6 +75,7 @@
         background-color: #ffffff;
         border-radius: 4px;
         box-shadow: 0 2px 0 0 #c6cacc;
+        font-size: 18px;
         padding: 7px 40px 7px 15px;
     }
 </style>

@@ -70,4 +70,8 @@
 
 </script>
 
-<style></style>
+<style>
+    label {
+        font-size: 16px;
+    }
+</style>

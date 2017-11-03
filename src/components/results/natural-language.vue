@@ -32,7 +32,6 @@
             'msm-checkbox': msmCheckbox,
             'msm-select': msmSelect
         },
-        props: ['flagValue'],
         data() {
             return {
                 isShowingClaim: false,
@@ -68,16 +67,6 @@
                 ],
                 quotes: ['Show all telematics quotes']
             }
-        },
-        watch: {
-            'isShowingUpdate': function() {
-                console.log(this.flagValue);
-                this.$emit('select', this.isShowingUpdate);
-            }
-        },
-        created() {
-            this.isShowingUpdate = this.flagValue;
-            console.log(this.isShowingUpdate);
         }
     }
 </script>
@@ -89,17 +78,20 @@
     }
 
     .natural-language-results {
+        font-size: 18px;
         line-height: 2.5;
         padding-bottom: 30px;
     }
 
     .natural-language-policy {
+        font-size: 18px;
         border-bottom: 1px solid #c6cacc;
         padding-bottom: 20px;
     }
 
     .natural-language-policy-link {
         display: inline-block;
+        font-size: 18px;
         text-decoration: underline;
     }
 
@@ -114,6 +106,7 @@
 
     .natural-language .natural-language-update-close {
         display: inline-block;
+        font-size: 16px;
         text-decoration: underline;
         cursor: pointer;
     }
@@ -125,6 +118,7 @@
 
     .natural-language-telematics {
         display: inline-block;
+        font-size: 16px;
         text-decoration: underline;
         cursor: pointer;
     }
@@ -143,6 +137,10 @@
     }
 
     .icon-info::before {
-        content: '\40';
+        content: url('../../assets/msm/images/icons/b-mob-info-icon-copy-12.svg');
+        display: inline-block;
+        vertical-align: top;
+        height: 22px;
+        margin-top: 4px;
     }
 </style>
