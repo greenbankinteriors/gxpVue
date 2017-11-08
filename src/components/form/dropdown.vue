@@ -1,8 +1,8 @@
 <template>
     <div class="form-pseudo-select">
-        <select :required="true">
-            <option disabled value=''>Please select</option>
-            <option v-for="(option, index) in options" :selected="isSelectedFlag" :value="option.value">{{ option.text }}</option>
+        <select v-model="selected">
+            <option disabled value="">Please select</option>
+            <option v-for="(option, index) in options" :value="option.value">{{ option.text }}</option>
         </select>
     </div>
 </template>
@@ -15,15 +15,16 @@
         props: {
             options: {
                 elType: Array
-            },
-            isSelectedFlag: {
-                type: Boolean,
-                default: false
             }
         },
         data() {
             return {
-
+                selected: ''
+            }
+        },
+        watch: {
+          	selected: function() {
+            	bus.$emit('input', this.selected);
             }
         },
         created() {

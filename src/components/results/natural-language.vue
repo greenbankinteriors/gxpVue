@@ -1,19 +1,19 @@
 <template>
     <div class="natural-language">
-        <div class="natural-language-content">
-            <p class="natural-language-results">Great news Steven, we've found 31 quotes for
-                <msm-select :options="policies" @change.native="flagChanged(isShowingUpdateFlag)" :selected="isSelectedFlag" /> on
+        <div class="natural-language-inner">
+            <p class="natural-language-copy">Great news Steven, we've found 31 quotes for
+                <msm-select :options="policies" @change.native="flagChanged(isShowingUpdateFlag)" /> on
                 <msm-select :options="discounts" @change.native="flagChanged(isShowingUpdateFlag)" /> a no claims discount protection <span @click="isShowingClaimFlag ^= true" class="icon icon-info"></span>, voluntary excess of
                 <msm-select :options="prices" @change.native="flagChanged(isShowingUpdateFlag)" /> and
                 <msm-select :options="payments" @change.native="flagChanged(isShowingUpdateFlag)" /> for you to choose from.
             </p>
-            <p class="natural-language-policy">You can <a class="natural-language-policy-link" href="#" target="_self">check your policy details</a> to make sure we've got all the right details.</p>
+            <p class="natural-language-copy">You can <a class="natural-language-policy-link" href="#" target="_self">check your policy details</a> to make sure we've got all the right details.</p>
             <div v-show="isShowingUpdateFlag" class="natural-language-update">
                 <msm-button btnClass="btn btn__primary" btnText="Update your results" @click.native="updateResults()" />
-                <a @click="revertResults()" class="natural-language-update-close">Cancel</a>
+                <a @click="revertResults()" class="natural-language-close-link">Cancel</a>
             </div>
             <msm-checkbox elWrapClass="natural-language-form" :options="quotes" elInputClass="natural-language-form-"></msm-checkbox>
-            <a @click="isShowingTelematicsFlag ^= true" class="natural-language-telematics">What is telematics?</a>
+            <a @click="isShowingTelematicsFlag ^= true" class="natural-language-telematics-link">What is telematics?</a>
         </div>
         <div v-show="isShowingTelematicsFlag" class="popup">Hello World Telematics</div>
         <div v-show="isShowingClaimFlag" class="popup">Hello World Claim</div>
@@ -34,7 +34,8 @@
         },
         data() {
             return {
-                isSelectedFlag: false,
+                formSel: '',
+                selected: '',
                 isShowingClaimFlag: false,
                 isShowingUpdateFlag: false,
                 isShowingTelematicsFlag: false,
@@ -74,15 +75,23 @@
                 if (this.isShowingUpdateFlag)
                     return;
 
-                if (this.selected !== value)
+                bus.$on('input', this.updateSelected);
+            },
+            updateSelected(selected) {
+                if (this.selected !== selected) {
+                    this.selected = selected;
                     this.isShowingUpdateFlag = true;
+                }
             },
             updateResults() {
                 // to do
             },
             revertResults() {
+                for (var i = 0; i < this.formSel.length; i++) {
+                    this.formSel[i].querySelector('select').value = '';
+                }
+
                 this.isShowingUpdateFlag = false;
-                // to do
             },
             toggleQuotes() {
                 // to do
@@ -92,7 +101,11 @@
             bus.$on('toggleQuotes', this.toggleQuotes);
         },
         mounted() {
-            console.log(this.$el);
+            this.formSel = this.$el.querySelectorAll('.form-pseudo-select');
+
+            for (var i = 0; i < this.formSel.length; i++) {
+                this.selected = this.formSel[i].querySelector('select').value;
+            }
         }
     }
 </script>
@@ -103,13 +116,13 @@
         padding: 22px 22px 50px;
     }
 
-    .natural-language-results {
+    .natural-language-copy:first-of-type {
         font-size: 18px;
         line-height: 2.5;
         padding-bottom: 30px;
     }
 
-    .natural-language-policy {
+    .natural-language-copy:last-of-type {
         font-size: 18px;
         border-bottom: 1px solid #c6cacc;
         padding-bottom: 20px;
@@ -130,7 +143,8 @@
         margin-right: 30px;
     }
 
-    .natural-language .natural-language-update-close {
+    .natural-language-close-link,
+    .natural-language-telematics-link {
         display: inline-block;
         font-size: 16px;
         text-decoration: underline;
@@ -140,22 +154,6 @@
     .natural-language-form {
         display: inline-block;
         padding-top: 20px;
-    }
-
-    .natural-language-telematics {
-        display: inline-block;
-        font-size: 16px;
-        text-decoration: underline;
-        cursor: pointer;
-    }
-
-    .popup {
-        position: absolute;
-        background-color: green;
-        width: 20%;
-        height: 100%;
-        top: 0;
-        right: 0;
     }
 
     .icon {
@@ -168,5 +166,14 @@
         vertical-align: top;
         height: 22px;
         margin-top: 4px;
+    }
+
+    .popup {
+        position: absolute;
+        background-color: green;
+        width: 20%;
+        height: 100%;
+        top: 0;
+        right: 0;
     }
 </style>
