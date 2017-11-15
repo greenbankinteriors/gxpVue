@@ -3,106 +3,84 @@ import { globalCount } from '../main.js'
 
 export default {
     methods: {
-        getStyle() {
-//            console.log(this)
-            var styles = document.getElementsByTagName("STYLE");
-
-            console.log(styles)
-
-            var string = styles[styles.length-1].innerHTML;
-
-            string = this.cleanCode(string);
-
-            return string;
+        getStyle(comp) {
+            if (comp.childNodes[0]) {
+                var e = comp.childNodes[0];
+                for (let key in e.attributes) {
+                    let name = e.attributes[key].name
+                    if (name && name.indexOf('data-v') !== -1) {
+                        for (let style of document.head.getElementsByTagName('style')) {
+                            if (style.innerText.indexOf(name) !== -1) {
+                                return style.innerText;
+                            }
+                        }
+                    }
+                }
+            }
         },
         cleanCode(string) {
             string = string.replace(/ *\[data-v[^\]]*]/g, '');  //removes [data-v-*]
             string = string.replace(/ *\<![^\]]*->/g, '');      //removes <!----->
             string = string.replace(/ data-v[^""]*""/g, '');    //removes data-v-*=""
             if (string.charAt(0).match(/\s/)) {
-                string = string.replace(/\s/,'');               //removes whitespace at 1st char
+                string = string.replace(/\s/, '');              //removes whitespace at 1st char
             }
 
             return string;
         },
-        formatHTML(str){
+        formatHTML(str) {
             str = str.replace(/\r?\n|\r/g, '');
             str = str.replace(/ *  /g, '');
             str = str.replace(/> </g, '><');
 
-            var newStr = "",
-                indent = 0,
-                sameLineCount = 0,
-                splits = str.split('<'),
-                lines = new Array();
+            function process(str) {
+                var div = document.createElement('div');
+                str = str.replace(/\s+/g, ' ')
+                div.innerHTML = str.trim();
 
-            for (var i = 0; i < splits.length; i++) {
-                if (splits[i]) {
-                    lines.push(splits[i]);
-                }
+                return format(div, 0).innerHTML;
             }
 
-            for(var i=0; i < lines.length; i++) {
-                var s = lines[i];
+            var firstTing = true;
 
-                if (s.match(/input/g)) {
-                    s = s.slice(0, -1) + ' />';
-                }
+            function format(node, level) {
+                var indentBefore = new Array(level++ + 1).join('  '),
+                    indentAfter = new Array(level - 1).join('  '),
+                    textNode;
 
-                if (s !== '') {
-                    if (i==0) {
-                        newStr += '<' + s + '\r\n';
-                        indent ++;
-                    }
-                    else if(sameLineCount > 0) {
-                        if (s.substr(s.length - 1) !== '>') {
-                            sameLineCount ++;
-                            newStr += '<' + s;
-                        }
-                        else {
-                            sameLineCount --;
-                            newStr += '<' + s;
-                        }
-
-                        if (sameLineCount == 0) {
-                            newStr += '\r\n';
-                            indent --;
-                        }
-                    }
-                    else if(s.charAt(0) == '/'){
-                        //closing tag
-                        newStr += this.addIndent(indent) + '<' + s + '\r\n';
-                        indent --;
-                    }
-                    else if(s.slice(-2) == '/>') {
-                        //ends on a closing tag
-                        newStr += this.addIndent(indent) + '<' + s + '\r\n';
-                    }
-                    else if(s.substr(s.length - 1) == '>') {
-                        //ends on a closed tag
-                        newStr += this.addIndent(indent) + '<' + s + '\r\n';
-                        indent ++;
+                for (var i = 0; i < node.children.length; i++) {
+                    if (firstTing) {
+                        textNode = document.createTextNode(indentBefore);
+                        firstTing ^= firstTing;
                     }
                     else {
-                        //ends with an open str
-                        newStr += this.addIndent(indent) + '<' + s;
-                        sameLineCount ++;
+                        textNode = document.createTextNode('\n' + indentBefore);
+                    }
+
+                    node.insertBefore(textNode, node.children[i]);
+
+                    format(node.children[i], level);
+
+                    if (node.lastElementChild == node.children[i]) {
+                        textNode = document.createTextNode('\n' + indentAfter);
+                        node.appendChild(textNode);
                     }
                 }
 
+                return node;
             }
-            return newStr;
-        },
-        addIndent(ind){
-            var blanks = '';
-            for(var i=0; i < ind; i++) {
-                blanks += '\xa0\xa0'
-            }
-            return blanks;
+
+            return process(str)
         }
     },
     mounted() {
-        var styleCode = this.getStyle();
-        bus.$emit('compInfo', {"styleCode":styleCode});
+        var htmlCode = this.$refs.example.innerHTML;
+        htmlCode = this.cleanCode(htmlCode);
+        htmlCode = this.formatHTML(htmlCode);
+        this.htmlCode = htmlCode;
+
+        var styleCode = this.getStyle(this.$refs.example);
+        styleCode = this.cleanCode(styleCode);
+        this.styleCode = styleCode
     }
 }

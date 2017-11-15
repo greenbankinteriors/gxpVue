@@ -2,18 +2,10 @@
     <gxp-page>
         <gxp-component elWrapClass="active"
                        elClass="form">
-            <msm-radio :options='options1' />
+            <msm-checkbox :options='options1' />
         </gxp-component>
         <gxp-component elClass="form">
-            <msm-radio :options='options2' />
-        </gxp-component>
-        <gxp-component elClass="form">
-            <msm-radio elWrapClass="form-pseudo-radio__logo"
-                       :options='options3' />
-        </gxp-component>
-        <gxp-component elClass="form">
-            <msm-radio elWrapClass="form-inline-radios"
-                       :options='options4' />
+            <msm-checkbox :options='options2' />
         </gxp-component>
     </gxp-page>
 </template>
@@ -22,19 +14,19 @@
 
     import { bus } from '../main.js'
     import { globalCount } from '../main.js'
-    import msmRadio from '../components/form/input/radio'
+    import msmCheck from '../components/form/input/checkbox'
 
     export default {
 
         components: {
-            'msm-radio': msmRadio
+            'msm-checkbox': msmCheck
         },
         data() {
             return {
-                name: 'Radio button',
+                name: 'Checkboxes',
                 molecule: 'atom',
                 activeVar: 0,
-                variants: ['Default', 'Subtext', 'Logo', 'Dual'],
+                variants: ['Default', 'Subtext'],
                 options1: ['Radio default'],
                 options2: [{'label': 'Radio default', 'value': 'default', 'subtext': 'Sub texts'}],
                 options3: [{'label': 'Radio logo', 'value': 'default', 'subclass': 'logo bri'}],

@@ -1,29 +1,40 @@
 <template>
-    <msm-component>
-        <msm-button btnClass="btn btn__primary" btnText="Test"></msm-button>
-        <msm-button btnClass="btn btn__secondary" />
-    </msm-component>
+    <gxp-page>
+        <gxp-component elWrapClass="active">
+            <msm-button btnClass="btn btn__primary" btnText="Submit"></msm-button>
+        </gxp-component>
+        <gxp-component>
+            <msm-button btnClass="btn btn__secondary" />
+        </gxp-component>
+        <gxp-component>
+            <msm-button btnClass="btn btn__secondary" />
+        </gxp-component>
+    </gxp-page>
 </template>
 
 <script>
 
-    import msmButton from '../components/form/button.vue'
+    import { bus } from '../main.js'
+    import { globalCount } from '../main.js'
+    import msmBtn from '../components/form/button'
 
     export default {
 
         components: {
-            'msm-button': msmButton
+            'msm-button': msmBtn
         },
         data() {
             return {
-
+                name: 'Buttons',
+                molecule: 'atom',
+                activeVar: 0,
+                variants: ['Primary', 'Secondary', 'Tertiary']
             }
+        },
+        mounted() {
+            bus.$emit('pageInfo', {"name":this.name, "molecule":this.molecule, "variants": this.variants, "activeVar": this.activeVar});
         }
 
     }
 
 </script>
-
-<style>
-
-</style>

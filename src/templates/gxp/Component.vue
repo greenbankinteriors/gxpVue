@@ -42,15 +42,7 @@
         beforeMount(){
             bus.$once('compInfo', (data) => {
                 this.styleCode = data.styleCode;
-
             })
-        },
-        mounted() {
-            var htmlCode = this.$refs.example.innerHTML
-            htmlCode = this.cleanCode(htmlCode);
-            this.formatHTML(htmlCode);
-            htmlCode = this.formatHTML(htmlCode);
-            this.htmlCode = htmlCode;
         },
         updated() {
             Prism.highlightAll();
@@ -83,9 +75,12 @@
         justify-content: center;
         align-items: center;
     }
+    .component .example > ul,
     .component .example > div,
-    .component .example > ul {
+    .component .example > button,
+    .component .example > input {
         min-width: 320px;
+        max-width: 320px;
     }
     .syntax {
         display: flex;

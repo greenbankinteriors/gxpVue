@@ -74,7 +74,7 @@
                     var variant = variants[i],
                         components = document.querySelector('.components');
 
-//                    console.log(component)
+//                    console.log(components)
 
                     if (i==this.activeVar) {
                         variant.classList.add('active');
@@ -240,13 +240,12 @@
     .components {
         display: flex;
         flex-grow: 1;
-        width: 100%;
         position: relative;
         transition: all 0.3s ease-in-out;
     }
     .component {
-        display: inline-table;
-        width: 100%;
+        display: block;
+        min-width: 100%;
     }
     .syntax {
         display: flex;

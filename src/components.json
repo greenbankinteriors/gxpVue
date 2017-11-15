@@ -26,6 +26,24 @@
     ]
 },
 {
+    "name": "Checkboxes",
+    "url": "checkboxes",
+    "tags": [
+        "form",
+        "global",
+        "checkbox"
+    ]
+},
+{
+    "name": "Dropdown",
+    "url": "dropdown",
+    "tags": [
+        "form",
+        "global",
+        "dropdown"
+    ]
+},
+{
     "name": "Notifications",
     "url": "notifications",
     "tags": [

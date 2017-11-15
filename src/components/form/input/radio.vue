@@ -95,8 +95,7 @@
                     }
                 }
             }
-        },
-        mixins: [compData]
+        }
 
     }
 
@@ -164,7 +163,7 @@
         font: normal 12px 'Open Sans';
     }
     ul li:last-of-type input[type=radio] + label,
-    .form-inline-radios input[type="radio"] + label {
+    .form-inline-radios input[type=radio] + label {
         margin: 0;
     }
     input[type=radio] + label strong {

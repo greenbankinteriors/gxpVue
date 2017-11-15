@@ -1,7 +1,5 @@
 <template>
-    <div :class="elWrapClass">
-        <input :type="type" :class="elClass" :id="type+'-'+gCount" :placeholder="elPlaceholder" :value="elValue">
-    </div>
+    <input ref="comp" :type="type" :class="elClass" :id="type+'-'+gCount" :placeholder="elPlaceholder" :value="elValue">
 </template>
 
 <script>
@@ -39,13 +37,13 @@
             bus.$emit('compInfo', {"tag":this.tag, "type":this.type});
             globalCount.counter = globalCount.counter + 1;
         },
-        mixins: [ globalFuncs, compData ]
+        mixins: [ globalFuncs ]
 
     }
 
 </script>
 
-<style>
+<style scoped>
     input[type=text],
     input[type=password],
     input[type=email],
