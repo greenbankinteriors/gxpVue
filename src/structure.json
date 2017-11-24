@@ -1,0 +1,100 @@
+[
+    {
+        "type":"atoms",
+        "pages": [
+            {
+                "name": "Text",
+                "url": "text",
+                "tags": [
+                    "form",
+                    "global",
+                    "text"
+                ]
+            },
+            {
+                "name": "Buttons",
+                "url": "buttons",
+                "tags": [
+                    "form",
+                    "global",
+                    "button"
+                ]
+            },
+            {
+                "name": "Radio button",
+                "url": "radio-buttons",
+                "tags": [
+                    "form",
+                    "global",
+                    "radio"
+                ]
+            },
+            {
+                "name": "Text field",
+                "url": "text-field",
+                "tags": [
+                    "form",
+                    "global",
+                    "input"
+                ]
+            },
+            {
+                "name": "Checkboxes",
+                "url": "checkboxes",
+                "tags": [
+                    "form",
+                    "global",
+                    "checkbox"
+                ]
+            },
+            {
+                "name": "Spinner",
+                "url": "spinner",
+                "tags": [
+                    "form",
+                    "global",
+                    "spinner"
+                ]
+            },
+            {
+                "name": "Dropdown",
+                "url": "dropdown",
+                "tags": [
+                    "form",
+                    "global",
+                    "dropdown"
+                ]
+            },
+            {
+                "name": "Notifications",
+                "url": "notifications",
+                "tags": [
+                    "form",
+                    "global",
+                    "notification"
+                ]
+            },
+            {
+                "name": "Step indicator",
+                "url": "step-indicator",
+                "tags": [
+                    "form",
+                    "global"
+                ]
+            }
+        ]
+    },
+    {
+        "type":"molecules",
+        "pages": [
+            {
+                "name": "Step indicator",
+                "url": "test",
+                "tags": [
+                    "form",
+                    "global"
+                ]
+            }
+        ]
+    }
+]

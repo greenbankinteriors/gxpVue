@@ -20,6 +20,16 @@
                        type="password"
                        elPlaceholder="Enter password here" />
         </gxp-component>
+        <gxp-component>
+            <msm-textarea elWrapClass="form"
+                          elPlaceholder="Enter text here" />
+        </gxp-component>
+        <gxp-component>
+            <msm-date elWrapClass="form" />
+        </gxp-component>
+        <gxp-component>
+            <msm-driving-licence elWrapClass="form" />
+        </gxp-component>
     </gxp-page>
 </template>
 
@@ -29,19 +39,25 @@
     import { globalCount } from '../main.js'
     import msmRadio from '../components/form/input/radio'
     import msmDefault from '../components/form/input/default'
+    import msmTextarea from '../components/form/input/textarea'
+    import msmDate from '../components/form/input/date'
+    import msmDriving from '../components/form/input/driving-licence'
 
     export default {
 
         components: {
             'msm-radio': msmRadio,
-            'msm-input': msmDefault
+            'msm-input': msmDefault,
+            'msm-textarea': msmTextarea,
+            'msm-date': msmDate,
+            'msm-driving-licence': msmDriving
         },
         data() {
             return {
                 name: 'Text field',
                 molecule: 'atom',
                 activeVar: 0,
-                variants: ['Default', 'Tel', 'Email', 'Password']
+                variants: ['Default', 'Number', 'Email', 'Password', 'Textarea', 'Date', 'Licence']
             }
         },
         mounted() {

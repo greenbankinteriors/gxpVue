@@ -1,19 +1,10 @@
 <template>
-    <section>
-<!--        <test-component value="another test"></test-component>-->
-        <ul class="components-list">
-            <li v-for="(component, key, index) in components">
-                <router-link :to="'/components/' + component.url" exact>{{ component.name }}</router-link>
-                <ul class="tags-list">
-                    <li v-for="tag in component.tags">{{ tag }}</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
 </template>
 
 <script>
-    import componentData from './components'
+
+    import { bus } from './main.js'
+    import componentData from './structure'
 
     export default {
 
@@ -51,5 +42,8 @@
         width: 8px;
         border-radius: 10px;
         background-color: #444;
+    }
+    .pageDetails {
+        display: none;
     }
 </style>

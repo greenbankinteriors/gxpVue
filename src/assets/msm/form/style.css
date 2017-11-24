@@ -984,7 +984,7 @@
     width: 33.3%;
     text-transform: uppercase;
 }
-.form .form-num-wrap > span{
+.form .form-num-wrap > span {
     display: flex;
     align-items: center;
 }

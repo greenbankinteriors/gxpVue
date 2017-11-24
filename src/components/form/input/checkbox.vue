@@ -126,7 +126,7 @@
         padding-top: 5px;
         font-size: 14px;
     }
-    .form input[type=checkbox] + label:before {
+    input[type=checkbox] + label:before {
         content: '';
         width: 24px;
         height: 24px;
@@ -140,12 +140,12 @@
         box-sizing: border-box;
         transition: all 0.2s ease-in-out;
     }
-    .form input[type=checkbox]:checked + label:before {
+    input[type=checkbox]:checked + label:before {
         background-color: transparent;
         border: 3px solid #FFF;
     }
 
-    .form input[type=checkbox] + label.tickbox {
+    input[type=checkbox] + label.tickbox {
         background-color: transparent;
         box-shadow: none;
         padding: 15px 15px 15px 65px;
@@ -153,18 +153,18 @@
         text-transform: none;
         -webkit-tap-highlight-color: transparent;
     }
-    .form li input[type=checkbox] + label.tickbox {
+    li input[type=checkbox] + label.tickbox {
         padding: 0 0 0 45px;
     }
-    .form input[type=checkbox]:checked + label.tickbox {
+    input[type=checkbox]:checked + label.tickbox {
         color: #566266;
     }
-    .form input[type=checkbox]:checked + label.tickbox:hover,
-    .form input[type=checkbox]:checked + label.tickbox:focus {
+    input[type=checkbox]:checked + label.tickbox:hover,
+    input[type=checkbox]:checked + label.tickbox:focus {
         background-color: transparent;
         box-shadow: none;
     }
-    .form input[type=checkbox] + label.tickbox:before {
+    input[type=checkbox] + label.tickbox:before {
         width: 30px;
         height: 30px;
         top: 15px;
@@ -173,11 +173,11 @@
         box-shadow: inset 0 2px 0 0 #ebf0f2;
         background-size: 20px;
     }
-    .form li input[type=checkbox] + label.tickbox:before {
+    li input[type=checkbox] + label.tickbox:before {
         top: 0;
         left: 0;
     }
-    .form input[type=checkbox]:checked + label.tickbox:before {
+    input[type=checkbox]:checked + label.tickbox:before {
         background-color: #00aeef;
         border: none;
         box-shadow: inset 0 2px 0 0 #0083b3;

@@ -66,7 +66,7 @@
         -webkit-appearance: none;
         display: block;
         width: 100%;
-        height: 100%;
+/*        height: 100%;*/
         font: normal 700 14px/18px 'Open Sans';
         color: #566266;
         padding: 18px 41px 14px 15px;

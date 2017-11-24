@@ -17,7 +17,6 @@
     import msmCheck from '../components/form/input/checkbox'
 
     export default {
-
         components: {
             'msm-checkbox': msmCheck
         },
@@ -27,9 +26,9 @@
                 molecule: 'atom',
                 activeVar: 0,
                 variants: ['Default', 'Subtext'],
-                options1: ['Radio default'],
-                options2: [{'label': 'Radio default', 'value': 'default', 'subtext': 'Sub texts'}],
-                options3: [{'label': 'Radio logo', 'value': 'default', 'subclass': 'logo bri'}],
+                options1: ['Checkbox default'],
+                options2: [{'label': 'Checkbox default', 'value': 'default', 'subtext': 'Sub texts'}],
+                options3: [{'label': 'Checkbox logo', 'value': 'default', 'subclass': 'logo bri'}],
                 options4: ['Yes', 'No']
             }
         },

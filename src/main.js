@@ -44,6 +44,51 @@ Vue.component('test-component', {
         }
     }
 })
+
+Vue.component('i-frame', {
+
+    render(h) {
+        return h('iframe', {
+            on: {
+                load: this.renderChildren
+            }
+        })
+    },
+    beforeUpdate() {
+        //freezing to prevent unnessessary Reactifiation of vNodes
+        this.iApp.children = Object.freeze(this.$slots.default)
+    },
+    methods: {
+        renderChildren() {
+            const children = this.$slots.default
+            const body = this.$el.contentDocument.body
+            const el = document.createElement('DIV') // we will mount or nested app to this element
+            const globalStyle = document.createElement('STYLE')
+            const compStyle = document.createElement('STYLE')
+
+            body.appendChild(globalStyle)
+            body.appendChild(compStyle)
+            body.appendChild(el)
+
+            const iApp = new Vue({
+                name: 'iApp',
+                //freezing to prevent unnessessary Reactifiation of vNodes
+                data: {
+                    children: Object.freeze(children)
+                },
+                render(h) {
+                    return h('div', this.children)
+                },
+            })
+
+            iApp.$mount(el) // mount into iframe
+
+            this.iApp = iApp // cache instance for later updates
+
+        }
+    }
+})
+
 Vue.component('gxp-page', gxpPageTemplate);
 Vue.component('gxp-component', gxpCompTemplate);
 Vue.component('msm-question', questionTemplate);

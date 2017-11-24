@@ -3,6 +3,13 @@ import { globalCount } from '../main.js'
 
 export default {
     methods: {
+        getGlobal() {
+            for (let style of document.head.getElementsByTagName('style')) {
+                if (style.innerText.indexOf('GLOBAL STYLES') !== -1) {
+                    return style.innerText;
+                }
+            }
+        },
         getStyle(comp) {
             if (comp.childNodes[0]) {
                 var e = comp.childNodes[0];
@@ -28,6 +35,48 @@ export default {
 
             return string;
         },
+        formatCSS(str) {
+            var splits = str.split('{'),
+                firstInc = false,
+                mediaTrigger = false,
+                newString = "";
+
+            for (var i=0; i < splits.length; i++) {
+                var split = splits[i];
+
+                if (i < (splits.length - 1)) {
+                    split = split + '{';
+                }
+
+                if (mediaTrigger) {
+
+                    if (firstInc) {
+                        firstInc ^= firstInc;
+                        split = split.replace('\n', '\n    ');
+                    }
+
+                    if (split.replace(/[^}]/g, "").length == 2) {
+                        mediaTrigger ^= mediaTrigger;
+                        newString += split.replace('}', '    }');
+                    }
+                    else {
+                        newString += split.replace('}\n', '    }\n    ');
+                    }
+
+                }
+                else {
+                    newString += split;
+                }
+
+                if (split.includes('@media')) {
+                    firstInc = true;
+                    mediaTrigger = true;
+                }
+
+            }
+
+            return newString;
+        },
         formatHTML(str) {
             str = str.replace(/\r?\n|\r/g, '');
             str = str.replace(/ *  /g, '');
@@ -41,7 +90,7 @@ export default {
                 return format(div, 0).innerHTML;
             }
 
-            var firstTing = true;
+            var firstInc = true;
 
             function format(node, level) {
                 var indentBefore = new Array(level++ + 1).join('  '),
@@ -49,9 +98,9 @@ export default {
                     textNode;
 
                 for (var i = 0; i < node.children.length; i++) {
-                    if (firstTing) {
+                    if (firstInc) {
                         textNode = document.createTextNode(indentBefore);
-                        firstTing ^= firstTing;
+                        firstInc ^= firstInc;
                     }
                     else {
                         textNode = document.createTextNode('\n' + indentBefore);
@@ -74,13 +123,25 @@ export default {
         }
     },
     mounted() {
-        var htmlCode = this.$refs.example.innerHTML;
+
+        var iframeDoc = this.$refs.example.$el.contentDocument,
+            stylesheets = iframeDoc.querySelectorAll('body > style'),
+            container = iframeDoc.querySelector('body > div');
+
+        stylesheets[0].innerHTML = this.getGlobal();
+
+        var htmlCode = container.innerHTML;
         htmlCode = this.cleanCode(htmlCode);
         htmlCode = this.formatHTML(htmlCode);
         this.htmlCode = htmlCode;
 
-        var styleCode = this.getStyle(this.$refs.example);
+        var styleCode = this.getStyle(container);
+
+        stylesheets[1].innerHTML = styleCode;
+
         styleCode = this.cleanCode(styleCode);
+        styleCode = this.formatCSS(styleCode);
         this.styleCode = styleCode
+
     }
 }

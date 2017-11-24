@@ -1,18 +1,19 @@
 <template>
-    <section>
+    <section :class="pageClass">
         <header>
             <div>
                 <div>
                     <p class="molecular-desc">{{ molecule }}</p>
                     <h1>{{ pageName }}</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <h3>Select a variant to view</h3>
+                    <h3 v-if="rootPage">Select an element</h3>
+                    <h3 v-else>Select a variant to view</h3>
                     <ul class="variants">
-                        <li v-for="(variant, index) in variants" @click="test">{{ variant }}</li>
+                        <li v-for="(variant, index) in variants" @click="toggleVar">{{ variant }}</li>
 <!--                        <li @click="test">Multi-line</li>-->
                     </ul>
                 </div>
-                <aside>
+                <aside class="pageDetails" v-show="!rootPage">
                     <b>Last updated</b>
                     <p>30 Oct 2017</p>
                     <b>Version</b>
@@ -41,13 +42,14 @@
 
     export default {
 
-        components: {
-
+        props: {
+            pageClass: ""
         },
         data() {
             return {
-                pageName: 'GXP',
-                molecule: 'component',
+                pageName: 'Global Experience Principals',
+                molecule: 'components',
+                rootPage: false,
                 variants: '',
                 activeVar: '',
                 htmlCode: '',
@@ -56,7 +58,7 @@
             }
         },
         methods: {
-            test(event) {
+            toggleVar(event) {
                 var parent = event.currentTarget.parentElement,
                     variants = parent.children;
 
@@ -74,16 +76,12 @@
                     var variant = variants[i],
                         components = document.querySelector('.components');
 
-//                    console.log(components)
-
                     if (i==this.activeVar) {
                         variant.classList.add('active');
                         components.style.transform = 'translate3d(-' + i + '00%, 0, 0)';
-//                        component.classList.add('active');
                     }
                     else {
                         variant.classList.remove('active');
-//                        component.classList.remove('active');
                     }
                 }
             }
@@ -95,6 +93,7 @@
             bus.$on('pageInfo', (data) => {
                 this.pageName = data.name;
                 this.molecule = data.molecule;
+                this.rootPage = data.rootPage;
                 this.variants = data.variants;
                 this.activeVar = data.activeVar;
             })
@@ -144,7 +143,7 @@
         }
     }
     header > div > div {
-        padding-right: 60px;
+        padding-right: 50px;
     }
     header > div > div > p {
         font: 400 16px 'Open Sans';
@@ -269,4 +268,7 @@
         width: 100%;
         overflow: scroll;
     }
+
+    /*Components page*/
+
 </style>

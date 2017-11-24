@@ -1,10 +1,10 @@
 <template>
-    <div :class="wrapClass">
-        <input type="tel" :class="elClass" :id="type+'-'+gCount+'-0'" :value="elValue" placeholder="DD" maxlength="2" @keyup="numSnap" @blur="numBlur">
+    <div class="form-num-wrap">
+        <input type="tel" :id="id+'-'+gCount+'-0'" :value="elValue" placeholder="DD" maxlength="2" @keyup="numSnap" @blur="numBlur">
         <span>/</span>
-        <input type="tel" :class="elClass" :id="type+'-'+gCount+'-1'" :value="elValue" placeholder="MM" maxlength="2" @keyup="numSnap" @blur="numBlur">
+        <input type="tel" :id="id+'-'+gCount+'-1'" :value="elValue" placeholder="MM" maxlength="2" @keyup="numSnap" @blur="numBlur">
         <span>/</span>
-        <input type="tel" :class="elClass" :id="type+'-'+gCount+'-2'" :value="elValue" placeholder="YYYY" maxlength="4" @keyup="numSnap" @blur="numBlur">
+        <input type="tel" :id="id+'-'+gCount+'-2'" :value="elValue" placeholder="YYYY" maxlength="4" @keyup="numSnap" @blur="numBlur">
     </div>
 </template>
 
@@ -21,9 +21,9 @@
                 type: String,
                 default: 'input'
             },
-            type: {
+            id: {
                 type: String,
-                default: 'tel'
+                default: 'date'
             },
             elPlaceholder: {
                 default: 'Enter here'
@@ -33,8 +33,6 @@
         },
         data() {
             return {
-                elClass: 'form-num-input',
-                wrapClass: 'form-num-wrap',
                 gCount: globalCount.counter
             }
         },
@@ -105,4 +103,72 @@
 
 </script>
 
-<style></style>
+<style scoped>
+    .form-num-wrap {
+        display: flex;
+        position: relative;
+        border-radius: 5px;
+        box-shadow: inset 0 2px 0 0 #c6cacc;
+        box-sizing: border-box;
+        background-color: #ebf0f2;
+        position: relative;
+        z-index: 0;
+    }
+    .form-num-wrap input {
+        padding: 16px 10px 17px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1;
+        border-radius: 5px;
+        box-shadow: inset 0 2px 0 0 #c6cacc;
+        box-sizing: border-box;
+        background-color: #ebf0f2;
+        text-align: center;
+        display: block;
+        color: #2B3133;
+        width: 100%;
+        transition: all 0.2s ease-in-out;
+        margin-bottom: 0;
+    }
+    :-ms-input-placeholder {
+        font: normal 14px 'Open Sans';
+        color: #949899;
+    }
+    ::-webkit-input-placeholder {
+        font: normal 14px 'Open Sans';
+        color: #949899;
+    }
+    .form-num-wrap > span {
+        display: flex;
+        align-items: center;
+    }
+    .form-num-wrap input:first-child {
+        margin-left: 0;
+    }
+    .form-num-wrap input:hover,
+    .form-num-wrap input:focus {
+        box-shadow: inset 0 0 4px 2px #00AEEF;
+    }
+    .form-length-wrap {
+        display: flex;
+        align-items: baseline;
+    }
+    .form-length-wrap input {
+        margin-right: 10px;
+        text-align: center;
+    }
+    .form-length-wrap input:last-child {
+        margin: 0 0 0 10px;
+        width: 200%;
+    }
+    .form-driving-licence input {
+        width: 20%;
+        margin-left: 0;
+    }
+    .form-driving-licence input:last-child {
+        width: 25%;
+    }
+    .form-driving-licence input:nth-child(-n+3){
+        width: 30%;
+    }
+</style>

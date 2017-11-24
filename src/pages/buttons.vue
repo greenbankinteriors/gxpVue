@@ -4,10 +4,13 @@
             <msm-button btnClass="btn btn__primary" btnText="Submit"></msm-button>
         </gxp-component>
         <gxp-component>
-            <msm-button btnClass="btn btn__secondary" />
+            <msm-button btnClass="btn btn__primary btn__right--arrow" btnText="Submit"></msm-button>
         </gxp-component>
         <gxp-component>
             <msm-button btnClass="btn btn__secondary" />
+        </gxp-component>
+        <gxp-component>
+            <msm-button btnClass="btn btn__secondary btn__right--arrow" btnText="Submit"></msm-button>
         </gxp-component>
     </gxp-page>
 </template>
@@ -28,7 +31,7 @@
                 name: 'Buttons',
                 molecule: 'atom',
                 activeVar: 0,
-                variants: ['Primary', 'Secondary', 'Tertiary']
+                variants: ['Primary', 'Primary with arrow', 'Secondary', 'Secondary with arrow']
             }
         },
         mounted() {

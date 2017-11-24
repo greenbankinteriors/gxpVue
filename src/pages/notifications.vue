@@ -1,41 +1,42 @@
 <template>
-    <form class="form">
-        <fieldset>
-            <msm-component>
-                <msm-notification />
-            </msm-component>
-            <msm-component>
-                <msm-notification elClass="notification tick-list" />
-            </msm-component>
-            <msm-component>
-                <msm-notification elClass="notification warning" />
-            </msm-component>
-            <msm-component>
-                <msm-notification elClass="notification success" />
-            </msm-component>
-        </fieldset>
-    </form>
+    <gxp-page>
+        <gxp-component elWrapClass="form">
+            <msm-notification />
+        </gxp-component>
+        <gxp-component elWrapClass="form">
+            <msm-notification elClass="notification tick-list" />
+        </gxp-component>
+        <gxp-component elWrapClass="form">
+            <msm-notification elClass="notification warning" />
+        </gxp-component>
+        <gxp-component elWrapClass="form">
+            <msm-notification elClass="notification success" />
+        </gxp-component>
+    </gxp-page>
 </template>
 
 <script>
 
+    import { bus } from '../main.js'
+    import { globalCount } from '../main.js'
     import msmNotification from '../components/form/notification.vue'
 
     export default {
-
         components: {
             'msm-notification': msmNotification
         },
         data() {
             return {
-
+                name: 'Notifications',
+                molecule: 'atom',
+                activeVar: 0,
+                variants: ['Default', 'Tick', 'Warning', 'Success']
             }
+        },
+        mounted() {
+            bus.$emit('pageInfo', {"name":this.name, "molecule":this.molecule, "variants": this.variants, "activeVar": this.activeVar});
         }
 
     }
 
 </script>
-
-<style>
-
-</style>

@@ -1,7 +1,7 @@
 <template>
     <div :class="wrapClass">
         <span class="spinner-trigger" v-on:click="spinCount('dec')"></span>
-        <input type="tel" :class="elClass" :id="type+'-'+gCount" :placeholder="elPlaceholder" :value="spinVal" ref="spinInput" @keyup="checkSpinVal" @blur="storeSpinVal">
+        <input type="tel" :class="elClass" :id="id+'-'+gCount" :placeholder="elPlaceholder" :value="spinVal" ref="spinInput" @keyup="checkSpinVal" @blur="storeSpinVal">
         <span class="spinner-trigger" v-on:click="spinCount('inc')"></span>
     </div>
 </template>
@@ -19,9 +19,9 @@
                 type: String,
                 default: 'input'
             },
-            type: {
+            id: {
                 type: String,
-                default: 'text'
+                default: 'spinner'
             },
             elPlaceholder: {
                 default: 'Enter number here'
@@ -101,4 +101,92 @@
 
 </script>
 
-<style></style>
+<style scoped>
+    .form-spinner-wrap {
+        display: flex;
+        position: relative;
+        box-sizing: border-box;
+        z-index: 0;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    .form-spinner-wrap input {
+        padding: 13px 10px 13px;
+        margin: 0 auto;
+        width: calc( 100% - 94px );
+        text-align: center;
+        font: bold 18px 'Open Sans';
+        border-radius: 5px;
+        box-shadow: inset 0 2px 0 0 #c6cacc;
+        box-sizing: border-box;
+        background-color: #ebf0f2;
+        display: block;
+        color: #2B3133;
+        transition: all 0.2s ease-in-out;
+        margin-bottom: 0;
+    }
+    .form-spinner-wrap input:hover,
+    .form-spinner-wrap input:focus {
+        box-shadow: inset 0 0 4px 2px #00AEEF;
+    }
+    ::-ms-input-placeholder {
+        font: normal 14px 'Open Sans';
+        color: #949899;
+    }
+    ::-webkit-input-placeholder {
+        font: normal 14px 'Open Sans';
+        color: #949899;
+    }
+    .spinner-trigger {
+        width: 34px;
+        height: 34px;
+        box-sizing: border-box;
+        border: 2px solid #00AEEF;
+        background-color: #FFF;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        top: 7px;
+        left: 0;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+    }
+    input + .spinner-trigger {
+        left: initial;
+        right: 0;
+    }
+    .spinner-trigger:before,
+    input + .spinner-trigger:after {
+        width: 14px;
+        height: 3px;
+        border-radius: 3px;
+        display: block;
+        background-color: #00AEEF;
+        content: '';
+        position: absolute;
+        top: 14px;
+        left: 8px;
+        transform-origin: center;
+        transition: all 0.2s ease-in-out;
+    }
+    input + .spinner-trigger:after {
+        transform: rotate(90deg)
+    }
+    .spinner-trigger:hover {
+        background-color: #00AEEF;
+    }
+    .spinner-trigger:hover:before,
+    input + .spinner-trigger:hover:after {
+        background-color: #FFF;
+    }
+    .form-spinner-wrap.min .spinner-trigger:first-of-type,
+    .form-spinner-wrap.max .spinner-trigger:last-of-type {
+        background-color: #ebf0f2;
+        border-color: #c6cacc;
+    }
+    .form-spinner-wrap.min .spinner-trigger:first-of-type:before,
+    .form-spinner-wrap.max .spinner-trigger:last-of-type:before,
+    .form-spinner-wrap.max .spinner-trigger:last-of-type:after {
+        background-color: #c6cacc;
+    }
+</style>
