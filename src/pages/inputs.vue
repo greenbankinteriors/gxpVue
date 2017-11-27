@@ -167,12 +167,12 @@
             return {
                 options1: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6'],
                 options2: [
-                    {'value': 'Option 1', 'subtext': 'Sub texts'},
-                    {'value': 'Option 2', 'subtext': 'Sub texts'},
-                    {'value': 'Option 3', 'subtext': 'Sub texts'},
-                    {'value': 'Option 4', 'subtext': 'Sub texts'},
-                    {'value': 'Option 5', 'subtext': 'Sub texts'},
-                    {'value': 'Option 6', 'subtext': 'Sub texts'}
+                    {'value': 'Option 1', isSubtext: true, 'subtext': 'Sub texts'},
+                    {'value': 'Option 2', isSubtext: true, 'subtext': 'Sub texts'},
+                    {'value': 'Option 3', isSubtext: true, 'subtext': 'Sub texts'},
+                    {'value': 'Option 4', isSubtext: true, 'subtext': 'Sub texts'},
+                    {'value': 'Option 5', isSubtext: true, 'subtext': 'Sub texts'},
+                    {'value': 'Option 6', isSubtext: true, 'subtext': 'Sub texts'}
                 ],
                 options3: [
                     {'value': 'Option 1', 'subclass': 'logo bri'},
