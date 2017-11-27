@@ -2,7 +2,7 @@
     <li :class="elWrapClass?elWrapClass+' component':'component'">
         <div class="compWindow" ref="compWindow">
             <div ref="resize">
-                <i-frame :class="elClass?'example '+elClass:'example'" ref="example">
+                <i-frame class="example" ref="example" @load.native="setIframeHeight">
                     <slot></slot>
                 </i-frame>
                 <div class="drag" @mousedown.prevent="drag" @contextmenu.prevent=""></div>
@@ -29,13 +29,9 @@
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
     import compData from '../../mixins/compData'
-//    import iframe from '../../components/gxp/iframe'
 
     export default {
 
-//        components: {
-//            'i-frame': iframe
-//        },
         props: {
             elClass: '',
             elWrapClass: ''
@@ -44,7 +40,7 @@
             return {
                 test: 'form/button.vue',
                 componentTag: '',
-                type: '',
+                molecule: '',
                 style: '',
                 htmlCode: '',
                 styleCode: '',
@@ -57,6 +53,14 @@
             }
         },
         methods: {
+            setIframeHeight() {
+                console.log('Set iframe height')
+
+                var vueInst = this;
+                setTimeout(function(){
+                    vueInst.$refs.example.$el.style.height = vueInst.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px'
+                }, 800);
+            },
             getWindowWidth(event) {
                 this.windowWidth = document.documentElement.clientWidth;
                 if (this.windowWidth <= this.compSize) {
@@ -71,6 +75,7 @@
                 this.$refs.resizeCount.value = '';
             },
             resizeWindow(event) {
+                this.$refs.example.$el.style.height = this.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px'
                 var elVal = (event.currentTarget.value)*1;
                 this.compSize = elVal;
             },
@@ -150,8 +155,8 @@
             }
         },
         beforeMount(){
-            bus.$once('compInfo', (data) => {
-                this.styleCode = data.styleCode;
+            bus.$on('pageInfo', (data) => {
+                this.molecule = data.molecule;
             })
         },
         mounted() {
@@ -160,11 +165,20 @@
                 window.addEventListener('resize', this.getWindowWidth);
                 this.getWindowWidth();
 
-                this.$refs.example.$el.style.height = "100%";
+//                this.$refs.example.$el.style.height = this.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + "px";
+
+                Prism.highlightAll()
+
+                if (this.molecule) {
+                    this.$refs.example.$el.contentWindow.document.body.className = 'example ' + this.molecule;
+                }
             })
         },
         updated() {
-            Prism.highlightAll();
+            this.$refs.example.$el.style.height = this.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px'
+
+//            console.log(this.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px')
+//            Prism.highlightAll();
         },
         beforeDestroy() {
             window.removeEventListener('resize', this.getWindowWidth);
@@ -281,6 +295,7 @@
         background-color: #f8f5fa;
         border: solid 1px #dfe3e5;
     }
+/*
     .component .example > * {
         min-width: 320px;
         max-width: 320px;
@@ -288,6 +303,7 @@
     .component.form .example > * {
         max-width: none;
     }
+*/
     .syntax {
         display: flex;
         flex-direction: column;

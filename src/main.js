@@ -24,6 +24,7 @@ Vue.mixin(GlobalFuncs)
 export const bus = new Vue();
 
 require('./assets/msm/global/global.css');
+require('./assets/gxp/css/gxp.css');
 require('./assets/gxp/css/prism.css');
 require('./assets/gxp/js/prism.js');
 //require('./assets/msm/form/style.css');
@@ -61,13 +62,18 @@ Vue.component('i-frame', {
     methods: {
         renderChildren() {
             const children = this.$slots.default
+            const head = this.$el.contentDocument.head
             const body = this.$el.contentDocument.body
-            const el = document.createElement('DIV') // we will mount or nested app to this element
+            // mount or nest app to this element
+            const el = document.createElement('DIV')
+            // add required styles into iframe
             const globalStyle = document.createElement('STYLE')
+            const gxpStyle = document.createElement('STYLE')
             const compStyle = document.createElement('STYLE')
 
-            body.appendChild(globalStyle)
-            body.appendChild(compStyle)
+            head.appendChild(globalStyle)
+            head.appendChild(gxpStyle)
+            head.appendChild(compStyle)
             body.appendChild(el)
 
             const iApp = new Vue({

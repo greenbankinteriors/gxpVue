@@ -179,3 +179,18 @@ a {
     border-color: #00aeef;
     box-shadow: none;
 }
+
+/*Form styles*/
+.form {
+    margin: 0 auto;
+}
+@media(min-width: 420px) {
+    .form {
+        max-width: 380px;
+    }
+}
+@media(min-width: 620px) {
+    .form {
+        max-width: 820px;
+    }
+}

@@ -111,6 +111,7 @@
         box-shadow: inset 0 2px 0 0 #c6cacc;
         box-sizing: border-box;
         background-color: #ebf0f2;
+        overflow: hidden;
         position: relative;
         z-index: 0;
     }
@@ -119,7 +120,6 @@
         font-weight: 600;
         font-size: 14px;
         line-height: 1;
-        border-radius: 5px;
         box-shadow: inset 0 2px 0 0 #c6cacc;
         box-sizing: border-box;
         background-color: #ebf0f2;
@@ -147,6 +147,7 @@
     }
     .form-num-wrap input:hover,
     .form-num-wrap input:focus {
+        border-radius: 5px;
         box-shadow: inset 0 0 4px 2px #00AEEF;
     }
     .form-length-wrap {

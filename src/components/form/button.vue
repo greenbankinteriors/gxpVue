@@ -63,7 +63,7 @@
     }
     .btn__primary,
     .btn__secondary {
-        display: inline-block;
+        display: block;
         width: 100%;
         text-decoration: none;
         font-weight: 700;
@@ -76,7 +76,6 @@
     .btn__secondary {
         color: #00aeef;
         background-color: transparent;
-        width: auto;
         border-color: #00aeef;
         box-shadow: none;
     }
@@ -87,9 +86,9 @@
         border-color: #00aeef;
         box-shadow: none;
     }
-    .btn__right--arrow:before,
-    .btn__secondary.btn__right--arrow:hover:before,
-    .btn__secondary.btn__right--arrow:focus:before {
+    .right__arrow:before,
+    .btn__secondary.right__arrow:hover:before,
+    .btn__secondary.right__arrow:focus:before {
         content: '';
         background: transparent url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 100 100"><polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" points="41.5,67 58.5,50 41.5,33"/></svg>') center center no-repeat;
         background-size: contain;
@@ -99,7 +98,7 @@
         right: 10px;
         top: 6px;
     }
-    .btn__secondary.btn__right--arrow:before {
+    .btn__secondary.right__arrow:before {
         background: transparent url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 100 100"><polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke="#00aeef" points="41.5,67 58.5,50 41.5,33"/></svg>') center center no-repeat;
     }
 </style>

@@ -3,12 +3,19 @@ import { globalCount } from '../main.js'
 
 export default {
     methods: {
-        getGlobal() {
+        getExtraStyles() {
+            var styles = []
+
             for (let style of document.head.getElementsByTagName('style')) {
                 if (style.innerText.indexOf('GLOBAL STYLES') !== -1) {
-                    return style.innerText;
+                    styles.push({'inner': style.innerText, 'inc': 0});
+                }
+                if (style.innerText.indexOf('GXP STYLES') !== -1) {
+                    styles.push({'inner': style.innerText, 'inc': 1});
                 }
             }
+
+            return styles;
         },
         getStyle(comp) {
             if (comp.childNodes[0]) {
@@ -125,10 +132,15 @@ export default {
     mounted() {
 
         var iframeDoc = this.$refs.example.$el.contentDocument,
-            stylesheets = iframeDoc.querySelectorAll('body > style'),
+            stylesheets = iframeDoc.querySelectorAll('head > style'),
             container = iframeDoc.querySelector('body > div');
 
-        stylesheets[0].innerHTML = this.getGlobal();
+        var extraStyles = this.getExtraStyles();
+        for(var i=0; i < extraStyles.length; i++) {
+            var sheet = extraStyles[i];
+
+            stylesheets[sheet.inc].innerHTML = sheet.inner;
+        }
 
         var htmlCode = container.innerHTML;
         htmlCode = this.cleanCode(htmlCode);
@@ -137,7 +149,7 @@ export default {
 
         var styleCode = this.getStyle(container);
 
-        stylesheets[1].innerHTML = styleCode;
+        stylesheets[2].innerHTML = styleCode;
 
         styleCode = this.cleanCode(styleCode);
         styleCode = this.formatCSS(styleCode);

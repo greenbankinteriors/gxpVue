@@ -1,0 +1,23 @@
+/*GXP STYLES*/
+/*Above comment is used to identify gxp stylesheet
+for example rendering - PLEASE DO NOT DELETE*/
+
+.example > div {
+    padding: 10px 0;
+}
+
+.example.atom > div,
+.example.molecule > div {
+/*
+    align-items: center;
+    height: 100%;
+    min-width: 320px;
+*/
+}
+
+.example.atom > div > *,
+.example.molecule > div > * {
+    margin: 0 auto;
+/*    width: 100%;*/
+/*    max-width: 380px;*/
+}

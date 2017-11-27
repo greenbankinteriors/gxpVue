@@ -4,13 +4,13 @@
             <msm-button btnClass="btn btn__primary" btnText="Submit"></msm-button>
         </gxp-component>
         <gxp-component>
-            <msm-button btnClass="btn btn__primary btn__right--arrow" btnText="Submit"></msm-button>
+            <msm-button btnClass="btn btn__primary right__arrow" btnText="Submit"></msm-button>
         </gxp-component>
         <gxp-component>
             <msm-button btnClass="btn btn__secondary" />
         </gxp-component>
         <gxp-component>
-            <msm-button btnClass="btn btn__secondary btn__right--arrow" btnText="Submit"></msm-button>
+            <msm-button btnClass="btn btn__secondary right__arrow" btnText="Submit"></msm-button>
         </gxp-component>
     </gxp-page>
 </template>

@@ -99,7 +99,7 @@
             })
         },
         updated() {
-            this.setVariant()
+            this.setVariant();
         }
 
     }
