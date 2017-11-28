@@ -8,7 +8,6 @@ import Routes from './routes'
 import GlobalFuncs from './mixins/global'
 import gxpPageTemplate from './templates/gxp/Page'
 import gxpCompTemplate from './templates/gxp/Component'
-import questionTemplate from './templates/msm/Form-question'
 
 Vue.use(vueResource)
 Vue.use(VueRouter)
@@ -97,7 +96,6 @@ Vue.component('i-frame', {
 
 Vue.component('gxp-page', gxpPageTemplate);
 Vue.component('gxp-component', gxpCompTemplate);
-Vue.component('msm-question', questionTemplate);
 
 //Global variables
 export const globalCount = new Vue({

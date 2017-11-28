@@ -20,9 +20,9 @@
 
 <script>
 
-    import { bus } from '../main.js'
-    import { globalCount } from '../main.js'
-    import msmRadio from '../components/msm/atoms/form/input/radio'
+    import { bus } from '../../main.js'
+    import { globalCount } from '../../main.js'
+    import msmRadio from '../../components/msm/atoms/form/input/radio'
 
     export default {
 

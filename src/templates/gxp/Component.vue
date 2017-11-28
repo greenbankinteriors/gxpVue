@@ -2,7 +2,7 @@
     <li :class="elWrapClass?elWrapClass+' component':'component'">
         <div class="compWindow" ref="compWindow">
             <div ref="resize">
-                <i-frame class="example" ref="example" @load.native="setIframeHeight">
+                <i-frame class="example" ref="example">
                     <slot></slot>
                 </i-frame>
                 <div class="drag" @mousedown.prevent="drag" @contextmenu.prevent=""></div>
@@ -54,12 +54,10 @@
         },
         methods: {
             setIframeHeight() {
-                console.log('Set iframe height')
-
                 var vueInst = this;
                 setTimeout(function(){
                     vueInst.$refs.example.$el.style.height = vueInst.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px'
-                }, 800);
+                }, 1500);
             },
             getWindowWidth(event) {
                 this.windowWidth = document.documentElement.clientWidth;
@@ -93,6 +91,7 @@
                     }
 
                     this.$refs.resize.style.width = this.compSize + 'px';
+                    this.$refs.example.$el.style.height = this.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px'
                 }
             },
             checkMargins() {

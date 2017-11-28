@@ -155,5 +155,10 @@ export default {
         styleCode = this.formatCSS(styleCode);
         this.styleCode = styleCode
 
+//        console.log('IFRAME LOADED')
+//        alert('LOADED')
+    },
+    updated() {
+        this.setIframeHeight();
     }
 }

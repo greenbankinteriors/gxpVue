@@ -9,7 +9,7 @@
 
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
-    import msmStepIndicator from '../../components/form/step-indicator.vue'
+    import msmStepIndicator from '../../components/step-indicator.vue'
 
     export default {
 
