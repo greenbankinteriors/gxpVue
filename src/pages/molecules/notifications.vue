@@ -19,7 +19,7 @@
 
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
-    import msmNotification from '../../components/msm/atoms/form/notification.vue'
+    import msmNotification from '../../components/msm/molecules/form/notification.vue'
 
     export default {
         components: {

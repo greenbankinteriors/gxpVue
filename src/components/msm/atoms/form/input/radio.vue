@@ -117,28 +117,10 @@
         box-shadow: 0 2px 0 0 #c6cacc;
     }
     .form-inline-radios {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    .form-grid-radios {
-        flex-wrap: wrap;
-        align-items: stretch;
-    }
-    .form-inline-radios > li {
-        width: 50%;
-        box-sizing: border-box;
-    }
-
-    .form-inline-radios > li:nth-child(odd) {
-        padding: 0 3px 7px 0;
-    }
-    .form-inline-radios > li:nth-child(even) {
-        padding: 0 0 7px 3px;
-    }
-    .form-inline-radios > li:last-child,
-    .form-inline-radios > li:nth-last-child(2):nth-child(odd) {
-        padding-bottom: 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 5px;
+        grid-row-gap: 10px;
     }
     input[type=radio] + label {
         padding: 15px 10px 15px 50px;

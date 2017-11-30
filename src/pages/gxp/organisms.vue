@@ -1,9 +1,9 @@
 <template>
     <gxp-page pageClass="directory">
-        <li v-for="(component, index) in components" :class="'component ' + component.type">
+        <li class="organisms">
             <ul class="pages">
-                <li v-for="(page, index) in component.pages">
-                    <router-link :to="'components/' + component.type + '/' + page.url" exact>
+                <li v-for="(page, index) in components[activeVar].pages">
+                    <router-link :to="'organisms/' + page.url" exact>
                         <div>IMAGE HERE</div>
                         <p>{{ page.name }}</p>
                         <caption>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</caption>
@@ -16,8 +16,8 @@
 
 <script>
 
-    import { bus } from './main.js'
-    import componentData from './structure'
+    import { bus } from '../../main.js'
+    import componentData from '../../structure'
 
     export default {
 
@@ -26,7 +26,7 @@
                 components: componentData,
                 name: 'Components',
                 molecule: 'ATOMIC',
-                activeVar: 0,
+                activeVar: 2,
                 variants: ['Atoms', 'Molecules', 'Organisms']
             }
         },

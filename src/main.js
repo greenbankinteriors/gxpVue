@@ -66,13 +66,14 @@ Vue.component('i-frame', {
             // mount or nest app to this element
             const el = document.createElement('DIV')
             // add required styles into iframe
-            const globalStyle = document.createElement('STYLE')
-            const gxpStyle = document.createElement('STYLE')
-            const compStyle = document.createElement('STYLE')
 
-            head.appendChild(globalStyle)
-            head.appendChild(gxpStyle)
-            head.appendChild(compStyle)
+//            const globalStyle = document.createElement('STYLE')
+//            const gxpStyle = document.createElement('STYLE')
+//            const compStyle = document.createElement('STYLE')
+
+//            head.appendChild(globalStyle)
+//            head.appendChild(gxpStyle)
+//            head.appendChild(compStyle)
             body.appendChild(el)
 
             const iApp = new Vue({

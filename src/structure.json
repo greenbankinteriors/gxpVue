@@ -64,15 +64,6 @@
                     "global",
                     "dropdown"
                 ]
-            },
-            {
-                "name": "Notifications",
-                "url": "notifications",
-                "tags": [
-                    "form",
-                    "global",
-                    "notification"
-                ]
             }
         ]
     },
@@ -86,6 +77,31 @@
                     "form",
                     "global"
                 ]
+            },
+            {
+                "name": "Help",
+                "url": "help",
+                "tags": [
+                    "form",
+                    "global"
+                ]
+            },
+            {
+                "name": "Answer",
+                "url": "answer",
+                "tags": [
+                    "form",
+                    "global"
+                ]
+            },
+            {
+                "name": "Notifications",
+                "url": "notifications",
+                "tags": [
+                    "form",
+                    "global",
+                    "notification"
+                ]
             }
         ]
     },
@@ -95,6 +111,14 @@
             {
                 "name": "Form field",
                 "url": "form-field",
+                "tags": [
+                    "form",
+                    "global"
+                ]
+            },
+            {
+                "name": "Progress indicator",
+                "url": "progress-indicator",
                 "tags": [
                     "form",
                     "global"

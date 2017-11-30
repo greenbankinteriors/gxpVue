@@ -1,5 +1,5 @@
 <template>
-    <p>{{ elText }}</p>
+    <p class="hint">{{ elText }}</p>
 </template>
 
 <script>
@@ -28,7 +28,7 @@
 </script>
 
 <style scoped>
-    p {
+    p.hint {
         font-size: 14px;
         font-weight: 400;
         color: #566266;

@@ -8,9 +8,21 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     <h3 v-if="rootPage">Select an element</h3>
                     <h3 v-else>Select a variant to view</h3>
-                    <ul class="variants">
-                        <li v-for="(variant, index) in variants" @click="toggleVar">{{ variant }}</li>
-<!--                        <li @click="test">Multi-line</li>-->
+                    <ul v-if="rootPage"  class="variants">
+                        <li>
+                            <router-link v-if="rootPage" to="/components/atoms" exact>Atoms</router-link>
+                        </li>
+                        <li>
+                            <router-link v-if="rootPage" to="/components/molecules" exact>Molecules</router-link>
+                        </li>
+                        <li>
+                            <router-link v-if="rootPage" to="/components/organisms" exact>Organisms</router-link>
+                        </li>
+                    </ul>
+                    <ul v-else class="variants">
+                        <li v-for="(variant, index) in variants" @click="toggleVar">
+                            <p>{{ variant }}</p>
+                        </li>
                     </ul>
                 </div>
                 <aside class="pageDetails" v-show="!rootPage">
@@ -49,6 +61,7 @@
             return {
                 pageName: 'Global Experience Principals',
                 molecule: 'components',
+                pageType: '',
                 rootPage: false,
                 variants: '',
                 activeVar: '',
@@ -59,16 +72,18 @@
         },
         methods: {
             toggleVar(event) {
-                var parent = event.currentTarget.parentElement,
-                    variants = parent.children;
+                if (!this.rootPage) {
+                    var parent = event.currentTarget.parentElement,
+                        variants = parent.children;
 
-                for(var i=0; i<variants.length; i++) {
-                    var variant = variants[i];
-                    if (variant === event.currentTarget) {
-                        this.activeVar = i;
+                    for(var i=0; i<variants.length; i++) {
+                        var variant = variants[i];
+                        if (variant === event.currentTarget) {
+                            this.activeVar = i;
+                        }
                     }
+                    this.setVariant()
                 }
-                this.setVariant()
             },
             setVariant() {
                 var variants = document.querySelectorAll('.variants li');
@@ -78,7 +93,9 @@
 
                     if (i==this.activeVar) {
                         variant.classList.add('active');
-                        components.style.transform = 'translate3d(-' + i + '00%, 0, 0)';
+                        if (!this.rootPage) {
+                            components.style.transform = 'translate3d(-' + i + '00%, 0, 0)';
+                        }
                     }
                     else {
                         variant.classList.remove('active');
@@ -194,6 +211,9 @@
     .variants li.active:before {
         width: 100%;
     }
+    .variants li a {
+        color: #fff;
+    }
     .variants li:first-of-type {
         padding-left: 0;
     }
@@ -227,7 +247,7 @@
         border-radius: 40px;
     }
     article {
-        max-width: 1180px;
+        max-width: 1184px;
         margin: 0 auto;
         padding: 60px 0;
         overflow: hidden;
@@ -241,6 +261,7 @@
         flex-grow: 1;
         position: relative;
         transition: all 0.3s ease-in-out;
+        max-width: 1184px;
     }
     .component {
         display: block;

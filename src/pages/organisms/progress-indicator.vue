@@ -1,12 +1,7 @@
 <template>
     <gxp-page>
         <gxp-component elWrapClass="active">
-            <msm-form-field>
-                <msm-question></msm-question>
-                <msm-answer>
-                    <msm-radio :options="options" />
-                </msm-answer>
-            </msm-form-field>
+            <msm-progress-indicator></msm-progress-indicator>
         </gxp-component>
     </gxp-page>
 </template>
@@ -15,22 +10,16 @@
 
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
-    import msmFormField from '../../components/msm/organisms/form/form-field'
-    import msmQuestion from '../../components/msm/molecules/form/question'
-    import msmAnswer from '../../components/msm/molecules/form/answer'
-    import msmRadio from '../../components/msm/atoms/form/input/radio'
+    import msmProgIndicator from '../../components/msm/organisms/form/progress-indicator'
 
     export default {
 
         components: {
-            'msm-form-field': msmFormField,
-            'msm-question': msmQuestion,
-            'msm-answer': msmAnswer,
-            'msm-radio': msmRadio
+            'msm-progress-indicator': msmProgIndicator
         },
         data() {
             return {
-                name: 'Form field',
+                name: 'Progress indicator',
                 molecule: 'organism',
                 activeVar: 0,
                 variants: ['Default'],

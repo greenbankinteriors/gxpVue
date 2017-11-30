@@ -17,19 +17,32 @@ export default {
 
             return styles;
         },
-        getStyle(comp) {
+        getStyles(comp) {
+            var stylesArr = [],
+                nameArr = [];
             if (comp.childNodes[0]) {
-                var e = comp.childNodes[0];
-                for (let key in e.attributes) {
-                    let name = e.attributes[key].name
-                    if (name && name.indexOf('data-v') !== -1) {
-                        for (let style of document.head.getElementsByTagName('style')) {
-                            if (style.innerText.indexOf(name) !== -1) {
-                                return style.innerText;
+                var nodes = comp.querySelectorAll('*');
+                for (var i=0; i < nodes.length; i++) {
+                    var n = nodes[i];
+                    for (let key in n.attributes) {
+                        let name = n.attributes[key].name
+                        if (name && name.indexOf('data-v') !== -1) {
+
+                            if (nameArr.indexOf(name) === -1) {
+                                nameArr.push(name);
+
+                                for (let style of document.head.getElementsByTagName('style')) {
+                                    if (style.innerText.indexOf(name) !== -1) {
+//                                        console.log(name);
+                                        stylesArr.push(style.innerText);
+                                    }
+                                }
                             }
+
                         }
                     }
                 }
+                return stylesArr;
             }
         },
         cleanCode(string) {
@@ -132,14 +145,15 @@ export default {
     mounted() {
 
         var iframeDoc = this.$refs.example.$el.contentDocument,
-            stylesheets = iframeDoc.querySelectorAll('head > style'),
+            iframeHead = iframeDoc.querySelector('head'),
             container = iframeDoc.querySelector('body > div');
 
         var extraStyles = this.getExtraStyles();
         for(var i=0; i < extraStyles.length; i++) {
             var sheet = extraStyles[i];
-
-            stylesheets[sheet.inc].innerHTML = sheet.inner;
+            var newSheet = document.createElement('STYLE');
+            iframeHead.appendChild(newSheet);
+            newSheet.innerHTML = sheet.inner;
         }
 
         var htmlCode = container.innerHTML;
@@ -147,16 +161,28 @@ export default {
         htmlCode = this.formatHTML(htmlCode);
         this.htmlCode = htmlCode;
 
-        var styleCode = this.getStyle(container);
+        var compStyles = this.getStyles(container);
 
-        stylesheets[2].innerHTML = styleCode;
+        for (var i=0; i < compStyles.length; i++) {
+            var styleText = compStyles[i];
+            var newSheet = document.createElement('STYLE');
 
-        styleCode = this.cleanCode(styleCode);
-        styleCode = this.formatCSS(styleCode);
-        this.styleCode = styleCode
+            if (i==0) {
+                // Syntax style
+                newSheet.innerHTML = styleText;
 
-//        console.log('IFRAME LOADED')
-//        alert('LOADED')
+                styleText = this.cleanCode(styleText);
+                styleText = this.formatCSS(styleText);
+                this.styleCode = styleText
+            }
+            else {
+                newSheet.innerHTML = styleText;
+            }
+
+            iframeHead.appendChild(newSheet);
+
+        }
+
     },
     updated() {
         this.setIframeHeight();

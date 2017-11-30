@@ -57,15 +57,15 @@
                 var vueInst = this;
                 setTimeout(function(){
                     vueInst.$refs.example.$el.style.height = vueInst.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px'
-                }, 1500);
+                }, 1000);
             },
             getWindowWidth(event) {
                 this.windowWidth = document.documentElement.clientWidth;
                 if (this.windowWidth <= this.compSize) {
                     this.compSize = this.windowWidth;
                 }
-                if (this.$refs.resize.offsetWidth >= this.compSize) {
-                    this.compSize = this.$refs.resize.offsetWidth;
+                if (this.$refs.resize.offsetWidth >= this.windowWidth) {
+                    this.compSize = (this.$refs.resize.offsetWidth - 4);
                 }
             },
             setSize() {
@@ -84,23 +84,26 @@
                     this.$refs.resizeCount.value = this.compSize;
                 }
                 else {
+                    this.$refs.resize.style.width = this.compSize + 'px';
+                    this.$refs.example.$el.style.height = this.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px'
+
                     this.checkMargins();
 
                     if (this.compSize > this.windowWidth) {
-                        this.compSize = this.windowWidth
+                        this.compSize = (this.windowWidth - 4)
                     }
-
-                    this.$refs.resize.style.width = this.compSize + 'px';
-                    this.$refs.example.$el.style.height = this.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px'
+                    else if (elVal >= this.maxWidth) {
+                        this.compSize = this.maxWidth;
+                    }
                 }
             },
             checkMargins() {
-                if (this.$refs.resize.offsetWidth < this.minWidth || this.$refs.resize.offsetWidth == (this.minWidth + 1) || this.compSize < this.minWidth) {
+                if (this.$refs.resize.offsetWidth <= (this.minWidth + 1) || this.compSize < this.minWidth) {
                     this.$refs.resize.style.width = this.minWidth + 'px';
                     this.compSize = this.minWidth;
                 }
 
-                if (this.$refs.resize.offsetWidth > this.maxWidth || this.$refs.resize.offsetWidth == (this.maxWidth - 1)  || this.compSize > this.maxWidth) {
+                if (this.$refs.resize.offsetWidth >= (this.maxWidth - 1) || this.compSize > this.maxWidth) {
                     this.$refs.resize.style.width = this.maxWidth + 'px';
                     this.compSize = this.maxWidth;
                 }
@@ -112,7 +115,7 @@
                     resizeWindow = this.$refs.resize,
                     compWidth = this.$refs.compWindow.offsetWidth;
 
-                vueInst.maxWidth = vueInst.windowWidth >= 1180 ? 1180 : compWidth;
+                var dragMax = vueInst.windowWidth >= (this.maxWidth + 4) ? (this.maxWidth + 4) : compWidth;
 
                 var compIframe = this.$refs.example.$el;
                 compIframe.style.pointerEvents = "none";
@@ -129,7 +132,7 @@
                         move = (startX - newX)*2,
                         newWidth = (vueInst.currWidth - move);
 
-                    if (newWidth >= vueInst.minWidth && newWidth <= vueInst.maxWidth) {
+                    if (newWidth >= vueInst.minWidth && newWidth <= (dragMax - 4)) {
                         vueInst.compSize = newWidth;
                         resizeWindow.style.width = vueInst.compSize + 'px';
                     }
@@ -160,24 +163,19 @@
         },
         mounted() {
             this.$nextTick(function() {
-                this.compSize = this.$refs.compWindow.offsetWidth
+                this.compSize = (this.$refs.resize.offsetWidth - 4);
                 window.addEventListener('resize', this.getWindowWidth);
                 this.getWindowWidth();
-
-//                this.$refs.example.$el.style.height = this.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + "px";
 
                 Prism.highlightAll()
 
                 if (this.molecule) {
-                    this.$refs.example.$el.contentWindow.document.body.className = 'example ' + this.molecule;
+                    this.$refs.example.$el.contentWindow.document.body.className = 'content ' + this.molecule;
                 }
             })
         },
         updated() {
             this.$refs.example.$el.style.height = this.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px'
-
-//            console.log(this.$refs.example.$el.contentWindow.document.body.childNodes[0].offsetHeight + 'px')
-//            Prism.highlightAll();
         },
         beforeDestroy() {
             window.removeEventListener('resize', this.getWindowWidth);
@@ -211,10 +209,12 @@
         height: 100%;
         min-width: 320px;
         margin: 0 auto;
+        border: solid 2px #eee;
     }
     .component .example {
-        width: calc(100% - 5px);
-        border: solid 2px #eee;
+        min-height: 150px;
+        width: 100%;
+        border: none;
         justify-content: center;
         align-items: center;
     }
@@ -222,10 +222,10 @@
         display: block;
         border-right: solid 2px #99DFF9;
         position: absolute;
-        top: 2px;
-        right: 1px;
-        width: 20px;
-        height: calc(100% - 10px);
+        top: 0;
+        right: -2px;
+        width: 2px;
+        height: 100%;
         cursor: col-resize;
         z-index: 1;
         transition: all 0.2s ease-in;
@@ -241,7 +241,7 @@
         display: block;
         position: absolute;
         top: calc(50% - 8px);
-        left: calc(50% - 1px);
+        right: 10px;
         background-color: #99DFF9;
         opacity: 1;
         height: 10px;
@@ -260,19 +260,19 @@
     .component .drag:hover:after,
     .component .drag.resizing:after {
         top: calc(50% - 10px);
-        left: calc(50% - 3px);
+        right: 7px;
         background-color: #00aeef;
         transform: rotate(0);
         height: 20px;
     }
     .component .drag:hover:after,
     .component .drag.resizing:after {
-        left: calc(50% + 1px);
+        right: 12px;
         transform: rotate(360deg);
     }
     .component .resizer {
         position: absolute;
-        top: -32px;
+        top: -35px;
         right: 40px;
     }
     .component .resizer:before {
