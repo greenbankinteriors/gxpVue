@@ -145,6 +145,17 @@
         justify-content: center;
         background-color: #411e56;
     }
+    header:after {
+        content: '';
+        width: 120px;
+        height: 58px;
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="116" height="58" viewBox="0 0 116 58"><g fill="none" fill-rule="evenodd"><text fill="#BBA9C7" font-family="OpenSans-Light, Open Sans" font-size="14" font-weight="300" letter-spacing="1.5"><tspan x="26" y="20">GLOBAL</tspan> <tspan x="26" y="36">EXPERIENCE</tspan> <tspan x="26" y="52">PRINCIPLES</tspan></text><path fill="#BBA9C7" fill-opacity=".5" d="M0 0h20v58H0z"/><text fill="#411E56" font-family="OpenSans-Bold, Open Sans" font-size="14" font-weight="bold" letter-spacing="1.5"><tspan x="5" y="20">G</tspan> <tspan x="5" y="36">X</tspan> <tspan x="5" y="52">P</tspan></text></g></svg>') center center no-repeat;
+        background-size: 100px;
+    }
     header > div {
         display: flex;
         justify-content: space-between;
@@ -156,7 +167,7 @@
     @media (min-width: 1200px) {
         header > div {
             max-width: 1180px;
-            padding: 80px 0 0;
+            padding: 100px 0 0;
         }
     }
     header > div > div {

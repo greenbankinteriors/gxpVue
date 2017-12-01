@@ -135,6 +135,7 @@ pre.line-numbers {
 pre.line-numbers>code {
     position: relative;
     white-space: inherit;
+    top: 15px;
 }
 
 .line-numbers .line-numbers-rows {

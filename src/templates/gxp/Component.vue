@@ -14,10 +14,12 @@
         <div class="syntax">
             <div>
                 <p>HTML</p>
+                <button type="button" @click="copyCode('html')"></button>
                 <pre class="line-numbers"><code class="language-html">{{ htmlCode }}</code></pre>
             </div>
             <div>
                 <p>CSS</p>
+                <button type="button" @click="copyCode('css')"></button>
                 <pre class="line-numbers"><code class="language-css">{{ styleCode }}</code></pre>
             </div>
         </div>
@@ -44,6 +46,7 @@
                 style: '',
                 htmlCode: '',
                 styleCode: '',
+                copyType: '',
                 windowWidth: 0,
                 minWidth: 320,
                 maxWidth: 1180,
@@ -53,6 +56,24 @@
             }
         },
         methods: {
+            copyCode(type) {
+                this.copyType = type;
+                document.execCommand("copy");
+                alert('Copied to clipboard')
+            },
+            addCodeToClipboard(event) {
+                event.preventDefault();
+                if (event.clipboardData) {
+                    switch(this.copyType) {
+                        case 'html':
+                            event.clipboardData.setData("text/plain", this.htmlCode);
+                            break;
+                        case 'css':
+                            event.clipboardData.setData("text/plain", this.styleCode);
+                            break;
+                    }
+                }
+            },
             setIframeHeight() {
                 var vueInst = this;
                 setTimeout(function(){
@@ -165,6 +186,8 @@
             this.$nextTick(function() {
                 this.compSize = (this.$refs.resize.offsetWidth - 4);
                 window.addEventListener('resize', this.getWindowWidth);
+                window.addEventListener('copy', this.addCodeToClipboard);
+
                 this.getWindowWidth();
 
                 Prism.highlightAll()
@@ -179,6 +202,7 @@
         },
         beforeDestroy() {
             window.removeEventListener('resize', this.getWindowWidth);
+            window.removeEventListener('copy', this.addCodeToClipboard);
         },
         filters: {
             typeQuote: function(value){
@@ -272,8 +296,8 @@
     }
     .component .resizer {
         position: absolute;
-        top: -35px;
-        right: 40px;
+        top: -45px;
+        right: 30px;
     }
     .component .resizer:before {
         content: 'px';
@@ -282,6 +306,17 @@
         right: 7px;
         font: normal 14px 'Open Sans';
         color: #566266;
+    }
+    .component .resizer:after {
+        content: '';
+        width: 21px;
+        height: 21px;
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: -30px;
+        background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><g fill="#411E56"><path d="M2.38 13.522a.311.311 0 0 1-.309-.313V2.358c0-.172.139-.313.31-.313h16.364c.17 0 .309.14.309.313v2.335c.692.02 1.464.28 1.946.787V1.736C21 .78 20.23 0 19.284 0H1.716C.77 0 0 .779 0 1.736v12.065c0 .957.77 1.736 1.716 1.736h5.888v2.328h-.928c-.583 0-1.055.478-1.055 1.067 0 .59.472 1.068 1.055 1.068h2.962a3.225 3.225 0 0 1-.594-1.86v-4.618H2.38z"/><path d="M14.977 18.985v-1.538H11.9V7.622c0-.207.166-.375.37-.375h6.96c.204 0 .37.168.37.375v3.04h.524c.32 0 .618.095.876.249V7.622c0-.992-.794-1.8-1.77-1.8h-6.96c-.976 0-1.77.808-1.77 1.8V18.2c0 .993.794 1.8 1.77 1.8h3.023a1.905 1.905 0 0 1-.316-1.015z"/><path d="M20.106 11.65h-3.462a.895.895 0 0 0-.894.895v6.565c0 .493.4.894.894.894h3.462A.895.895 0 0 0 21 19.11v-6.565c0-.493-.4-.895-.894-.895zm-3.285.814h3.108v5.675h-3.108v-5.675zm1.552 6.991a.37.37 0 0 1-.251-.1.376.376 0 0 1 .252-.654.376.376 0 0 1 .25.653.37.37 0 0 1-.25.101z"/></g></svg>') center center no-repeat;
+        background-size: 21px;
     }
     .component .resizer input {
         display: block;
@@ -294,25 +329,36 @@
         background-color: #f8f5fa;
         border: solid 1px #dfe3e5;
     }
-/*
-    .component .example > * {
-        min-width: 320px;
-        max-width: 320px;
-    }
-    .component.form .example > * {
-        max-width: none;
-    }
-*/
     .syntax {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         margin: 60px 20px 0;
     }
+    .syntax > div {
+        position: relative;
+    }
     .syntax p {
         margin-bottom: 10px;
         font: 700 18px 'Open Sans';
         color: #411e56;
+    }
+    .syntax button {
+        position: absolute;
+        top: 39px;
+        right: 5px;
+        border: none;
+        background: #272823 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="0 0 17 20"><path fill="#fff" d="M12.522 0H1.796C.813 0 .01.818.01 1.818v12.727h1.787V1.818h10.726V0zm2.682 3.636H5.372c-.984 0-1.788.819-1.788 1.819v12.727c0 1 .804 1.818 1.788 1.818h9.832c.983 0 1.787-.818 1.787-1.818V5.455c0-1-.804-1.819-1.787-1.819zm0 14.546H5.372V5.455h9.832v12.727z"/></svg>') center center no-repeat;
+        background-size: 17px;
+        width: 17px;
+        height: 24px;
+        transition: all 0.1s ease-in;
+        cursor: pointer;
+        z-index: 1;
+    }
+    .syntax button:hover {
+        background-color: #555454;
+        box-shadow: 0 0 5px 4px #555454;
     }
     .syntax pre {
         box-sizing: border-box;
