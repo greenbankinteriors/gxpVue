@@ -1,6 +1,6 @@
 <template>
     <gxp-page>
-        <gxp-component egClass="form">
+        <gxp-component>
             <msm-progress-indicator :steps="steps"></msm-progress-indicator>
         </gxp-component>
     </gxp-page>

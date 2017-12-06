@@ -18,15 +18,10 @@
         props: {
             id: '',
             elClass: '',
-            title: '',
-            question: {
-                default: 'Your question goes here. It can run over multiple lines?'
-            },
             steps: {
                 type: Array,
                 required: true
-            },
-            dependant: ''
+            }
         },
         components: {
             'msm-progress-step': msmProgSteps
@@ -53,6 +48,7 @@
         justify-content: center;
         counter-reset: li;
         margin: 20px;
+        max-width: 780px;
     }
     @media all and ( min-width: 678px){
         .step-indicator {

@@ -99,4 +99,10 @@
     .btn__secondary.right__arrow:before {
         background: transparent url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 100 100"><polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke="#00aeef" points="41.5,67 58.5,50 41.5,33"/></svg>') center center no-repeat;
     }
+    .btn__inline {
+        display: inline-block;
+        height: auto;
+        width: auto;
+        padding: 11px 40px;
+    }
 </style>

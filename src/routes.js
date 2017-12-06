@@ -21,6 +21,7 @@ import autosuggest from './pages/molecules/autosuggest';
 
 import formField from './pages/organisms/form-field';
 import progressIndicator from './pages/organisms/progress-indicator';
+import contentTab from './pages/organisms/content-tab';
 
 export default [
     { path: '/', component: Home },
@@ -45,5 +46,6 @@ export default [
     { path: '/components/molecules/autosuggest', component: autosuggest },
 
     { path: '/components/organisms/form-field', component: formField },
-    { path: '/components/organisms/progress-indicator', component: progressIndicator }
+    { path: '/components/organisms/progress-indicator', component: progressIndicator },
+    { path: '/components/organisms/content-tab', component: contentTab }
 ]

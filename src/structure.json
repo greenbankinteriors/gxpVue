@@ -147,6 +147,14 @@
                     "form",
                     "global"
                 ]
+            },
+            {
+                "name": "Content tab",
+                "url": "content-tab",
+                "tags": [
+                    "form",
+                    "global"
+                ]
             }
         ]
     }

@@ -3,9 +3,14 @@
 for example rendering - PLEASE DO NOT DELETE*/
 
 .content {
+    background-color: #F2F8FA;
     height: auto;
 }
 .content > div {
+    background-color: #fff;
+}
+.content.atom > div,
+.content.molecule > div {
     display: flex;
     justify-content: center;
     overflow: auto;

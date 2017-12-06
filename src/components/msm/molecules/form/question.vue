@@ -2,8 +2,8 @@
     <div class="question-wrap">
         <p class="label" v-if="elType=='radio'||elType=='checkbox'">{{ question }}</p>
         <label :for="elType+'-'+gCount" v-else>{{ question }}</label>
-        <msm-subtext />
-        <msm-help></msm-help>
+        <msm-subtext v-if="subtext" :elText="subtext" />
+        <msm-help v-if="help" :elText="help" />
         <span class="form-error-wrap">
             <p>This is an error message due to an unanswered question, please fix it and continue</p>
         </span>
@@ -27,6 +27,8 @@
             question: {
                 default: 'Your question goes here. It can run over multiple lines?'
             },
+            subtext: '',
+            help: '',
             dependant: ''
         },
         components: {

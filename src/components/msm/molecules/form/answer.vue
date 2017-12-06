@@ -42,6 +42,12 @@
 </script>
 
 <style scoped>
+    .answer-wrap > * {
+        margin-bottom: 20px;
+    }
+    .answer-wrap > :nth-last-child(2) {
+        margin-bottom: 0;
+    }
     .form-input-error {
         color: #ed1c24;
         font-size: 14px;
