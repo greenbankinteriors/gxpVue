@@ -64,6 +64,14 @@
                     "global",
                     "dropdown"
                 ]
+            },
+            {
+                "name": "Scrollable selectors",
+                "url": "scrollable-selectors",
+                "tags": [
+                    "form",
+                    "global"
+                ]
             }
         ]
     },
@@ -101,6 +109,22 @@
                     "form",
                     "global",
                     "notification"
+                ]
+            },
+            {
+                "name": "Progress steps",
+                "url": "progress-steps",
+                "tags": [
+                    "form",
+                    "global"
+                ]
+            },
+            {
+                "name": "Autosuggest",
+                "url": "autosuggest",
+                "tags": [
+                    "form",
+                    "global"
                 ]
             }
         ]

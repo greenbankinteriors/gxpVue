@@ -134,7 +134,7 @@
     header,
     footer {
         font-weight: 600;
-        background-color: #444;
+        background-color: #2b3133;
         color: #eee;
         padding: 20px;
         text-align: center;

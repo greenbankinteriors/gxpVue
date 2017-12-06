@@ -1,7 +1,11 @@
 <template>
     <gxp-page>
-        <gxp-component elWrapClass="active">
+        <gxp-component egClass="center-element vertical-align">
             <msm-select :options="options1" />
+        </gxp-component>
+        <gxp-component egClass="center-element vertical-align">
+            <msm-select :options="options1"
+                        disabled=true />
         </gxp-component>
     </gxp-page>
 </template>
@@ -22,7 +26,7 @@
                 name: 'Dropdown',
                 molecule: 'atom',
                 activeVar: 0,
-                variants: ['Default'],
+                variants: ['Default', 'Disabled'],
                 options1: [
                     {'text': 'Option 1', 'value': 'opt1'},
                     {'text': 'Option 2', 'value': 'opt2'},

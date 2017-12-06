@@ -1,37 +1,37 @@
 <template>
     <gxp-page>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-input elWrapClass="form active"
                        type="text"
                        elPlaceholder="Enter text here" />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-input elWrapClass="form"
                        type="tel"
                        elPlaceholder="Enter number here" />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-input elWrapClass="form"
                        type="email"
                        elPlaceholder="Enter email here" />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-input elWrapClass="form"
                        type="password"
                        elPlaceholder="Enter password here" />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-currency elWrapClass="form"
                           elPlaceholder="Enter amount here" />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-textarea elWrapClass="form"
                           elPlaceholder="Enter text here" />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-date elWrapClass="form" />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-driving-licence elWrapClass="form" />
         </gxp-component>
     </gxp-page>

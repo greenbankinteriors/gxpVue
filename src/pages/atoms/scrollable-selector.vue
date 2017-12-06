@@ -1,7 +1,7 @@
 <template>
     <gxp-page>
-        <gxp-component egClass="center-element">
-            <msm-question />
+        <gxp-component egClass="center-element vertical-align">
+            <msm-scrollable-selector />
         </gxp-component>
     </gxp-page>
 </template>
@@ -10,22 +10,18 @@
 
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
-    import msmQuestion from '../../components/msm/molecules/form/question'
-    import msmRadio from '../../components/msm/atoms/form/input/radio'
+    import msmScrollSel from '../../components/msm/atoms/form/scrollable-selector'
 
     export default {
-
         components: {
-            'msm-question': msmQuestion,
-            'msm-radio': msmRadio
+            'msm-scrollable-selector': msmScrollSel
         },
         data() {
             return {
-                name: 'Question',
-                molecule: 'molecule',
+                name: 'Scrollable selector',
+                molecule: 'atom',
                 activeVar: 0,
-                variants: ['Default'],
-                options: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']
+                variants: ['Default']
             }
         },
         mounted() {

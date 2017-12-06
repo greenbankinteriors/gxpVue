@@ -1,15 +1,15 @@
 <template>
     <gxp-page>
-        <gxp-component elWrapClass="form">
+        <gxp-component>
             <msm-notification />
         </gxp-component>
-        <gxp-component elWrapClass="form">
+        <gxp-component egClass="full-element">
             <msm-notification elClass="notification tick-list" />
         </gxp-component>
-        <gxp-component elWrapClass="form">
+        <gxp-component egClass="full-element">
             <msm-notification elClass="notification warning" />
         </gxp-component>
-        <gxp-component elWrapClass="form">
+        <gxp-component egClass="full-element">
             <msm-notification elClass="notification success" />
         </gxp-component>
     </gxp-page>

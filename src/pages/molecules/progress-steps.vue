@@ -1,14 +1,13 @@
 <template>
     <gxp-page>
         <gxp-component egClass="center-element vertical-align">
-            <msm-checkbox :options='options1' />
+            <msm-progress-step :data="step1" />
         </gxp-component>
         <gxp-component egClass="center-element vertical-align">
-            <msm-checkbox :options='options2' />
+            <msm-progress-step :data="step2" />
         </gxp-component>
         <gxp-component egClass="center-element vertical-align">
-            <msm-checkbox elClass="tickbox"
-                          :options='options3' />
+            <msm-progress-step :data="step3" />
         </gxp-component>
     </gxp-page>
 </template>
@@ -17,21 +16,22 @@
 
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
-    import msmCheck from '../../components/msm/atoms/form/input/checkbox'
+    import msmProgStep from '../../components/msm/molecules/form/progress-steps'
 
     export default {
+
         components: {
-            'msm-checkbox': msmCheck
+            'msm-progress-step': msmProgStep
         },
         data() {
             return {
-                name: 'Checkboxes',
-                molecule: 'atom',
+                name: 'Progress step',
+                molecule: 'molecule',
                 activeVar: 0,
-                variants: ['Default', 'Subtext', 'Tick box'],
-                options1: ['Checkbox default'],
-                options2: [{'label': 'Checkbox default', 'value': 'default', 'subtext': 'Sub texts'}],
-                options3: ['Tickbox default']
+                variants: ['Complete', 'In progress', 'To do'],
+                step1: {'value': 'Your business', 'anchor': '#'},
+                step2: {'value': 'Your business', 'anchor': '#', 'active': true},
+                step3: {'value': 'Your business', 'anchor': '#', 'inactive': true}
             }
         },
         mounted() {

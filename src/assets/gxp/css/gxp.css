@@ -5,18 +5,18 @@ for example rendering - PLEASE DO NOT DELETE*/
 .content {
     height: auto;
 }
-
-.example.atom > div,
-.example.molecule > div {
-/*
-    height: 100%;
+.content > div {
     display: flex;
-    align-items: center;
-*/
+    justify-content: center;
+    overflow: auto;
 }
-
-.example.atom > div > *,
-.example.molecule > div > * {
-    margin: 0 auto;
-/*    min-width: 320px;*/
+.vertical-align > div {
+    height: 100%;
+    align-items: center;
+}
+.center-element > div > * {
+    width: 380px!important;
+}
+.full-element > div > * {
+    width: 780px!important;
 }

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="form-help">
         <a href="#" class="form-help-trigger" ref="helpTrigger" @click.prevent="tets()"><span>Need help?</span></a>
         <aside class="form-help-wrap">
             <div>

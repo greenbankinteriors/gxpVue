@@ -1,6 +1,6 @@
 <template>
-    <div class="form-pseudo-select">
-        <select>
+    <div :class="disabled ? 'form-pseudo-select disabled':'form-pseudo-select'">
+        <select :disabled="disabled">
             <option selected disabled>Please select</option>
             <option v-for="(option, index) in options" :value="option.value">{{ option.text }}</option>
         </select>
@@ -16,7 +16,8 @@
         props: {
             options: {
                 elType: Array
-            }
+            },
+            disabled : false
         },
         data() {
             return {
@@ -76,5 +77,8 @@
     }
     .form-pseudo-select select:focus {
         box-shadow: inset 0 0 0 2px #99dff9;
+    }
+    .form-pseudo-select.disabled:after {
+        background: transparent url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 100 100"><polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke="#c6cacc" points="41.5,67 58.5,50 41.5,33"/></svg>') center center no-repeat;
     }
 </style>

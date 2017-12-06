@@ -36,11 +36,11 @@
 
         props: {
             elClass: '',
-            elWrapClass: ''
+            elWrapClass: '',
+            egClass: ''
         },
         data() {
             return {
-                test: 'form/button.vue',
                 componentTag: '',
                 molecule: '',
                 style: '',
@@ -190,11 +190,18 @@
 
                 this.getWindowWidth();
 
-                Prism.highlightAll()
+                Prism.highlightAll();
 
-                if (this.molecule) {
-                    this.$refs.example.$el.contentWindow.document.body.className = 'content ' + this.molecule;
+                var bodyClass = "content"
+
+                if (this.egClass) {
+                    bodyClass += ' ' + this.egClass
                 }
+                if (this.molecule) {
+                    bodyClass += ' ' + this.molecule
+                }
+
+                this.$refs.example.$el.contentWindow.document.body.className = bodyClass;
             })
         },
         updated() {

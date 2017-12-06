@@ -1,7 +1,7 @@
 <template>
     <gxp-page>
-        <gxp-component egClass="center-element">
-            <msm-question />
+        <gxp-component egClass="center-element vertical-align">
+            <msm-autosuggest />
         </gxp-component>
     </gxp-page>
 </template>
@@ -10,22 +10,18 @@
 
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
-    import msmQuestion from '../../components/msm/molecules/form/question'
-    import msmRadio from '../../components/msm/atoms/form/input/radio'
+    import msmAutosuggest from '../../components/msm/molecules/form/autosuggest'
 
     export default {
-
         components: {
-            'msm-question': msmQuestion,
-            'msm-radio': msmRadio
+            'msm-autosuggest': msmAutosuggest
         },
         data() {
             return {
-                name: 'Question',
+                name: 'Autosuggest',
                 molecule: 'molecule',
                 activeVar: 0,
-                variants: ['Default'],
-                options: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']
+                variants: ['Default']
             }
         },
         mounted() {

@@ -1,22 +1,22 @@
 <template>
     <gxp-page>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-answer>
                 <msm-radio elWrapClass="form-inline-radios"
                            :options="options1" />
             </msm-answer>
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element">
             <msm-answer>
                 <msm-radio :options="options2" />
             </msm-answer>
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element">
             <msm-answer>
                 <msm-radio :options="options3" />
             </msm-answer>
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-answer>
                 <msm-input type="text"
                            elPlaceholder="Enter text here" />

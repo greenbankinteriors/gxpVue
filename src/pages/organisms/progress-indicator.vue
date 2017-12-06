@@ -1,7 +1,7 @@
 <template>
     <gxp-page>
-        <gxp-component elWrapClass="active">
-            <msm-progress-indicator></msm-progress-indicator>
+        <gxp-component egClass="form">
+            <msm-progress-indicator :steps="steps"></msm-progress-indicator>
         </gxp-component>
     </gxp-page>
 </template>
@@ -23,7 +23,14 @@
                 molecule: 'organism',
                 activeVar: 0,
                 variants: ['Default'],
-                options: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']
+                steps: [
+                    {'value': 'Your business', 'anchor': '#'},
+                    {'value': 'Your employees', 'anchor': '#'},
+                    {'value': 'Cover options', 'anchor': '#', 'active': true},
+                    {'value': 'Business questions', 'anchor': '#'},
+                    {'value': 'Agreements', 'anchor': '#'},
+                    {'value': 'Your quotes', 'anchor': '#'}
+                ]
             }
         },
         mounted() {

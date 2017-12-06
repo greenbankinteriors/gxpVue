@@ -60,6 +60,7 @@
         display: block;
         color: #2B3133;
         width: 100%;
+        height: 50px;
         transition: all 0.2s ease-in-out;
         margin-bottom: 10px;
     }

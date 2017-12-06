@@ -44,6 +44,8 @@
         text-decoration: none;
         border-radius: 30px;
         line-height: 1;
+        height: 40px;
+        width: 100%;
         padding: 12px 20px 10px;
         -webkit-transition: all 0.2s linear;
         transition: all 0.2s linear;
@@ -63,10 +65,6 @@
     }
     .btn__primary,
     .btn__secondary {
-        display: block;
-        width: 100%;
-        text-decoration: none;
-        font-weight: 700;
         position: relative;
         color: #fff;
         border-color: #48a415;

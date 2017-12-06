@@ -33,7 +33,6 @@ export default {
 
                                 for (let style of document.head.getElementsByTagName('style')) {
                                     if (style.innerText.indexOf(name) !== -1) {
-//                                        console.log(name);
                                         stylesArr.push(style.innerText);
                                     }
                                 }

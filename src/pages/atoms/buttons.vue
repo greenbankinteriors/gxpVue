@@ -1,18 +1,21 @@
 <template>
     <gxp-page>
-        <gxp-component elWrapClass="active">
+        <gxp-component egClass="center-element vertical-align">
             <msm-button btnClass="btn btn__primary" btnText="Submit"></msm-button>
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-button btnClass="btn btn__primary right__arrow" btnText="Submit"></msm-button>
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-button btnClass="btn btn__secondary" />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
+            <msm-button btnClass="btn btn__secondary right__arrow" />
+        </gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-link />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-link elClass="right__arrow" />
         </gxp-component>
     </gxp-page>
@@ -36,7 +39,7 @@
                 name: 'Buttons',
                 molecule: 'atom',
                 activeVar: 0,
-                variants: ['Primary', 'Primary with arrow', 'Secondary', 'Tertiary', 'Tertiary with arrow']
+                variants: ['Primary', 'Primary with arrow', 'Secondary', 'Secondary with arrow', 'Tertiary', 'Tertiary with arrow']
             }
         },
         mounted() {

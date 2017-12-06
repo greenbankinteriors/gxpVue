@@ -1,30 +1,30 @@
 <template>
     <gxp-page>
-        <gxp-component>
+        <gxp-component egClass="full-element vertical-align">
             <msm-title />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="full-element vertical-align">
             <msm-subtitle />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="full-element vertical-align">
             <msm-section-title />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-question />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-subtext />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-label />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="full-element vertical-align">
             <msm-text />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-link />
         </gxp-component>
-        <gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-link elClass="right__arrow" />
         </gxp-component>
     </gxp-page>

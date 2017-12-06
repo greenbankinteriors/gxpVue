@@ -146,7 +146,7 @@
     }
     ul li:last-of-type input[type=radio] + label,
     .form-inline-radios input[type=radio] + label {
-        margin: 0;
+        margin-bottom: 4px;
     }
     input[type=radio] + label strong {
         font-weight: 700;

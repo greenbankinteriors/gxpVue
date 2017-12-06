@@ -10,11 +10,14 @@ import textFields from './pages/atoms/text-fields';
 import checks from './pages/atoms/checkboxes';
 import dropdown from './pages/atoms/dropdown';
 import spinner from './pages/atoms/spinner';
+import scrollSel from './pages/atoms/scrollable-selector';
 
 import question from './pages/molecules/question';
 import help from './pages/molecules/help';
 import answer from './pages/molecules/answer';
 import notifications from './pages/molecules/notifications';
+import progressStep from './pages/molecules/progress-steps';
+import autosuggest from './pages/molecules/autosuggest';
 
 import formField from './pages/organisms/form-field';
 import progressIndicator from './pages/organisms/progress-indicator';
@@ -32,11 +35,14 @@ export default [
     { path: '/components/atoms/checkboxes', component: checks },
     { path: '/components/atoms/dropdown', component: dropdown },
     { path: '/components/atoms/spinner', component: spinner },
+    { path: '/components/atoms/scrollable-selectors', component: scrollSel },
 
     { path: '/components/molecules/question', component: question },
     { path: '/components/molecules/help', component: help },
     { path: '/components/molecules/answer', component: answer },
     { path: '/components/molecules/notifications', component: notifications },
+    { path: '/components/molecules/progress-steps', component: progressStep },
+    { path: '/components/molecules/autosuggest', component: autosuggest },
 
     { path: '/components/organisms/form-field', component: formField },
     { path: '/components/organisms/progress-indicator', component: progressIndicator }

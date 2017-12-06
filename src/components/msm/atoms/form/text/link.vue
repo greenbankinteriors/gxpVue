@@ -30,6 +30,7 @@
 
 <style scoped>
     a {
+        display: inline-block;
         position: relative;
         font-size: 14px;
         line-height: 1.38;

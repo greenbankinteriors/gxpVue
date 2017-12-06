@@ -110,6 +110,7 @@
         border-radius: 5px;
         box-shadow: inset 0 2px 0 0 #c6cacc;
         box-sizing: border-box;
+        height: 50px;
         background-color: #ebf0f2;
         overflow: hidden;
         position: relative;
