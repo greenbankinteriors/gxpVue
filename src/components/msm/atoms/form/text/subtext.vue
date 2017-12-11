@@ -29,9 +29,10 @@
 
 <style scoped>
     p.hint {
+        display: block;
+        width: 100%;
         font-size: 14px;
         font-weight: 400;
         color: #566266;
-        max-width: 748px;
     }
 </style>

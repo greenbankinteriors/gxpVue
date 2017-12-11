@@ -43,6 +43,7 @@
 <style scoped>
     .currency {
         position: relative;
+        width: 100%;
     }
     .currency:before {
         content: '£';

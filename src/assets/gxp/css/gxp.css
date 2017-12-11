@@ -7,6 +7,7 @@ for example rendering - PLEASE DO NOT DELETE*/
     height: auto;
 }
 .content > div {
+    overflow: auto;
     background-color: #fff;
 }
 .content.atom > div,
@@ -20,8 +21,8 @@ for example rendering - PLEASE DO NOT DELETE*/
     align-items: center;
 }
 .center-element > div > * {
-    width: 380px!important;
+    width: 100%;
 }
 .full-element > div > * {
-    width: 780px!important;
+/*    width: 780px!important;*/
 }

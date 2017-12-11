@@ -42,6 +42,7 @@
     }
     a:hover,
     a:focus {
+        text-decoration: underline;
         color: #0083b3;
     }
     a.right__arrow:after {

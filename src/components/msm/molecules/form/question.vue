@@ -111,9 +111,6 @@
         left: 0;
     }
     @media all and ( min-width: 620px ){
-        .question-wrap {
-            padding-right: 20px;
-        }
         .question-wrap > p,
         .question-wrap > label {
             padding-right: 0;

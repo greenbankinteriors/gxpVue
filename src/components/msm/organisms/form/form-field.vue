@@ -60,5 +60,11 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
         }
+        .form-field .question-wrap {
+            padding-right: 10px;
+        }
+        .form-field .answer-wrap {
+            padding-left: 10px;
+        }
     }
 </style>

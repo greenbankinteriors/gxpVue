@@ -1,9 +1,9 @@
 <template>
     <gxp-page>
-        <gxp-component egClass="center-element vertical-align">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-select :options="options1" />
         </gxp-component>
-        <gxp-component egClass="center-element vertical-align">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-select :options="options1"
                         disabled=true />
         </gxp-component>

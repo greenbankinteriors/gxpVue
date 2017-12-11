@@ -1,17 +1,16 @@
 <template>
     <gxp-page>
-        <gxp-component elWrapClass="active"
-                       elClass="form">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-radio :options='options1' />
         </gxp-component>
-        <gxp-component elClass="form">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-radio :options='options2' />
         </gxp-component>
-        <gxp-component elClass="form">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-radio elWrapClass="form-pseudo-radio__logo"
                        :options='options3' />
         </gxp-component>
-        <gxp-component elClass="form">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-radio elWrapClass="form-inline-radios"
                        :options='options4' />
         </gxp-component>

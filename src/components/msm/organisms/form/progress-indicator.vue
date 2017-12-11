@@ -52,7 +52,7 @@
     }
     @media all and ( min-width: 678px){
         .step-indicator {
-            margin: 20px 20px 0;
+            margin: 20px auto 0;
         }
     }
 </style>

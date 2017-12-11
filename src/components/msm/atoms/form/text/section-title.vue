@@ -31,24 +31,30 @@
 
 <style scoped>
     h1 {
-        font-size: 24px;
+        font-size: 22px;
         line-height: 1.33;
+        color: #2b3133;
         font-weight: 300;
-        padding: 20px 20px 10px;
+        padding: 20px 0px 10px;
+        box-sizing: border-box;
         display: block;
-        max-width: 748px;
+        width: 100%;
     }
-    @media all and ( min-width: 768px ) {
+    @media all and ( min-width: 420px ) {
         h1 {
-            font-size: 28px;
+            font-size: 24px;
             line-height: 1.38;
         }
     }
+    @media all and ( min-width: 620px ) {
+        h1 {
+            font-size: 28px;
+        }
+    }
 
-    @media all and ( min-width: 824px ) {
+    @media all and ( min-width: 820px ) {
         h1 {
             font-size: 32px;
         }
-
     }
 </style>

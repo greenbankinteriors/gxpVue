@@ -1,6 +1,6 @@
 <template>
     <gxp-page>
-        <gxp-component egClass="center-element vertical-align">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-spinner elValue="100"
                          elSpinInc="100"
                          elSpinMin="0"

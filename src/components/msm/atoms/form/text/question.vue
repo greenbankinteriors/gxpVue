@@ -32,13 +32,14 @@
         font-size: 16px;
         line-height: 1.38;
         font-weight: 400;
+        color: #2b3133;
         padding: 0 30px 10px 0;
         display: block;
     }
-    @media all and ( min-width: 768px ) {
+    @media all and ( min-width: 620px ) {
         label {
             font-size: 18px;
-            padding-top: 9px;
+            padding-top: 10px;
             line-height: 1.56;
         }
     }

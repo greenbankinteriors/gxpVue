@@ -33,10 +33,11 @@
         line-height: 1.38;
         font-weight: 700;
         color: #562873;
-        padding: 0px 20px 15px;
-        max-width: 748px;
+        padding: 0px 0px 15px;
+        box-sizing: border-box;
+        width: 100%;
     }
-    @media all and ( min-width: 768px ) {
+    @media all and ( min-width: 620px ) {
         h2 {
             font-size: 18px;
             line-height: 1.33;

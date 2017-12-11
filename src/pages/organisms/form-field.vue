@@ -2,7 +2,8 @@
     <gxp-page>
         <gxp-component elWrapClass="active">
             <msm-form-field>
-                <msm-question></msm-question>
+                <msm-question subtext="If you need to, you can enter more than one condition. A list of possible options will be shown as you type."
+                              help="Need help" />
                 <msm-answer>
                     <msm-radio :options="options" />
                 </msm-answer>

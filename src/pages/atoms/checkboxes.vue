@@ -1,12 +1,12 @@
 <template>
     <gxp-page>
-        <gxp-component egClass="center-element vertical-align">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-checkbox :options='options1' />
         </gxp-component>
-        <gxp-component egClass="center-element vertical-align">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-checkbox :options='options2' />
         </gxp-component>
-        <gxp-component egClass="center-element vertical-align">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-checkbox elClass="tickbox"
                           :options='options3' />
         </gxp-component>
