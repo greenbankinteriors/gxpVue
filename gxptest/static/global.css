@@ -1,0 +1,211 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+
+body,
+div,
+header,
+main,
+footer,
+section,
+aside,
+article,
+nav,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+dfn,
+blockquote,
+th,
+td,
+figure,
+hr,
+input,
+select,
+option,
+optgroup {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+main,
+footer,
+section,
+aside,
+article,
+nav {
+    display: block;
+}
+
+fieldset,
+img,
+hr,
+abbr,
+acronym,
+input,
+select {
+    border: 0 none;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var,
+input,
+select {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+:focus {
+    outline: none;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+    line-height: 1.8;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+body {
+    font: 500 1.6em/1.4 'Open Sans', 'Arial', 'Helvetica', 'Sans-Serif';
+    -webkit-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    background-color: #FFF;
+    color: #2b3133;
+}
+
+a {
+    display: block;
+    font: bold 14px 'Open Sans';
+    color: #00aeef;
+    text-decoration: none;
+}
+
+.btn {
+    font: 700 14px/1 'Open Sans';
+    display: block;
+    text-decoration: none;
+    border-radius: 30px;
+    line-height: 1;
+    padding: 12px 20px 10px;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    position: relative;
+    box-sizing: border-box;
+    border: 2px solid #48a415;
+    background-color: #FFF;
+    color: #48a415;
+    cursor: pointer;
+}
+.btn:hover,
+.btn:focus {
+    color: #FFF;
+    background-color: #367b10;
+    border-color: #367b10;
+    box-shadow: none;
+}
+.btn__primary,
+.btn__secondary {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    font-weight: 700;
+    position: relative;
+    color: #fff;
+    border-color: #48a415;
+    background-color: #48a415;
+    box-shadow: 0 2px 0 0 #c6cacc;
+}
+.btn__secondary {
+    color: #00aeef;
+    background-color: transparent;
+    width: auto;
+    border-color: #00aeef;
+    box-shadow: none;
+}
+.btn__secondary:hover,
+.btn__secondary:focus {
+    color: #FFF;
+    background-color: #00aeef;
+    border-color: #00aeef;
+    box-shadow: none;
+}
+
+.form-pseudo-radio__logo .logo {
+    display: block;
+    height: 28px;
+    width: 73px;
+    z-index: 1;
+    position: absolute;
+    background: transparent url('/static/big-six-sprite.png') 0 0 no-repeat;
+    background-size: 147px 168px;
+    top: 12px;
+    right: 12px;
+}
+.form-pseudo-radio__logo input:hover + label .logo,
+.form-pseudo-radio__logo input:checked + label .logo {
+    background-position-x: right;
+}
+.logo.bri {
+    background-position-y: 0px;
+}
+.logo.edf {
+    background-position-y: -28px;
+}
+.logo.npo {
+    background-position-y: -56px;
+}
+.logo.sco {
+    background-position-y: -84px;
+}
+.logo.eon {
+    background-position-y: -112px;
+}
+.logo.sse {
+    background-position-y: -140px;
+}
