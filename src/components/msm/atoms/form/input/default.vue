@@ -75,8 +75,13 @@
     input:focus {
         box-shadow: 0 0 3px 2px #00aeef, inset 0 2px 0 0 #c6cacc;;
     }
-    input:placeholder-shown {
-        color: #C6CACC;
+    :-ms-input-placeholder {
+        font-weight: 400;
+        color: #949899;
+    }
+    ::-webkit-input-placeholder {
+        font-weight: 400;
+        color: #949899;
     }
     input.currency {
         padding-left: 20px;

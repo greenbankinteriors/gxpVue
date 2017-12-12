@@ -7,6 +7,12 @@
             <msm-button btnClass="btn btn__primary right__arrow" btnText="Submit"></msm-button>
         </gxp-component>
         <gxp-component egClass="center-element vertical-align">
+            <msm-button btnClass="btn btn__primary btn__sub" />
+        </gxp-component>
+        <gxp-component egClass="center-element vertical-align">
+            <msm-button btnClass="btn btn__primary btn__sub right__arrow" />
+        </gxp-component>
+        <gxp-component egClass="center-element vertical-align">
             <msm-button btnClass="btn btn__secondary" />
         </gxp-component>
         <gxp-component egClass="center-element vertical-align">
@@ -39,7 +45,7 @@
                 name: 'Buttons',
                 molecule: 'atom',
                 activeVar: 0,
-                variants: ['Primary', 'Primary with arrow', 'Secondary', 'Secondary with arrow', 'Tertiary', 'Tertiary with arrow']
+                variants: ['Primary', 'Primary with arrow', 'Sub-primary', 'Sub-primary with arrow', 'Secondary', 'Secondary with arrow', 'Tertiary', 'Tertiary with arrow']
             }
         },
         mounted() {
@@ -49,3 +55,9 @@
     }
 
 </script>
+<style scoped>
+    .btn,
+    .content a {
+        width: auto;
+    }
+</style>

@@ -47,3 +47,8 @@
     }
 
 </script>
+<style scoped>
+    ul {
+        max-width: 380px;
+    }
+</style>

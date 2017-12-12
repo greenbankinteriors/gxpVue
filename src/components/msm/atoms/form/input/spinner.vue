@@ -115,7 +115,7 @@
         margin: 0 auto;
         width: calc( 100% - 94px );
         text-align: center;
-        font: bold 18px 'Open Sans';
+        font: 600 18px 'Open Sans';
         border-radius: 5px;
         box-shadow: inset 0 2px 0 0 #c6cacc;
         box-sizing: border-box;

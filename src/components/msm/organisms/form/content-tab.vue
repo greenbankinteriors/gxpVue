@@ -73,9 +73,30 @@
         padding: 15px 0 0;
         max-width: 420px;
     }
+    .content-tab:before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 18px;
+        right: 20px;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 24px;
+        background: #c6cacc url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 100 100"><polyline stroke="#fff" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" points="70.5,35.5 41.5,64.5 29.5,52.5"/></svg>') center center no-repeat;
+    }
+    .content-tab[data-completed='true']:before {
+        background-color: #48a415;
+    }
+    .content-tab[data-status="editing"]:before {
+        display: none;
+    }
     .content-tab > p {
         font-size: 16px;
         padding: 0 80px 5px 20px;
+        box-sizing: border-box;
     }
     .content-tab > .content-link {
         padding: 0 0 15px 20px;

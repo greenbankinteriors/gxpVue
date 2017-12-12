@@ -73,3 +73,11 @@
     }
 
 </script>
+<style scoped>
+    input {
+        max-width: 380px;
+    }
+    textarea {
+        margin: 10px 0;
+    }
+</style>

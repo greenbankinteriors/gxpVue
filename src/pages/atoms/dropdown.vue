@@ -44,3 +44,8 @@
     }
 
 </script>
+<style scoped>
+    .form-pseudo-select {
+        max-width: 380px;
+    }
+</style>

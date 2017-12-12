@@ -119,7 +119,7 @@
     .form-inline-radios {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 5px;
+        grid-column-gap: 10px;
         grid-row-gap: 10px;
     }
     input[type=radio] + label {
@@ -216,8 +216,8 @@
         position: absolute;
         background: transparent url('/static/big-six-sprite.png') 0 0 no-repeat;
         background-size: 147px 168px;
-        top: 12px;
-        right: 12px;
+        top: 11px;
+        right: 13px;
     }
     .form-pseudo-radio__logo input:hover + label .logo,
     .form-pseudo-radio__logo input:checked + label .logo {

@@ -78,7 +78,10 @@
     .form-pseudo-select select:focus {
         box-shadow: inset 0 0 0 2px #99dff9;
     }
+    .form-pseudo-select.disabled select {
+        color: #949899;
+    }
     .form-pseudo-select.disabled:after {
-        background: transparent url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 100 100"><polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke="#c6cacc" points="41.5,67 58.5,50 41.5,33"/></svg>') center center no-repeat;
+        background: transparent url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 100 100"><polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke="#949899" points="41.5,67 58.5,50 41.5,33"/></svg>') center center no-repeat;
     }
 </style>

@@ -120,11 +120,11 @@
         margin-bottom: 0;
     }
     :-ms-input-placeholder {
-        font: normal 14px 'Open Sans';
+        font-weight: 400;
         color: #949899;
     }
     ::-webkit-input-placeholder {
-        font: normal 14px 'Open Sans';
+        font-weight: 400;
         color: #949899;
     }
     .form-num-wrap > span {

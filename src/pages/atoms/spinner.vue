@@ -34,3 +34,8 @@
     }
 
 </script>
+<style scoped>
+    .form-spinner-wrap {
+        max-width: 380px;
+    }
+</style>

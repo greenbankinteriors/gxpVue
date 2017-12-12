@@ -31,3 +31,8 @@
     }
 
 </script>
+<style scoped>
+    .scrollable-select {
+        max-width: 380px;
+    }
+</style>

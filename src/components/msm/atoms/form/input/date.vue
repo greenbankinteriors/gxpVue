@@ -126,17 +126,17 @@
         background-color: #ebf0f2;
         text-align: center;
         display: block;
-        color: #2B3133;
+        color: #566266;
         width: 100%;
         transition: all 0.2s ease-in-out;
         margin-bottom: 0;
     }
     :-ms-input-placeholder {
-        font: normal 14px 'Open Sans';
+        font-weight: 400;
         color: #949899;
     }
     ::-webkit-input-placeholder {
-        font: normal 14px 'Open Sans';
+        font-weight: 400;
         color: #949899;
     }
     .form-num-wrap > span {

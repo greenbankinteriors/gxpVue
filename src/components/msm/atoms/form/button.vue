@@ -63,6 +63,13 @@
         border-color: #367b10;
         box-shadow: none;
     }
+    .btn.right__arrow {
+        padding-right: 40px;
+    }
+    .btn__primary {
+        font: 700 14px/1 'Gotham-Black';
+        text-transform: uppercase;
+    }
     .btn__primary,
     .btn__secondary {
         position: relative;
@@ -70,6 +77,10 @@
         border-color: #48a415;
         background-color: #48a415;
         box-shadow: 0 2px 0 0 #c6cacc;
+    }
+    .btn__sub {
+        font: 700 14px/1 'Open Sans';
+        text-transform: none;
     }
     .btn__secondary {
         color: #00aeef;
@@ -94,7 +105,7 @@
         width: 24px;
         position: absolute;
         right: 10px;
-        top: 6px;
+        top: 7px;
     }
     .btn__secondary.right__arrow:before {
         background: transparent url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 100 100"><polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke="#00aeef" points="41.5,67 58.5,50 41.5,33"/></svg>') center center no-repeat;

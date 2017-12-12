@@ -64,7 +64,7 @@
         box-sizing: border-box;
         background-color: #ebf0f2;
         display: block;
-        color: #2B3133;
+        color: #2b3133;
         width: 100%;
         transition: all 0.2s ease-in-out;
         margin-bottom: 10px;
@@ -75,8 +75,13 @@
     input:focus {
         box-shadow: 0 0 3px 2px #00aeef, inset 0 2px 0 0 #c6cacc;;
     }
-    input:placeholder-shown {
-        color: #C6CACC;
+    :-ms-input-placeholder {
+        font-weight: 400;
+        color: #949899;
+    }
+    ::-webkit-input-placeholder {
+        font-weight: 400;
+        color: #949899;
     }
     .error-input input {
         background-color: #fde8e9;

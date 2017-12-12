@@ -34,7 +34,7 @@
         position: relative;
         font-size: 14px;
         line-height: 1.38;
-        font-weight: 600;
+        font-weight: 700;
         color: #00aeef;
         padding: 10px 20px 10px 0;
         max-width: 748px;

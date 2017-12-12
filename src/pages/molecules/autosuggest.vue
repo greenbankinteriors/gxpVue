@@ -1,6 +1,6 @@
 <template>
     <gxp-page>
-        <gxp-component egClass="center-element vertical-align">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-autosuggest />
         </gxp-component>
     </gxp-page>
