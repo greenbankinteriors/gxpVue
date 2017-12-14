@@ -1,9 +1,9 @@
 <template>
     <gxp-page pageClass="directory">
-        <li class="atom">
+        <li class="fullPage">
             <ul class="pages">
                 <li v-for="(page, index) in components[activeVar].pages">
-                    <router-link :to="'atoms/' + page.url" exact>
+                    <router-link :to="'pages/' + page.url" exact>
                         <div>IMAGE HERE</div>
                         <p>{{ page.name }}</p>
                         <caption>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</caption>
@@ -26,7 +26,7 @@
                 components: componentData,
                 name: 'Components',
                 molecule: 'ATOMIC',
-                activeVar: 0,
+                activeVar: 3,
                 variants: ['Atoms', 'Molecules', 'Organisms', 'Pages']
             }
         },

@@ -44,7 +44,8 @@
         padding: 20px 20px 20px 15px;
         background-color: #f2f8fa;
         border-left: solid 5px #ebf0f2;
-        margin: 10px 0;
+        margin: 10px 0 0 -20px;
+        width: calc(100% + 40px);
     }
     .notification.warning,
     .notification.success {
@@ -71,8 +72,16 @@
     .notification.warning a {
         color: #ed1c24;
     }
+    .notification.warning a:hover,
+    .notification.warning a:focus {
+        color: #C81C24;
+    }
     .notification.success a {
         color: #48a415;
+    }
+    .notification.success a:hover,
+    .notification.success a:focus {
+        color: #24520B;
     }
     .notification p ~ ul {
         padding-top: 10px;
@@ -128,6 +137,11 @@
         width: 30px;
         border-radius: 30px;
         background: #48a415 url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 100 100"><polyline stroke="#ecf6e7" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" points="70.5,35.5 41.5,64.5 29.5,52.5"/></svg>') center center no-repeat;
+    }
+    @media (min-width: 340px) {
+        .notification {
+            margin: 10px 0 0;
+        }
     }
     @media (min-width: 620px) {
         .notification label {

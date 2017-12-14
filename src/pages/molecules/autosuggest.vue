@@ -1,6 +1,6 @@
 <template>
     <gxp-page>
-        <gxp-component egClass="form center-element vertical-align">
+        <gxp-component egClass="form center-element">
             <msm-autosuggest />
         </gxp-component>
     </gxp-page>
@@ -31,3 +31,9 @@
     }
 
 </script>
+<style scoped>
+    .autosuggest {
+        margin: 10px 0;
+        max-width: 380px;
+    }
+</style>

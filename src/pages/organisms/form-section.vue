@@ -1,13 +1,15 @@
 <template>
     <gxp-page>
         <gxp-component egClass="form">
-            <msm-form-field>
-                <msm-question subtext="If you need to, you can enter more than one condition. A list of possible options will be shown as you type."
-                              help="Need help" />
-                <msm-answer>
-                    <msm-radio :options="options" />
-                </msm-answer>
-            </msm-form-field>
+            <msm-form-section elTitle="About you">
+                <msm-form-field>
+                    <msm-question subtext="If you need to, you can enter more than one condition. A list of possible options will be shown as you type."
+                                  help="Need help" />
+                    <msm-answer>
+                        <msm-radio :options="options" />
+                    </msm-answer>
+                </msm-form-field>
+            </msm-form-section>
         </gxp-component>
     </gxp-page>
 </template>
@@ -16,6 +18,7 @@
 
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
+    import msmFormSection from '../../components/msm/organisms/form/form-section'
     import msmFormField from '../../components/msm/organisms/form/form-field'
     import msmQuestion from '../../components/msm/molecules/form/question'
     import msmAnswer from '../../components/msm/molecules/form/answer'
@@ -24,6 +27,7 @@
     export default {
 
         components: {
+            'msm-form-section': msmFormSection,
             'msm-form-field': msmFormField,
             'msm-question': msmQuestion,
             'msm-answer': msmAnswer,
@@ -31,7 +35,7 @@
         },
         data() {
             return {
-                name: 'Form field',
+                name: 'Form section',
                 molecule: 'organism',
                 activeVar: 0,
                 variants: ['Default'],

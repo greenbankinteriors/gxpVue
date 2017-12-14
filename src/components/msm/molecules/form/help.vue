@@ -5,7 +5,7 @@
             <div>
                 <h1>Help title</h1>
                 <p>Elit quo quibusdam qui sunt de aliqua doctrina se proident, ex quem enim multos excepteur de litteris quorum ad tempor reprehenderit.</p>
-                <p>Lorem nam cernantur <a href="#">sed amet an quo voluptate</a> fidelissimae te tempor si lorem consequat, legam fabulas coniunctione a culpa praesentibus fabulas quem nescius.</p>
+                <p>Lorem nam cernantur <msm-link elText="sed amet an quo voluptate"></msm-link> fidelissimae te tempor si lorem consequat, legam fabulas coniunctione a culpa praesentibus fabulas quem nescius.</p>
                 <ul>
                     <li>Fore commodo expetendis.</li>
                     <li>Lorem nam cernantur sed amet an quo voluptate fidelissimae te tempor si lorem.</li>
@@ -18,19 +18,24 @@
 
 <script>
 
-export default {
+    import msmLink from '../../../../components/msm/atoms/form/text/link.vue'
 
-    data() {
-        return {
-            helpOpen: false
-        }
-    },
-    methods: {
-        tets() {
-            this.$refs.helpTrigger.classList.toggle('open')
+    export default {
+
+        components: {
+            'msm-link': msmLink
+        },
+        data() {
+            return {
+                helpOpen: false
+            }
+        },
+        methods: {
+            tets() {
+                this.$refs.helpTrigger.classList.toggle('open')
+            }
         }
     }
-}
 </script>
 
 <style scoped>
@@ -73,7 +78,7 @@ export default {
         transition: all 0.4s ease-in-out;
     }
     .open + .form-help-wrap {
-        margin-top: 30px;
+        margin-top: 35px;
     }
     .question-wrap .open + .form-help-wrap {
         margin-top: 0;
@@ -101,8 +106,8 @@ export default {
         font-weight: 400;
         line-height: 1.29;
         font-size: 14px;
-        margin-left: -20px;
         width: 100%;
+        box-sizing: border-box;
         transition: all 0.4s ease-in-out;
         max-height: 0;
         opacity: 0;
@@ -124,6 +129,9 @@ export default {
         color: #566266;
         padding-bottom: 20px;
     }
+    .form-help-wrap a {
+        padding: 0;
+    }
     .form-help-wrap li {
         padding: 0 0 6px 15px;
         position: relative;
@@ -139,16 +147,9 @@ export default {
         top: 5px;
         left: 0;
     }
-    .form-help-wrap a {
-        color: inherit;
-    }
     @media all and ( min-width: 340px ){
         .form-help-wrap > div {
-            margin-left: 0;
             width: auto;
-            border-top-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            border-bottom-left-radius: 5px;
         }
     }
     @media all and ( min-width: 620px ){
@@ -195,9 +196,6 @@ export default {
         }
         .form-help-wrap {
             order: 5;
-        }
-        .form-help-wrap > div {
-            border-radius: 5px;
         }
         .form-help-wrap:before {
             right: initial;

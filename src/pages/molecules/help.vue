@@ -1,6 +1,6 @@
 <template>
     <gxp-page>
-        <gxp-component>
+        <gxp-component egClass="form center-element">
             <msm-help />
         </gxp-component>
     </gxp-page>
@@ -32,3 +32,8 @@
     }
 
 </script>
+<style scoped>
+    .form-help {
+        position: relative;
+    }
+</style>

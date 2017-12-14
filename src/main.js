@@ -106,7 +106,7 @@ export const globalCount = new Vue({
 })
 
 //Vue application
-var gxp = new Vue({
+const gxp = new Vue({
     el: '#GXP',
     render: h => h(GXP),
     router

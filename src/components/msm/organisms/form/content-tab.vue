@@ -6,7 +6,7 @@
             <div class="content-tab__question">
                 <slot></slot>
                 <msm-button btnClass="btn btn__primary btn__inline content-submit"
-                            btnText="NEXT"
+                            btnText="Next"
                             @click.native="completeContent" />
             </div>
         </div>
@@ -71,7 +71,6 @@
         margin: 0 auto;
         position: relative;
         padding: 15px 0 0;
-        max-width: 420px;
     }
     .content-tab:before {
         content: '';
@@ -126,6 +125,9 @@
         margin: 0 20px;
         border-color: transparent;
         transition: all 0.2s ease-in-out;
+    }
+    .content-tab__question {
+        overflow: visible;
     }
     .content-tab[data-completed='true'] > .content-link:before {
         transform: rotate(0deg);

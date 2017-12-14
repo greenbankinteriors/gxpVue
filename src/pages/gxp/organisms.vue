@@ -27,7 +27,7 @@
                 name: 'Components',
                 molecule: 'ATOMIC',
                 activeVar: 2,
-                variants: ['Atoms', 'Molecules', 'Organisms']
+                variants: ['Atoms', 'Molecules', 'Organisms', 'Pages']
             }
         },
         mounted() {

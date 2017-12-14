@@ -1,6 +1,6 @@
 <template>
     <gxp-page>
-        <gxp-component egClass="center-element">
+        <gxp-component egClass="form center-element vertical-align">
             <msm-question />
         </gxp-component>
     </gxp-page>

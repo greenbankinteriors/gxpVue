@@ -9,14 +9,8 @@
                     <h3 v-if="rootPage">Select an element</h3>
                     <h3 v-else>Select a variant to view</h3>
                     <ul v-if="rootPage"  class="variants">
-                        <li>
-                            <router-link v-if="rootPage" to="/components/atoms" exact>Atoms</router-link>
-                        </li>
-                        <li>
-                            <router-link v-if="rootPage" to="/components/molecules" exact>Molecules</router-link>
-                        </li>
-                        <li>
-                            <router-link v-if="rootPage" to="/components/organisms" exact>Organisms</router-link>
+                        <li v-for="(page, index) in components">
+                            <router-link :to="'/components/'+page.type" exact>{{ page.type }}</router-link>
                         </li>
                     </ul>
                     <ul v-else class="variants">
@@ -51,6 +45,7 @@
 
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
+    import componentData from '../../structure'
 
     export default {
 
@@ -59,6 +54,7 @@
         },
         data() {
             return {
+                components: componentData,
                 pageName: 'Global Experience Principals',
                 molecule: 'components',
                 pageType: '',
@@ -203,6 +199,7 @@
         position: relative;
         font-weight: 700;
         cursor: pointer;
+        text-transform: capitalize;
         text-decoration: underline;
         transition: all 0.1s ease-in;
     }

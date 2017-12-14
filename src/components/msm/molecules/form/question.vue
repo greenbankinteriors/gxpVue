@@ -1,9 +1,10 @@
 <template>
     <div class="question-wrap">
         <p class="label" v-if="elType=='radio'||elType=='checkbox'">{{ question }}</p>
-        <label :for="elType+'-'+gCount" v-else>{{ question }}</label>
-        <msm-subtext v-if="subtext" :elText="subtext" />
+<!--        <label :for="elType+'-'+gCount" v-else>{{ question }}</label>-->
+        <msm-question :for="elType+'-'+gCount" :elText="question" v-else />
         <msm-help v-if="help" :elText="help" />
+        <msm-subtext v-if="subtext" :elText="subtext" />
         <span class="form-error-wrap">
             <p>This is an error message due to an unanswered question, please fix it and continue</p>
         </span>
@@ -15,6 +16,7 @@
     import globalFuncs from '../../../../mixins/global'
     import { bus } from '../../../../main.js'
     import { globalCount } from '../../../../main.js'
+    import msmQuestion from '../../../../components/msm/atoms/form/text/question.vue'
     import msmHelp from '../../../../components/msm/molecules/form/help.vue'
     import msmSubtext from '../../../../components/msm/atoms/form/text/subtext.vue'
 
@@ -32,6 +34,7 @@
             dependant: ''
         },
         components: {
+            'msm-question': msmQuestion,
             'msm-help': msmHelp,
             'msm-subtext': msmSubtext
         },
@@ -58,14 +61,8 @@
         vertical-align: top;
         box-sizing: border-box;
         position: relative;
-    }
-    .question-wrap > p,
-    .question-wrap > label {
-        font-size: 16px;
-        line-height: 1.38;
-        font-weight: 400;
-        padding: 0 30px 10px 0;
-        display: block;
+        padding-bottom: 10px;
+        max-width: 380px;
     }
     .error-input input {
         background-color: #fde8e9;
@@ -110,10 +107,25 @@
         top: 0;
         left: 0;
     }
-    @media all and ( min-width: 620px ){
-        .question-wrap > p,
-        .question-wrap > label {
-            padding-right: 0;
+    @media (min-width: 620px) {
+        .question-wrap {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            padding-bottom: 0px;
+        }
+        .question-wrap label,
+        .question-wrap .label {
+            order: 1;
+        }
+        .question-wrap .form-error-wrap {
+            order: 2;
+        }
+        .question-wrap .hint {
+            order: 3;
+        }
+        .question-wrap .form-help {
+            order: 4;
         }
     }
 </style>

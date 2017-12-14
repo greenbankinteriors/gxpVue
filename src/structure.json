@@ -133,6 +133,14 @@
         "type":"organisms",
         "pages": [
             {
+                "name": "Form section",
+                "url": "form-section",
+                "tags": [
+                    "form",
+                    "global"
+                ]
+            },
+            {
                 "name": "Form field",
                 "url": "form-field",
                 "tags": [
@@ -151,6 +159,19 @@
             {
                 "name": "Content tab",
                 "url": "content-tab",
+                "tags": [
+                    "form",
+                    "global"
+                ]
+            }
+        ]
+    },
+    {
+        "type":"pages",
+        "pages": [
+            {
+                "name": "Question set",
+                "url": "question-set",
                 "tags": [
                     "form",
                     "global"

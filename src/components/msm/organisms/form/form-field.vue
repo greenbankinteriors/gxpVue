@@ -48,7 +48,8 @@
 
 <style scoped>
     .form-field {
-        margin: 0;
+        margin-left: -20px;
+        width: calc(100% + 40px);
         padding: 15px 20px 15px 15px;
         border-left: 5px solid rgba(255,255,255,0);
         transition: all 0.2s ease-in-out;

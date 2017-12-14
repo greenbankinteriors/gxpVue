@@ -39,8 +39,8 @@
     @media all and ( min-width: 620px ) {
         label {
             font-size: 18px;
-            padding-top: 10px;
-            line-height: 1.56;
+            line-height: 1.4;
+            padding: 10px 0 0;
         }
     }
 </style>

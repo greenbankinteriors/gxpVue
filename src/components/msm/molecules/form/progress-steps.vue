@@ -86,6 +86,14 @@
     }
     .progress-step:hover a {
         color: #0083B3;
+        text-decoration: underline;
+    }
+    .progress-step.active:hover a,
+    .progress-step.inactive:hover a,
+    .progress-step.active ~ li:hover a {
+        text-decoration: none;
+        pointer-events: none;
+        cursor: default;
     }
     .progress-step > a:before {
         content: '';

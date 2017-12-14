@@ -58,3 +58,8 @@
     }
 
 </script>
+<style scoped>
+    .answer-wrap {
+        max-width: 380px;
+    }
+</style>

@@ -32,6 +32,7 @@
         display: block;
         width: 100%;
         font-size: 14px;
+        line-height: 20px;
         font-weight: 400;
         color: #566266;
     }

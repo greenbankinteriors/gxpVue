@@ -15,6 +15,8 @@ for example rendering - PLEASE DO NOT DELETE*/
     display: flex;
     justify-content: center;
     overflow: auto;
+    position: relative;
+    min-height: 20px;
 }
 .vertical-align > div {
     height: 100%;
@@ -25,4 +27,20 @@ for example rendering - PLEASE DO NOT DELETE*/
 }
 .full-element > div > * {
 /*    width: 780px!important;*/
+}
+
+/*Form styles*/
+.form > * {
+    padding: 0 20px;
+    margin: 0 auto;
+}
+@media all and ( min-width: 420px){
+    .form > * {
+        max-width: 380px;
+    }
+}
+@media all and ( min-width: 620px){
+    .form > * {
+        max-width: 780px;
+    }
 }

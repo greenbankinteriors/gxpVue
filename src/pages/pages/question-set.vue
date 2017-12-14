@@ -1,13 +1,17 @@
 <template>
     <gxp-page>
-        <gxp-component egClass="form">
-            <msm-form-field>
-                <msm-question subtext="If you need to, you can enter more than one condition. A list of possible options will be shown as you type."
-                              help="Need help" />
-                <msm-answer>
-                    <msm-radio :options="options" />
-                </msm-answer>
-            </msm-form-field>
+        <gxp-component>
+            <msm-question-set>
+                <msm-form-section elTitle="About you">
+                    <msm-form-field>
+                        <msm-question subtext="If you need to, you can enter more than one condition. A list of possible options will be shown as you type."
+                                      help="Need help" />
+                        <msm-answer>
+                            <msm-radio :options="options" />
+                        </msm-answer>
+                    </msm-form-field>
+                </msm-form-section>
+            </msm-question-set>
         </gxp-component>
     </gxp-page>
 </template>
@@ -16,6 +20,8 @@
 
     import { bus } from '../../main.js'
     import { globalCount } from '../../main.js'
+    import msmQuestionSet from '../../components/msm/pages/form/question-set'
+    import msmFormSection from '../../components/msm/organisms/form/form-section'
     import msmFormField from '../../components/msm/organisms/form/form-field'
     import msmQuestion from '../../components/msm/molecules/form/question'
     import msmAnswer from '../../components/msm/molecules/form/answer'
@@ -24,6 +30,8 @@
     export default {
 
         components: {
+            'msm-question-set': msmQuestionSet,
+            'msm-form-section': msmFormSection,
             'msm-form-field': msmFormField,
             'msm-question': msmQuestion,
             'msm-answer': msmAnswer,
@@ -31,8 +39,8 @@
         },
         data() {
             return {
-                name: 'Form field',
-                molecule: 'organism',
+                name: 'Question set',
+                molecule: 'page',
                 activeVar: 0,
                 variants: ['Default'],
                 options: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']
