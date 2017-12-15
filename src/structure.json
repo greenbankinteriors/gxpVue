@@ -126,6 +126,14 @@
                     "form",
                     "global"
                 ]
+            },
+            {
+                "name": "Answer replay",
+                "url": "answer-replay",
+                "tags": [
+                    "form",
+                    "global"
+                ]
             }
         ]
     },

@@ -200,8 +200,10 @@
         font-weight: 700;
         cursor: pointer;
         text-transform: capitalize;
-        text-decoration: underline;
         transition: all 0.1s ease-in;
+    }
+    .variants li:hover {
+        text-decoration: underline;
     }
     .variants li.active {
         font-weight: 700;

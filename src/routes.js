@@ -19,6 +19,7 @@ import answer from './pages/molecules/answer';
 import notifications from './pages/molecules/notifications';
 import progressStep from './pages/molecules/progress-steps';
 import autosuggest from './pages/molecules/autosuggest';
+import ansReplay from './pages/molecules/answer-replay';
 
 import formSection from './pages/organisms/form-section';
 import formField from './pages/organisms/form-field';
@@ -49,6 +50,7 @@ export default [
     { path: '/components/molecules/notifications', component: notifications },
     { path: '/components/molecules/progress-steps', component: progressStep },
     { path: '/components/molecules/autosuggest', component: autosuggest },
+    { path: '/components/molecules/answer-replay', component: ansReplay },
 
     { path: '/components/organisms/form-section', component: formSection },
     { path: '/components/organisms/form-field', component: formField },

@@ -4,10 +4,24 @@
             <msm-question-set>
                 <msm-form-section elTitle="About you">
                     <msm-form-field>
-                        <msm-question subtext="If you need to, you can enter more than one condition. A list of possible options will be shown as you type."
+                        <msm-question question="First name"
                                       help="Need help" />
                         <msm-answer>
-                            <msm-radio :options="options" />
+                            <msm-input />
+                        </msm-answer>
+                    </msm-form-field>
+                    <msm-form-field>
+                        <msm-question question="Last name"
+                                      help="Need help" />
+                        <msm-answer>
+                            <msm-input />
+                        </msm-answer>
+                    </msm-form-field>
+                    <msm-form-field>
+                        <msm-question question="Your modifications:"
+                                      help="" />
+                        <msm-answer>
+                            <msm-answer-replay :cards="cards" />
                         </msm-answer>
                     </msm-form-field>
                 </msm-form-section>
@@ -25,7 +39,9 @@
     import msmFormField from '../../components/msm/organisms/form/form-field'
     import msmQuestion from '../../components/msm/molecules/form/question'
     import msmAnswer from '../../components/msm/molecules/form/answer'
+    import msmInput from '../../components/msm/atoms/form/input/default'
     import msmRadio from '../../components/msm/atoms/form/input/radio'
+    import msmAnsReplay from '../../components/msm/molecules/form/answer-replay/default'
 
     export default {
 
@@ -35,7 +51,9 @@
             'msm-form-field': msmFormField,
             'msm-question': msmQuestion,
             'msm-answer': msmAnswer,
-            'msm-radio': msmRadio
+            'msm-input': msmInput,
+            'msm-radio': msmRadio,
+            'msm-answer-replay': msmAnsReplay
         },
         data() {
             return {
@@ -43,7 +61,15 @@
                 molecule: 'page',
                 activeVar: 0,
                 variants: ['Default'],
-                options: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']
+                options: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'],
+                cards: [{
+                    title: 'Body modification',
+                    desc: [
+                        'Bonnet bulge',
+                        'Flared wheel arches',
+                        'Side striped remove'
+                    ]
+                }]
             }
         },
         mounted() {
