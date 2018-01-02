@@ -1,39 +1,60 @@
 <template>
     <section :class="pageClass">
         <header>
+            <router-link class="home-link" to="/"></router-link>
             <div>
-                <div>
-                    <p class="molecular-desc">{{ molecule }}</p>
-                    <h1>{{ pageName }}</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <h3 v-if="rootPage">Select an element</h3>
-                    <h3 v-else>Select a variant to view</h3>
-                    <ul v-if="rootPage"  class="variants">
-                        <li v-for="(page, index) in components">
-                            <router-link :to="'/components/'+page.type" exact>{{ page.type }}</router-link>
+                <div class="pageTitle">
+                    <div>
+                        <p class="molecular-desc">{{ molecule }}</p>
+                        <h1>{{ pageName }}</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                    <aside class="pageDetails" v-show="pageType=='comp'">
+                        <b>Last updated</b>
+                        <p>30 Oct 2017</p>
+                        <b>Version</b>
+                        <p>1.0</p>
+                        <b>Contributors</b>
+                        <ul class="contributors">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div v-if="pageType=='home'" class="pageView">
+                    <p>ATOMIC DESIGN | Select to view</p>
+                    <ul>
+                        <li v-for="(component, index) in components" :class="component.inactive?'inactive':''">
+                            <a v-if="component.inactive">{{ component.type }}</a>
+                            <router-link v-else :to="'/components/'+component.type" exact>{{ component.type }}</router-link>
+                            <p>{{ component.desc }}</p>
                         </li>
                     </ul>
-                    <ul v-else class="variants">
+                </div>
+                <div v-else-if="pageType=='root'">
+                    <h3>Select an element</h3>
+                    <ul class="variants">
+                        <li v-for="(page, index) in components" :class="page.inactive?'inactive':''">
+                            <a v-if="page.inactive">{{ page.type }}</a>
+                            <router-link v-else :to="'/components/'+page.type" exact>{{ page.type }}</router-link>
+                        </li>
+                    </ul>
+                </div>
+                <div v-else>
+                    <h3>Select a variant to view</h3>
+                    <ul class="variants">
                         <li v-for="(variant, index) in variants" @click="toggleVar">
                             <p>{{ variant }}</p>
                         </li>
                     </ul>
                 </div>
-                <aside class="pageDetails" v-show="!rootPage">
-                    <b>Last updated</b>
-                    <p>30 Oct 2017</p>
-                    <b>Version</b>
-                    <p>1.0</p>
-                    <b>Contributors</b>
-                    <ul class="contributors">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </aside>
             </div>
         </header>
-        <article>
+        <article v-if="pageType=='home'">
+            <slot></slot>
+        </article>
+        <article v-else>
             <ul class="components">
                 <slot></slot>
             </ul>
@@ -59,6 +80,7 @@
                 molecule: 'components',
                 pageType: '',
                 rootPage: false,
+                contributors: '',
                 variants: '',
                 activeVar: '',
                 htmlCode: '',
@@ -68,18 +90,16 @@
         },
         methods: {
             toggleVar(event) {
-                if (!this.rootPage) {
-                    var parent = event.currentTarget.parentElement,
-                        variants = parent.children;
+                var parent = event.currentTarget.parentElement,
+                    variants = parent.children;
 
-                    for(var i=0; i<variants.length; i++) {
-                        var variant = variants[i];
-                        if (variant === event.currentTarget) {
-                            this.activeVar = i;
-                        }
+                for(var i=0; i<variants.length; i++) {
+                    var variant = variants[i];
+                    if (variant === event.currentTarget) {
+                        this.activeVar = i;
                     }
-                    this.setVariant()
                 }
+                this.setVariant()
             },
             setVariant() {
                 var variants = document.querySelectorAll('.variants li');
@@ -89,7 +109,7 @@
 
                     if (i==this.activeVar) {
                         variant.classList.add('active');
-                        if (!this.rootPage) {
+                        if (this.pageType=='comp') {
                             components.style.transform = 'translate3d(-' + i + '00%, 0, 0)';
                         }
                     }
@@ -106,9 +126,9 @@
             bus.$on('pageInfo', (data) => {
                 this.pageName = data.name;
                 this.molecule = data.molecule;
-                this.rootPage = data.rootPage;
                 this.variants = data.variants;
                 this.activeVar = data.activeVar;
+                this.pageType = data.pageType ? data.pageType : "comp";
             })
         },
         updated() {
@@ -138,10 +158,13 @@
     header {
         padding: 0;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         background-color: #411e56;
+        padding-top: 100px;
+        text-align: left;
     }
-    header:after {
+    header .home-link:after {
         content: '';
         width: 120px;
         height: 58px;
@@ -153,38 +176,71 @@
         background-size: 100px;
     }
     header > div {
+        margin: 0 auto;
+    }
+    header .pageTitle {
         display: flex;
         justify-content: space-between;
-        background-color: #411e56;
-        box-sizing: border-box;
-        text-align: left;
-        padding: 80px 130px 0;
+    }
+    header .pageTitle > div {
+        padding-right: 275px;
     }
     @media (min-width: 1200px) {
         header > div {
             max-width: 1180px;
-            padding: 100px 0 0;
+/*            padding: 100px 0 0;*/
         }
-    }
-    header > div > div {
-        padding-right: 50px;
     }
     header > div > div > p {
         font: 400 16px 'Open Sans';
     }
-    .molecular-desc {
+    .molecular-desc,
+    .pageView > p {
         font: normal 14px 'Open Sans';
         text-transform: uppercase;
         margin-bottom: 10px;
+        color: #bba9c7;
     }
     h1 {
-        font: 900 42px 'Open Sans';
+        font: 400 42px 'gb';
         margin-bottom: 20px;
         letter-spacing: -0.5px;
     }
     h3 {
         font: 700 18px 'Open Sans';
-        padding: 40px 0 20px;
+        padding: 30px 0 20px;
+    }
+    .pageView {
+        padding-top: 55px;
+    }
+    .pageView > p {
+        margin-bottom: 15px;
+    }
+    .pageView ul {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-column-gap: 30px;
+        text-align: center;
+        padding-bottom: 40px;
+    }
+    .pageView ul p {
+        padding: 0 10px;
+        font: normal 14px 'Open Sans';
+    }
+    .pageView a {
+        width: 100%;
+        padding: 90px 0 20px;
+        margin-bottom: 15px;
+        font: normal 18px 'gb';
+        color: #411e56;
+        text-transform: capitalize;
+        background-color: #fff;
+    }
+    .pageView li:not(.inactive) {
+        cursor: pointer;
+    }
+    .pageView li.inactive a {
+        color: #bba9c7;
     }
     .variants {
         display: flex;
@@ -198,12 +254,15 @@
         border-right: solid 1px rgba(187, 169, 199, 0.5);
         position: relative;
         font-weight: 700;
-        cursor: pointer;
         text-transform: capitalize;
         transition: all 0.1s ease-in;
     }
-    .variants li:hover {
+    .variants li:not(.inactive):hover {
+        cursor: pointer;
         text-decoration: underline;
+    }
+    .variants li.inactive a {
+        color: #bba9c7;
     }
     .variants li.active {
         font-weight: 700;
@@ -223,6 +282,10 @@
     }
     .variants li a {
         color: #fff;
+    }
+    .variants li a.disabled {
+        color: #bba9c7;
+        cursor: default;
     }
     .variants li:first-of-type {
         padding-left: 0;

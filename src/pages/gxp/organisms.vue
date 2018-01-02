@@ -34,7 +34,7 @@
             bus.$emit('pageInfo', {
                 "name":this.name,
                 "molecule":this.molecule,
-                "rootPage":true,
+                "pageType":'root',
                 "variants": this.variants,
                 "activeVar": this.activeVar
             });

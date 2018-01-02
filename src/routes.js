@@ -30,6 +30,7 @@ import questionSet from './pages/pages/question-set';
 
 export default [
     { path: '/', component: Home },
+    { path: '/components/', component: atoms },
     { path: '/components/atoms', component: atoms },
     { path: '/components/molecules', component: molecules },
     { path: '/components/organisms', component: organisms },

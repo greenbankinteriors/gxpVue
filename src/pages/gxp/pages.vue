@@ -26,7 +26,7 @@
                 components: componentData,
                 name: 'Components',
                 molecule: 'ATOMIC',
-                activeVar: 3,
+                activeVar: 4,
                 variants: ['Atoms', 'Molecules', 'Organisms', 'Pages']
             }
         },
@@ -34,7 +34,7 @@
             bus.$emit('pageInfo', {
                 "name":this.name,
                 "molecule":this.molecule,
-                "rootPage":true,
+                "pageType":'root',
                 "variants": this.variants,
                 "activeVar": this.activeVar
             });

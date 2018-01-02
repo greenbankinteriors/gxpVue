@@ -1,6 +1,7 @@
 [
     {
         "type":"atoms",
+        "desc": "The basic building blocks of the site",
         "pages": [
             {
                 "name": "Text",
@@ -77,6 +78,7 @@
     },
     {
         "type":"molecules",
+        "desc": "Simple functional components",
         "pages": [
             {
                 "name": "Question",
@@ -139,6 +141,7 @@
     },
     {
         "type":"organisms",
+        "desc": "A distinct section of atoms and molecules",
         "pages": [
             {
                 "name": "Form section",
@@ -175,7 +178,13 @@
         ]
     },
     {
+        "type":"templates",
+        "desc": "Context to molecules and organisms",
+        "inactive": true
+    },
+    {
         "type":"pages",
+        "desc":"Real content instance of a template",
         "pages": [
             {
                 "name": "Question set",
@@ -186,5 +195,10 @@
                 ]
             }
         ]
+    },
+    {
+        "type":"styles",
+        "desc":"Fundamentally our brand guidelines",
+        "inactive": true
     }
 ]
