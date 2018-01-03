@@ -1,8 +1,8 @@
 <template>
     <gxp-page pageClass="directory">
-        <a @click="principle=true" :class="principle?'active':'inactive'">Design Principles</a>
+        <a @click="principle=true" :class="principle?'active':''">Design Principles</a>
         <span>|</span>
-        <a @click="principle=false" :class="principle?'inactive':'active'">Development Principles</a>
+        <a @click="principle=false" :class="principle?'':'active'">Development Principles</a>
         <section v-show="principle">
             <h1>Design Principles</h1>
             <ul>
@@ -110,15 +110,17 @@
     }
     a:before {
         content: '';
-        background-color: #bba9c7;
+        background-color: #411e56;
         height: 5px;
         width: 0%;
-        position: relative;
-        top: calc(100% + 13px);
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 50%;
         transition: all 0.1s ease-in;
     }
     a.active:before {
         width: 100%;
+        left: 0;
     }
     span {
         display: inline-block;

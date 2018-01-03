@@ -214,6 +214,7 @@
         padding-top: 55px;
     }
     .pageView > p {
+        text-transform: none;
         margin-bottom: 15px;
     }
     .pageView ul {
@@ -238,9 +239,28 @@
     }
     .pageView li:not(.inactive) {
         cursor: pointer;
+        position: relative;
     }
     .pageView li.inactive a {
         color: #bba9c7;
+    }
+    .pageView li:not(.inactive):hover a {
+        background-color: #bba9c7;
+        color: #fff;
+    }
+    .pageView li:not(.inactive):before {
+        content: '';
+        background-color: #bba9c7;
+        height: 5px;
+        width: 0%;
+        position: absolute;
+        top: calc(100% + 35px);
+        left: 50%;
+        transition: all 0.1s ease-in;
+    }
+    .pageView li:not(.inactive):hover:before {
+        width: 100%;
+        left: 0;
     }
     .variants {
         display: flex;

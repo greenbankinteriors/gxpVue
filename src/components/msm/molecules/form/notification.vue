@@ -1,10 +1,9 @@
 <template>
-    <div :class="elClass">
-        <label>Default message with bullets</label>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div :class="'notification ' + elClass">
+        <label>{{ title }}</label>
+        <p>{{ desc }}</p>
         <ul>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <a>tempor incididunt</a> ut labore et dolore magna aliqua.</li>
-            <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+            <li v-for="(item, index) in list" >{{ item }}</li>
         </ul>
     </div>
 </template>
@@ -19,6 +18,19 @@
         props: {
             elClass: {
                 default: 'notification'
+            },
+            title: {
+                default: 'Default message with bullets'
+            },
+            desc: {
+                default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+            },
+            list: {
+                type: Array,
+                default: function() {
+                    return ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <a>tempor incididunt</a> ut labore et dolore magna aliqua.',
+                          'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.']
+                }
             }
         },
         data() {
@@ -62,8 +74,10 @@
         width: calc(100% - 5px);
     }
     .notification label {
+        display: block;
         font-size: 14px;
         font-weight: 700;
+        padding-bottom: 10px;
     }
     .notification a {
         display: inline;

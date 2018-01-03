@@ -4,13 +4,13 @@
             <msm-notification />
         </gxp-component>
         <gxp-component egClass="form full-element">
-            <msm-notification elClass="notification tick-list" />
+            <msm-notification elClass="tick-list" />
         </gxp-component>
         <gxp-component egClass="form full-element">
-            <msm-notification elClass="notification warning" />
+            <msm-notification elClass="warning" />
         </gxp-component>
         <gxp-component egClass="formfull-element">
-            <msm-notification elClass="notification success" />
+            <msm-notification elClass="success" />
         </gxp-component>
     </gxp-page>
 </template>

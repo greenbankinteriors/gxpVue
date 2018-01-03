@@ -1,9 +1,10 @@
 <template>
-    <div class="card">
+    <div class="card" v-show="!empty">
         <dl class="card__info card__list" v-for="(card, index) in cards">
             <dt>{{ card.title }}</dt>
             <dd v-for="desc in card.desc" @click="removeDesc">{{ desc }}<msm-link elText="" elClass="remove"></msm-link></dd>
         </dl>
+<!--        <msm-notification elClass="undo"></msm-notification>-->
     </div>
 </template>
 
@@ -13,6 +14,7 @@
     import { bus } from '../../../../../main.js'
     import { globalCount } from '../../../../../main.js'
     import msmLink from '../../../../../components/msm/atoms/form/text/link'
+    import msmNotification from '../../../../../components/msm/molecules/form/notification'
 
     export default {
 
@@ -22,20 +24,27 @@
             cards: ''
         },
         components: {
-            'msm-link': msmLink
+            'msm-link': msmLink,
+            'msm-notification': msmNotification
         },
         data() {
             return {
                 elId: this.id,
                 elType: 'text',
-                gCount: globalCount.counter
+                gCount: globalCount.counter,
+                empty: false
             }
         },
         methods: {
             removeDesc(evt) {
-                var currEl = evt.currentTarget;
-                currEl.parentElement.removeChild(currEl);
+                var currEl = evt.currentTarget,
+                    parentEl = currEl.parentElement;
 
+                parentEl.removeChild(currEl);
+                if (!parentEl.querySelector('dd')) {
+                    console.log('ALL GONE')
+                    this.empty = true;
+                }
             }
         }
 
